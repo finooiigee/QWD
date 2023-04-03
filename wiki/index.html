@@ -1,9 +1,14 @@
 <html>
+    <head>
+        <style>
+            #e:target, #e:target ~ #e { background-color: yellow; outline: none; }
+        </style>
+    </head>
     <body>
         /projects
         <ul>
             <li>
-                <a href="/wiki/projects/tacit.help.html">tacit.help</a>
+                <a id="e" href="/wiki/projects/tacit.help.html">tacit.help</a>
             </li>
         </ul>
     </body>
