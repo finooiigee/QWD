@@ -1,6 +1,6 @@
 BSD 3-Clause License
 
-Copyright (c) 2022, Essie Lovett
+Copyright (c) 2023, Essie Lovett
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
