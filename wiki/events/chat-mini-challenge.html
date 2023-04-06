@@ -1,0 +1,47 @@
+<html>
+    <style>
+        body {
+            max-width: 50em; margin: 1em auto;
+        }
+        p {
+            white-space: pre-line;
+        }
+        code {
+            white-space: pre;
+        }
+    </style>
+    <body>
+        <h1>05/04/23</h1>
+        <h2>Collect parent/children pairs</h2>
+<p>
+Given an array of integers which corresponds to the depth in a traversal path return an array of parent and children node pairs. 
+
+A node in the return format should be represented by an index into the nodes sorted by order of authority*
+
+E.g in the hierarchy:
+<pre>
+     a
+   / | \
+  b  c  d
+ / 
+e
+</pre>
+
+The order of authority is a > b > c > d > e
+</p> 
+
+<h2>Examples</h2>
+The hierarchy below has an array of depth: [1,2,3,2,2] by traversing the path: <code>(a) (a -> b) (a -> b -> e) (a -> c) (a -> d)</code>
+<pre>
+     a
+   / | \
+  b  c  d
+ / 
+e
+</pre>
+<p>
+The correct result given the argument [1,2,3,2,2] would be: [1,[2,3,4]],[2,[5]]
+</p>
+
+    </body>
+</html>
