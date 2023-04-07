@@ -1,13 +1,27 @@
 <html>
     <style>
+        @font-face {
+            font-family: "FairfaxHD";
+            src: url("/public/assets/fonts/FairfaxHD.ttf");
+        }
+
+        * {
+            font-family: "FairfaxHD";
+        }
+
         body {
             max-width: 50em; margin: 1em auto;
         }
+        
+
         p {
             white-space: pre-line;
         }
         code {
             white-space: pre;
+        }
+        input[type="checkbox"]:checked ~ #solutions {
+            display: none;
         }
     </style>
     <body>
@@ -48,5 +62,11 @@ The correct result given the argument [1,2,3,2,2] would be: [1,[2,3,4]],[2,[5]]
 <code>[1,2,3,3,3,3,3,2,3,4,4,4,3,3,3,4,4,3,4,4]</code> -> <code>[[1,[2,3]],[2,[4,5,6,7,8]],[3,[9,10,11,12,13]],[9,[14,15,16]],[12,[17,18]],[13,[19,20]]]</code>
 </p>
 
+<input type="checkbox" checked=""> <label for="solutions">hide solutions</label>
+<div id="solutions">
+<h2>Solutions</h2>
+<a href="/home/e/">Essie</a> <sub>[essie@lovett.gay]</sub>
+<pre>{⊃,/(1∘↓(({⊂⍺ ⍵}⌸/∘↓∘⍉1↓{(⌊/⍵),⍺}⌸)⍤1)¯1∘↓)⌈\(⍋⍋⍵)@⊢(∪⍵)∘.=⍵}</pre>
+</div>
     </body>
 </html>
