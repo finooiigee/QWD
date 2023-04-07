@@ -14,7 +14,7 @@
         <h1>05/04/23</h1>
         <h2>Collect parent/children pairs</h2>
 <p>
-Given an array of integers which corresponds to the depth in a traversal path return an array of parent and children node pairs. 
+Given an array of integers which corresponds to the depths in a traversal path return an array of parent and children pairs. 
 
 A node in the return format should be represented by an index into the nodes sorted by order of authority*
 
@@ -27,7 +27,7 @@ E.g in the hierarchy:
 e
 </pre>
 
-The order of authority is a > b > c > d > e
+The order of authority* is <code>a > b > c > d > e</code>, and so the format of nodes [a,b,e,c,d] is [1,2,5,3,4]
 </p> 
 
 <h2>Examples</h2>
@@ -41,6 +41,11 @@ e
 </pre>
 <p>
 The correct result given the argument [1,2,3,2,2] would be: [1,[2,3,4]],[2,[5]]
+</p>
+
+<h2>Test-cases</h2>
+<p>
+    <code>[1,2,3,3,3,3,3,2,3,4,4,4,3,3,3,4,4,3,4,4]</code> -> <code>[[1,[2,3]],[2,[4,5,6,7,8]],[3,[9,10,11,12,13]],[9,[14,15,16]],[12,[17,18]],[13,[19,20]]]</code>
 </p>
 
     </body>
