@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>minesweeper with version control</title>
+<meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
+<style>
+    table {
+        border-collapse: collapse;
+        margin: 0 auto 0 auto;
+    }
+    td {
+        width: 2rem;
+        height: 2rem;
+        border-width: 0;
+        text-align: center;
+    }
+    .m1 { color: #0000ff }
+    .m2 { color: #008000 }
+    .m3 { color: #ff0000 }
+    .m4 { color: #000080 }
+    .m5 { color: #800000 }
+    .m6 { color: #008080 }
+    .m7 { color: #000000 }
+    .m8 { color: #808080 }
+    td.open {
+        background-color: #eeeeee;
+    }
+    td.staged {
+        background-color: #b0b0ce;
+    }
+    tr:nth-child(even) > td:nth-child(odd).closed, tr:nth-child(odd) > td:nth-child(even).closed {
+        background-color: #d7d7d7;
+    }
+    tr:nth-child(even) > td:nth-child(even).closed, tr:nth-child(odd) > td:nth-child(odd).closed {
+        background-color: #d0d0d0;
+    }
+    main {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+    }
+    table {
+        flex: 0 auto;
+    }
+    div {
+        flex: 1 1 20em;
+        margin: 1em 2em;
+    }
+</style>
+</head>
+<body>
+<h1>minesweeper with version control</h1>
+<main>
+<table id=table></table>
+<div>
+<button onclick=commit()>create commit (<kbd>Space</kbd>)</button>
+<button onclick=createBranch()>create branch</button>
+<br>
+<label for=checkout>checkout branch: </label>
+<select id=checkout onchange=checkout()></select>
+<pre id=output></pre>
+</div>
+</main>
+<script>
+
+const rng = a => Math.floor(Math.random() * a)
+
+const mines = 99;
+const w = 30;
+const h = 16;
+let board = null;
+let staged = [];
+let flagged = [];
+let contents = [];
+let head = null;
+let has_died = false;
+let has_won  = false;
+let active_branch = ["main","master","trunk"][rng(3)];
+let branches = new Map([[active_branch, null]]);
+
+function clicked(event) {
+    if (has_died) { return; }
+    const el = event.target;
+    const x = [...el.parentElement.children].indexOf(el);
+    const y = [...el.parentElement.parentElement.children].indexOf(el.parentElement);
+    if (board === null) {
+        board = Array(h)
+        for (let y=0;y<h;y++) { board[y] = Array(w).fill(0); }
+        let i = 0;
+        while (i < mines) {
+            const [mx, my] = [rng(w), rng(h)];
+            if (board[my][mx] === 0 && (Math.abs(mx - x) > 1 || Math.abs(my - y) > 1)) {
+                board[my][mx] = 1;
+                i++;
+            }
+        }
+        open(x, y)
+        staged.push([x, y]);
+    }
+    if (el.classList.contains("closed") && el.textContent === "") {
+        el.classList.remove("closed");
+        el.classList.add("staged");
+        staged.push([x, y]);
+    } else if (el.classList.contains("staged")) {
+        el.classList.add("closed");
+        el.classList.remove("staged");
+        staged.pop(staged.findIndex(i => i[0]===x && i[1]===y));
+    }
+}
+function open(x, y, el /*optional*/) {
+    if (x < 0 || x >= w || y < 0 || y >= h) { return; }
+    el = el ?? document.getElementById("table").children[y].children[x];
+    if (el.classList.contains("open")) { return; }
+    el.classList.remove("staged");
+    el.classList.remove("closed");
+    el.classList.add("open");
+    if (board[y][x]) {
+        has_died = true;
+        el.classList.add("m3");
+        el.textContent = "ඞ"
+        return;
+    }
+    let count = 0;
+    for (let my = y-1; my <= y+1; my++)
+    for (let mx = x-1; mx <= x+1; mx++)
+    if (mx >= 0 && mx < w && my >= 0 && my < h) {
+        count += board[my][mx];
+    }
+    if (count === 0) {
+        for (let my = y-1; my <= y+1; my++)
+        for (let mx = x-1; mx <= x+1; mx++) {
+            open(mx, my)
+        }
+    } else {
+        el.classList.add(`m${count}`);
+        el.textContent = `${count}`;
+    }
+}
+function rightclicked(event) {
+    if (has_died) { return; }
+    const el = event.target;
+    const x = [...el.parentElement.children].indexOf(el);
+    const y = [...el.parentElement.parentElement.children].indexOf(el.parentElement);
+    if (event.target.classList.contains("closed")) {
+        if (event.target.textContent === "🏴") {
+            event.target.textContent = "";
+            flagged.pop(flagged.findIndex(i => i[0]===x && i[1]===y))
+        } else {
+            event.target.textContent = "🏴";
+            flagged.push([x, y]);
+        }
+        updateOutput();
+    }
+    return false;
+}
+
+function commit() {
+    if (has_died) { return; }
+    const name = prompt("Please enter the commit message for your changes.\nLines starting with '#' will be ignored, and an empty message aborts the commit.");
+    if (!name) { return; }
+    for ([x, y] of staged) {
+        if (!has_died) {
+            open(x, y);
+            contents.push([x, y]);
+        }
+    }
+    head = {
+        hash: rng(1<<28).toString(16).padStart(7, "0"),
+        name: name,
+        changes: staged.length,
+        flagged:  [...flagged],
+        contents: [...contents],
+        has_died: has_died,
+        parent: head,
+    }
+    branches.set(active_branch, head)
+    staged = [];
+    function hasWon() {
+        for (let my=0;my<h;my++)
+        for (let mx=0;mx<w;mx++)
+        if (!board[my][mx]) {
+            const el2 = document.getElementById("table").children[my].children[mx];
+            if (!el2.classList.contains("open")) { return false; }
+        }
+        return true;
+    }
+    has_won = hasWon();
+    updateOutput();
+}
+
+function updateOutput() {
+    let string = `mines left: ${mines-flagged.length}${has_won?". congratulations!" : ""}
+on branch ${active_branch}
+${head ? "commit history:" : ""}`;
+    let commit = head;
+    while (commit !== null) {
+        string += `\n* ${commit.hash} ${commit.name} (${commit.changes} additions)`
+        for (let b of branches.keys())
+        if (branches.get(b) === commit) {
+            string += ` (${b === active_branch ? "HEAD -> " : ""}${b})`;
+        }
+        commit = commit.parent;
+    }
+    document.getElementById("output").textContent = string;
+}
+
+function createBoard() {
+    document.getElementById("table").replaceChildren();
+    for (let y=0;y<h;y++) {
+        row = document.createElement("tr");
+        for (let x=0;x<w;x++) {
+            let thing = document.createElement("td")
+            thing.onclick       = clicked;
+            thing.oncontextmenu = rightclicked;
+            thing.classList.add("closed");
+            row.appendChild(thing);
+        }
+        document.getElementById("table").appendChild(row);
+    }
+}
+
+function createBranch() {
+    const name = prompt("name of branch")
+    if (!name) { return; }
+    branches.set(name, head);
+    updateOutput();
+    let element = document.createElement("option");
+    element.textContent = name;
+    document.getElementById("checkout").appendChild(element)
+}
+let element = document.createElement("option");
+element.textContent = active_branch;
+document.getElementById("checkout").appendChild(element)
+
+function checkout() {
+    if (staged.length !== 0 && prompt("this will overwrite your staged changes. are you sure?")) { return; }
+    active_branch = document.getElementById("checkout").value;
+    head = branches.get(active_branch);
+    for (row of document.getElementById("table").children) {
+        for (item of row.children) {
+            item.replaceChildren();
+            item.className = "closed";
+        }
+    }
+    has_died = false;
+    for ([x, y] of head?.contents ?? []) {
+        if (!has_died) { open(x, y); }
+    }
+    has_died = head?.has_died ?? false;
+    for ([x, y] of head?.flagged ?? []) {
+        document.getElementById("table").children[y].children[x].textContent = "🏴";
+    }
+    contents = head?.contents ?? [];
+    flagged = head?.flagged ?? [];
+    staged = [];
+    updateOutput();
+}
+
+createBoard();
+updateOutput();
+
+document.addEventListener("keyup", ev => {
+    if (ev.key == " ") { commit(); return false; }
+})
+
+</script>
+</body>
+</html>
