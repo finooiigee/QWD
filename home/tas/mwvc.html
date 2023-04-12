@@ -94,7 +94,7 @@ function clicked(event) {
                 i++;
             }
         }
-        open(x, y)
+        open(x, y);
         staged.push([x, y]);
     }
     if (el.classList.contains("closed") && el.textContent === "") {
@@ -233,7 +233,13 @@ element.textContent = active_branch;
 document.getElementById("checkout").appendChild(element)
 
 function checkout() {
-    if (staged.length !== 0 && prompt("this will overwrite your staged changes. are you sure?")) { return; }
+    if (staged.length !== 0) {
+        let pr = prompt("this will overwrite your staged changes. are you sure? (y/n)");
+        if (!pr || pr.toLowerCase().trim() === "y") {
+            document.getElementById("checkout").value = active_branch;
+            return;
+        }
+    }
     active_branch = document.getElementById("checkout").value;
     head = branches.get(active_branch);
     for (row of document.getElementById("table").children) {
