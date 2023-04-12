@@ -59,8 +59,8 @@
 <label for=checkout>checkout branch: </label>
 <select id=checkout onchange=checkout()></select>
 <br>
-<label for=stranding>stranding: </label>
-<input id=stranding type=checkbox checked>
+<label for=chording>chording: </label>
+<input id=chording type=checkbox checked>
 <pre id=output></pre>
 </div>
 </main>
@@ -111,7 +111,7 @@ function clicked(event) {
     } else if (el.textContent === "🏴") {
         event.target.textContent = "";
         flagged.pop(flagged.findIndex(i => i[0]===x && i[1]===y));
-    } else if (el.classList.contains("open") && document.getElementById("stranding").checked) {
+    } else if (el.classList.contains("open") && document.getElementById("chording").checked) {
         const num = Number(el.textContent);
         if (num !== num || num === 0) { return; }
         let count = 0;
