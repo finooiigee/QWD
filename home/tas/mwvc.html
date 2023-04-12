@@ -58,6 +58,9 @@
 <br>
 <label for=checkout>checkout branch: </label>
 <select id=checkout onchange=checkout()></select>
+<br>
+<label for=stranding>stranding: </label>
+<input id=stranding type=checkbox checked>
 <pre id=output></pre>
 </div>
 </main>
@@ -105,6 +108,29 @@ function clicked(event) {
         el.classList.add("closed");
         el.classList.remove("staged");
         staged.pop(staged.findIndex(i => i[0]===x && i[1]===y));
+    } else if (el.textContent === "🏴") {
+        event.target.textContent = "";
+        flagged.pop(flagged.findIndex(i => i[0]===x && i[1]===y));
+    } else if (el.classList.contains("open") && document.getElementById("stranding").checked) {
+        const num = Number(el.textContent);
+        if (num !== num || num === 0) { return; }
+        let count = 0;
+        for (let my = y-1; my <= y+1; my++)
+        for (let mx = x-1; mx <= x+1; mx++) {
+            count += +flagged.some(i => i[0] === mx && i[1] === my);
+        }
+        if (count === num) {
+            for (let my = y-1; my <= y+1; my++)
+            for (let mx = x-1; mx <= x+1; mx++)
+            if (mx >= 0 && mx < w && my >= 0 && my < h) {
+                const el = document.getElementById("table").children[my].children[mx];
+                if (el.classList.contains("closed") && el.textContent !== "🏴") {
+                    el.classList.remove("closed");
+                    el.classList.add("staged");
+                    staged.push([mx, my]);
+                }
+            }
+        }
     }
 }
 function open(x, y, el /*optional*/) {
@@ -265,7 +291,7 @@ function checkout() {
 createBoard();
 updateOutput();
 
-document.addEventListener("keyup", ev => {
+document.addEventListener("keydown", ev => {
     if (ev.key == " ") { commit(); return false; }
 })
 
