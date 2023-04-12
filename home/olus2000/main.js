@@ -5348,18 +5348,122 @@ var $author$project$Main$defaultOperators = _List_fromArray(
 				]))
 	}
 	]);
-var $elm$core$Dict$RBEmpty_elm_builtin = {$: 'RBEmpty_elm_builtin'};
-var $elm$core$Dict$empty = $elm$core$Dict$RBEmpty_elm_builtin;
+var $author$project$Main$initWords = _List_fromArray(
+	[
+		{
+		body: '( [A] [B] -- [B[A]] ) swap quote cat',
+		id: 0,
+		name: 'take',
+		result: $elm$core$Result$Ok(
+			_List_fromArray(
+				[
+					$author$project$Main$Node('swap'),
+					$author$project$Main$Node('quote'),
+					$author$project$Main$Node('cat')
+				]))
+	},
+		{
+		body: '( [A] [B] -- B [A] ) take call',
+		id: 1,
+		name: 'dip',
+		result: $elm$core$Result$Ok(
+			_List_fromArray(
+				[
+					$author$project$Main$Node('take'),
+					$author$project$Main$Node('call')
+				]))
+	},
+		{
+		body: '( [A] [B] -- [[A]B] ) swap quote swap cat',
+		id: 2,
+		name: 'cons',
+		result: $elm$core$Result$Ok(
+			_List_fromArray(
+				[
+					$author$project$Main$Node('swap'),
+					$author$project$Main$Node('quote'),
+					$author$project$Main$Node('swap'),
+					$author$project$Main$Node('cat')
+				]))
+	},
+		{
+		body: '( a b -- a b a ) [ dup ] dip swap',
+		id: 6,
+		name: 'over',
+		result: $elm$core$Result$Ok(
+			_List_fromArray(
+				[
+					$author$project$Main$Tree(
+					_List_fromArray(
+						[
+							$author$project$Main$Node('dup')
+						])),
+					$author$project$Main$Node('dip'),
+					$author$project$Main$Node('swap')
+				]))
+	},
+		{
+		body: '( a b c -- b c a ) [ swap ] dip swap',
+		id: 3,
+		name: 'rot',
+		result: $elm$core$Result$Ok(
+			_List_fromArray(
+				[
+					$author$project$Main$Tree(
+					_List_fromArray(
+						[
+							$author$project$Main$Node('swap')
+						])),
+					$author$project$Main$Node('dip'),
+					$author$project$Main$Node('swap')
+				]))
+	},
+		{
+		body: '( a b c -- c a b ) swap [ swap ] dip',
+		id: 4,
+		name: '-rot',
+		result: $elm$core$Result$Ok(
+			_List_fromArray(
+				[
+					$author$project$Main$Node('swap'),
+					$author$project$Main$Tree(
+					_List_fromArray(
+						[
+							$author$project$Main$Node('swap')
+						])),
+					$author$project$Main$Node('dip')
+				]))
+	},
+		{
+		body: '( ( A ( A -- B ) -- B ) -- ( A -- B ) ) ' + '[ dup cons ] swap cat dup cons',
+		id: 5,
+		name: 'fix',
+		result: $elm$core$Result$Ok(
+			_List_fromArray(
+				[
+					$author$project$Main$Tree(
+					_List_fromArray(
+						[
+							$author$project$Main$Node('dup'),
+							$author$project$Main$Node('cons')
+						])),
+					$author$project$Main$Node('swap'),
+					$author$project$Main$Node('cat'),
+					$author$project$Main$Node('dup'),
+					$author$project$Main$Node('cons')
+				]))
+	}
+	]);
 var $elm$core$Platform$Cmd$batch = _Platform_batch;
 var $elm$core$Platform$Cmd$none = $elm$core$Platform$Cmd$batch(_List_Nil);
 var $author$project$Main$init = function (_v0) {
 	return _Utils_Tuple2(
 		{
-			dictionary: {operators: $elm$core$Dict$empty, succ: $elm$core$Maybe$Nothing, words: $elm$core$Dict$empty, zero: $elm$core$Maybe$Nothing},
 			expression: '',
 			operators: $author$project$Main$defaultOperators,
 			result: $elm$core$Result$Ok(_List_Nil),
-			step: 0
+			step: 0,
+			words: $author$project$Main$initWords
 		},
 		$elm$core$Platform$Cmd$none);
 };
@@ -5383,6 +5487,8 @@ var $elm$core$List$filterMap = F2(
 			_List_Nil,
 			xs);
 	});
+var $elm$core$Dict$RBEmpty_elm_builtin = {$: 'RBEmpty_elm_builtin'};
+var $elm$core$Dict$empty = $elm$core$Dict$RBEmpty_elm_builtin;
 var $elm$core$Dict$Black = {$: 'Black'};
 var $elm$core$Dict$RBNode_elm_builtin = F5(
 	function (a, b, c, d, e) {
@@ -5522,6 +5628,30 @@ var $author$project$Main$buildOpDict = function (operators) {
 			},
 			operators));
 };
+var $author$project$Main$buildWordDict = function (wordList) {
+	return $elm$core$Dict$fromList(
+		A2(
+			$elm$core$List$filterMap,
+			function (x) {
+				var _v0 = x.result;
+				if (_v0.$ === 'Err') {
+					return $elm$core$Maybe$Nothing;
+				} else {
+					var expr = _v0.a;
+					return $elm$core$Maybe$Just(
+						_Utils_Tuple2(x.name, expr));
+				}
+			},
+			wordList));
+};
+var $author$project$Main$buildDict = function (model) {
+	return {
+		operators: $author$project$Main$buildOpDict(model.operators),
+		succ: $elm$core$Maybe$Nothing,
+		words: $author$project$Main$buildWordDict(model.words),
+		zero: $elm$core$Maybe$Nothing
+	};
+};
 var $elm$core$List$filter = F2(
 	function (isGood, list) {
 		return A3(
@@ -5547,6 +5677,14 @@ var $author$project$Main$newOperator = function (time) {
 		result: $elm$core$Result$Ok(_List_Nil)
 	};
 };
+var $author$project$Main$newWord = function (time) {
+	return {
+		body: '',
+		id: $elm$time$Time$posixToMillis(time),
+		name: '',
+		result: $elm$core$Result$Ok(_List_Nil)
+	};
+};
 var $elm$time$Time$Name = function (a) {
 	return {$: 'Name', a: a};
 };
@@ -5565,6 +5703,44 @@ var $elm$time$Time$millisToPosix = $elm$time$Time$Posix;
 var $elm$time$Time$now = _Time_now($elm$time$Time$millisToPosix);
 var $author$project$Main$Error = function (a) {
 	return {$: 'Error', a: a};
+};
+var $elm$core$Result$andThen = F2(
+	function (callback, result) {
+		if (result.$ === 'Ok') {
+			var value = result.a;
+			return callback(value);
+		} else {
+			var msg = result.a;
+			return $elm$core$Result$Err(msg);
+		}
+	});
+var $author$project$Main$parseComment = function (tokens) {
+	parseComment:
+	while (true) {
+		if (!tokens.b) {
+			return $elm$core$Result$Err(
+				$author$project$Main$Error(
+					_List_fromArray(
+						['Unclosed \"(\"'])));
+		} else {
+			switch (tokens.a) {
+				case '(':
+					var tail = tokens.b;
+					return A2(
+						$elm$core$Result$andThen,
+						$author$project$Main$parseComment,
+						$author$project$Main$parseComment(tokens));
+				case ')':
+					var tail = tokens.b;
+					return $elm$core$Result$Ok(tail);
+				default:
+					var tail = tokens.b;
+					var $temp$tokens = tail;
+					tokens = $temp$tokens;
+					continue parseComment;
+			}
+		}
+	}
 };
 var $elm$core$Set$Set_elm_builtin = function (a) {
 	return {$: 'Set_elm_builtin', a: a};
@@ -5678,6 +5854,12 @@ var $author$project$Main$parseExpressionTree = function (tokens) {
 									['Unclosed \"[\"'])));
 					}
 				}
+			case '(':
+				var tail = tokens.b;
+				return A2(
+					$elm$core$Result$andThen,
+					$author$project$Main$parseExpressionTree,
+					$author$project$Main$parseComment(tail));
 			default:
 				var s = tokens.a;
 				var tail = tokens.b;
@@ -5975,6 +6157,19 @@ var $author$project$Main$parseOperator = function (operator) {
 					$author$project$Main$checkName(operator.name)))
 		});
 };
+var $author$project$Main$parseWord = function (word) {
+	return _Utils_update(
+		word,
+		{
+			result: A2(
+				$elm$core$Maybe$withDefault,
+				$author$project$Main$parseExpression(word.body),
+				A2(
+					$elm$core$Maybe$map,
+					$elm$core$Result$Err,
+					$author$project$Main$checkName(word.name)))
+		});
+};
 var $elm$core$List$drop = F2(
 	function (n, list) {
 		drop:
@@ -6268,7 +6463,7 @@ var $author$project$Main$topQuotes = F2(
 		}
 	});
 var $author$project$Main$reduce = F4(
-	function (operators, limit, expr, stack) {
+	function (dictionary, limit, expr, stack) {
 		reduce:
 		while (true) {
 			if (limit <= 0) {
@@ -6282,47 +6477,61 @@ var $author$project$Main$reduce = F4(
 					if (expr.a.$ === 'Node') {
 						var op = expr.a.a;
 						var rest = expr.b;
-						var _v1 = A2($elm$core$Dict$get, op, operators);
+						var _v1 = A2($elm$core$Dict$get, op, dictionary.operators);
 						if (_v1.$ === 'Nothing') {
-							var $temp$operators = operators,
-								$temp$limit = limit,
-								$temp$expr = rest,
-								$temp$stack = A2(
-								$elm$core$List$cons,
-								$author$project$Main$Node(op),
-								stack);
-							operators = $temp$operators;
-							limit = $temp$limit;
-							expr = $temp$expr;
-							stack = $temp$stack;
-							continue reduce;
-						} else {
-							var operator = _v1.a;
-							var _v2 = A2($author$project$Main$topQuotes, operator.arity, stack);
+							var _v2 = A2($elm$core$Dict$get, op, dictionary.words);
 							if (_v2.$ === 'Nothing') {
-								var $temp$operators = operators,
+								var $temp$dictionary = dictionary,
 									$temp$limit = limit,
 									$temp$expr = rest,
 									$temp$stack = A2(
 									$elm$core$List$cons,
 									$author$project$Main$Node(op),
 									stack);
-								operators = $temp$operators;
+								dictionary = $temp$dictionary;
 								limit = $temp$limit;
 								expr = $temp$expr;
 								stack = $temp$stack;
 								continue reduce;
 							} else {
-								var _arguments = _v2.a;
+								var word = _v2.a;
+								var $temp$dictionary = dictionary,
+									$temp$limit = limit - 1,
+									$temp$expr = _Utils_ap(word, rest),
+									$temp$stack = stack;
+								dictionary = $temp$dictionary;
+								limit = $temp$limit;
+								expr = $temp$expr;
+								stack = $temp$stack;
+								continue reduce;
+							}
+						} else {
+							var operator = _v1.a;
+							var _v3 = A2($author$project$Main$topQuotes, operator.arity, stack);
+							if (_v3.$ === 'Nothing') {
+								var $temp$dictionary = dictionary,
+									$temp$limit = limit,
+									$temp$expr = rest,
+									$temp$stack = A2(
+									$elm$core$List$cons,
+									$author$project$Main$Node(op),
+									stack);
+								dictionary = $temp$dictionary;
+								limit = $temp$limit;
+								expr = $temp$expr;
+								stack = $temp$stack;
+								continue reduce;
+							} else {
+								var _arguments = _v3.a;
 								var new_stack = A2($elm$core$List$drop, operator.arity, stack);
 								var new_expr = _Utils_ap(
 									A2($author$project$Main$instantiate, _arguments, operator.skeleton),
 									rest);
-								var $temp$operators = operators,
+								var $temp$dictionary = dictionary,
 									$temp$limit = limit - 1,
 									$temp$expr = new_expr,
 									$temp$stack = new_stack;
-								operators = $temp$operators;
+								dictionary = $temp$dictionary;
 								limit = $temp$limit;
 								expr = $temp$expr;
 								stack = $temp$stack;
@@ -6332,11 +6541,11 @@ var $author$project$Main$reduce = F4(
 					} else {
 						var head = expr.a;
 						var tail = expr.b;
-						var $temp$operators = operators,
+						var $temp$dictionary = dictionary,
 							$temp$limit = limit,
 							$temp$expr = tail,
 							$temp$stack = A2($elm$core$List$cons, head, stack);
-						operators = $temp$operators;
+						dictionary = $temp$dictionary;
 						limit = $temp$limit;
 						expr = $temp$expr;
 						stack = $temp$stack;
@@ -6398,6 +6607,46 @@ var $author$project$Main$update = F2(
 								model.operators)
 						}),
 					$elm$core$Platform$Cmd$none);
+			case 'UpdateWord':
+				var word = msg.a;
+				var transform = msg.b;
+				return _Utils_Tuple2(
+					_Utils_update(
+						model,
+						{
+							words: A2(
+								$elm$core$List$map,
+								function (x) {
+									return _Utils_eq(x, word) ? $author$project$Main$parseWord(
+										transform(x)) : x;
+								},
+								model.words)
+						}),
+					$elm$core$Platform$Cmd$none);
+			case 'NewWord':
+				var time = msg.a;
+				return _Utils_Tuple2(
+					_Utils_update(
+						model,
+						{
+							words: A2(
+								$elm$core$List$cons,
+								$author$project$Main$newWord(time),
+								model.words)
+						}),
+					$elm$core$Platform$Cmd$none);
+			case 'DelWord':
+				var word = msg.a;
+				return _Utils_Tuple2(
+					_Utils_update(
+						model,
+						{
+							words: A2(
+								$elm$core$List$filter,
+								$elm$core$Basics$neq(word),
+								model.words)
+						}),
+					$elm$core$Platform$Cmd$none);
 			case 'Timed':
 				var makeMsg = msg.a;
 				return _Utils_Tuple2(
@@ -6428,7 +6677,7 @@ var $author$project$Main$update = F2(
 								result: $elm$core$Result$Ok(
 									A4(
 										$author$project$Main$reduce,
-										$author$project$Main$buildOpDict(model.operators),
+										$author$project$Main$buildDict(model),
 										A2($elm$core$Basics$max, 0, model.step + n),
 										A2(
 											$elm$core$Result$withDefault,
@@ -6444,7 +6693,7 @@ var $author$project$Main$update = F2(
 								result: $elm$core$Result$Ok(
 									A4(
 										$author$project$Main$reduce,
-										$author$project$Main$buildOpDict(model.operators),
+										$author$project$Main$buildDict(model),
 										n,
 										expression,
 										_List_Nil)),
@@ -6464,6 +6713,9 @@ var $author$project$Main$update = F2(
 var $author$project$Main$NewOp = function (a) {
 	return {$: 'NewOp', a: a};
 };
+var $author$project$Main$NewWord = function (a) {
+	return {$: 'NewWord', a: a};
+};
 var $author$project$Main$Preset = function (a) {
 	return {$: 'Preset', a: a};
 };
@@ -6482,6 +6734,80 @@ var $elm$virtual_dom$VirtualDom$attribute = F2(
 			_VirtualDom_noJavaScriptOrHtmlUri(value));
 	});
 var $elm$html$Html$Attributes$attribute = $elm$virtual_dom$VirtualDom$attribute;
+var $author$project$Main$becc = _List_fromArray(
+	[
+		{
+		arity: 1,
+		body: '[ 1 ] [ 1 ]',
+		id: 0,
+		name: '+',
+		result: $elm$core$Result$Ok(
+			_List_fromArray(
+				[
+					$author$project$Main$Tree(
+					_List_fromArray(
+						[
+							$author$project$Main$Node(1)
+						])),
+					$author$project$Main$Tree(
+					_List_fromArray(
+						[
+							$author$project$Main$Node(1)
+						]))
+				]))
+	},
+		{
+		arity: 2,
+		body: '1',
+		id: 0,
+		name: '-',
+		result: $elm$core$Result$Ok(
+			_List_fromArray(
+				[
+					$author$project$Main$Node(1)
+				]))
+	},
+		{
+		arity: 2,
+		body: '[ [ 2 ] 1 ]',
+		id: 0,
+		name: '>',
+		result: $elm$core$Result$Ok(
+			_List_fromArray(
+				[
+					$author$project$Main$Tree(
+					_List_fromArray(
+						[
+							$author$project$Main$Tree(
+							_List_fromArray(
+								[
+									$author$project$Main$Node(2)
+								])),
+							$author$project$Main$Node(1)
+						]))
+				]))
+	},
+		{
+		arity: 2,
+		body: '[ 1 [ 2 ] ]',
+		id: 0,
+		name: '<',
+		result: $elm$core$Result$Ok(
+			_List_fromArray(
+				[
+					$author$project$Main$Tree(
+					_List_fromArray(
+						[
+							$author$project$Main$Node(2),
+							$author$project$Main$Tree(
+							_List_fromArray(
+								[
+									$author$project$Main$Node(1)
+								]))
+						]))
+				]))
+	}
+	]);
 var $elm$html$Html$button = _VirtualDom_node('button');
 var $author$project$Main$cakeK = _List_fromArray(
 	[
@@ -6979,7 +7305,10 @@ var $author$project$Main$operatorRow = function (operator) {
 							])),
 						A2(
 						$elm$html$Html$td,
-						_List_Nil,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$class('uk-table-shrink uk-padding-remove-horizontal')
+							]),
 						_List_fromArray(
 							[
 								A2(
@@ -7010,7 +7339,7 @@ var $author$project$Main$operatorRow = function (operator) {
 								$elm$html$Html$td,
 								_List_fromArray(
 									[
-										$elm$html$Html$Attributes$colspan(5),
+										$elm$html$Html$Attributes$colspan(7),
 										$elm$html$Html$Attributes$class('uk-text-danger')
 									]),
 								$author$project$Main$errorHtml(message))
@@ -7022,6 +7351,27 @@ var $author$project$Main$operatorRow = function (operator) {
 			}
 		}());
 };
+var $author$project$Main$presetButton = F2(
+	function (name, message) {
+		return A2(
+			$elm$html$Html$div,
+			_List_Nil,
+			_List_fromArray(
+				[
+					A2(
+					$elm$html$Html$button,
+					_List_fromArray(
+						[
+							$elm$html$Html$Attributes$class('uk-button uk-button-primary uk-button-small\n               uk-width-expand'),
+							$elm$html$Html$Events$onClick(message)
+						]),
+					_List_fromArray(
+						[
+							$elm$html$Html$text(name)
+						]))
+				]));
+	});
+var $elm$html$Html$Attributes$rel = _VirtualDom_attribute('rel');
 var $elm$core$Basics$negate = function (n) {
 	return -n;
 };
@@ -7070,11 +7420,134 @@ var $author$project$Main$stepButtons = A2(
 			A2($author$project$Main$stepButton, 1000, '+1000')
 		]));
 var $elm$html$Html$table = _VirtualDom_node('table');
+var $elm$html$Html$Attributes$target = $elm$html$Html$Attributes$stringProperty('target');
 var $elm$html$Html$tbody = _VirtualDom_node('tbody');
 var $elm$html$Html$textarea = _VirtualDom_node('textarea');
 var $elm$html$Html$th = _VirtualDom_node('th');
 var $elm$html$Html$thead = _VirtualDom_node('thead');
 var $author$project$Main$ukCard = 'uk-margin uk-card uk-card-body uk-card-default uk-width-1-1';
+var $author$project$Main$DelWord = function (a) {
+	return {$: 'DelWord', a: a};
+};
+var $author$project$Main$UpdateWord = F2(
+	function (a, b) {
+		return {$: 'UpdateWord', a: a, b: b};
+	});
+var $author$project$Main$wordRow = function (word) {
+	return _Utils_ap(
+		_List_fromArray(
+			[
+				A2(
+				$elm$html$Html$tr,
+				_List_Nil,
+				_List_fromArray(
+					[
+						A2(
+						$elm$html$Html$td,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$class('uk-table-shrink')
+							]),
+						_List_fromArray(
+							[
+								A2(
+								$elm$html$Html$input,
+								_List_fromArray(
+									[
+										$elm$html$Html$Attributes$class('uk-input uk-form-width-medium'),
+										$elm$html$Html$Attributes$placeholder('name'),
+										$elm$html$Html$Attributes$value(word.name),
+										$elm$html$Html$Events$onInput(
+										A2(
+											$elm$core$Basics$composeR,
+											$author$project$Main$setName,
+											$author$project$Main$UpdateWord(word))),
+										A2($elm$html$Html$Attributes$style, 'font-family', 'monospace'),
+										A2($elm$html$Html$Attributes$style, 'height', '30px')
+									]),
+								_List_Nil)
+							])),
+						A2(
+						$elm$html$Html$td,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$class('uk-table-shrink uk-padding-remove-horizontal')
+							]),
+						_List_fromArray(
+							[$author$project$Main$arrow])),
+						A2(
+						$elm$html$Html$td,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$class('uk-table-expand')
+							]),
+						_List_fromArray(
+							[
+								A2(
+								$elm$html$Html$input,
+								_List_fromArray(
+									[
+										$elm$html$Html$Attributes$class('uk-input uk-width-expand@m'),
+										$elm$html$Html$Attributes$placeholder('Example: swap quote cat call'),
+										$elm$html$Html$Attributes$value(word.body),
+										$elm$html$Html$Events$onInput(
+										A2(
+											$elm$core$Basics$composeR,
+											$author$project$Main$setBody,
+											$author$project$Main$UpdateWord(word))),
+										A2($elm$html$Html$Attributes$style, 'font-family', 'monospace'),
+										A2($elm$html$Html$Attributes$style, 'height', '30px')
+									]),
+								_List_Nil)
+							])),
+						A2(
+						$elm$html$Html$td,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$class('uk-table-shrink uk-padding-remove-horizontal')
+							]),
+						_List_fromArray(
+							[
+								A2(
+								$elm$html$Html$span,
+								_List_fromArray(
+									[
+										A2($elm$html$Html$Attributes$attribute, 'uk-icon', 'icon: trash'),
+										$elm$html$Html$Attributes$class('uk-preserve-width'),
+										$elm$html$Html$Events$onClick(
+										$author$project$Main$DelWord(word))
+									]),
+								_List_Nil)
+							]))
+					]))
+			]),
+		function () {
+			var _v0 = word.result;
+			if (_v0.$ === 'Err') {
+				var message = _v0.a;
+				return _List_fromArray(
+					[
+						A2(
+						$elm$html$Html$tr,
+						_List_Nil,
+						_List_fromArray(
+							[
+								A2(
+								$elm$html$Html$td,
+								_List_fromArray(
+									[
+										$elm$html$Html$Attributes$colspan(7),
+										$elm$html$Html$Attributes$class('uk-text-danger')
+									]),
+								$author$project$Main$errorHtml(message))
+							]))
+					]);
+			} else {
+				var skeleton = _v0.a;
+				return _List_Nil;
+			}
+		}());
+};
 var $author$project$Main$view = function (model) {
 	return A2(
 		$elm$html$Html$div,
@@ -7092,95 +7565,25 @@ var $author$project$Main$view = function (model) {
 				_List_fromArray(
 					[
 						A2(
-						$elm$html$Html$div,
-						_List_Nil,
-						_List_fromArray(
-							[
-								A2(
-								$elm$html$Html$button,
-								_List_fromArray(
-									[
-										$elm$html$Html$Attributes$class('uk-button uk-button-primary uk-button-small\n                         uk-width-expand'),
-										$elm$html$Html$Events$onClick(
-										$author$project$Main$Timed($author$project$Main$NewOp))
-									]),
-								_List_fromArray(
-									[
-										$elm$html$Html$text('New operator')
-									]))
-							])),
+						$author$project$Main$presetButton,
+						'Standard operators',
+						$author$project$Main$Preset($author$project$Main$defaultOperators)),
 						A2(
-						$elm$html$Html$div,
-						_List_Nil,
-						_List_fromArray(
-							[
-								A2(
-								$elm$html$Html$button,
-								_List_fromArray(
-									[
-										$elm$html$Html$Attributes$class('uk-button uk-button-primary uk-button-small\n                         uk-width-expand'),
-										$elm$html$Html$Events$onClick(
-										$author$project$Main$Preset($author$project$Main$defaultOperators))
-									]),
-								_List_fromArray(
-									[
-										$elm$html$Html$text('Standard operators')
-									]))
-							])),
+						$author$project$Main$presetButton,
+						'Minimal base',
+						$author$project$Main$Preset($author$project$Main$cakeK)),
 						A2(
-						$elm$html$Html$div,
-						_List_Nil,
-						_List_fromArray(
-							[
-								A2(
-								$elm$html$Html$button,
-								_List_fromArray(
-									[
-										$elm$html$Html$Attributes$class('uk-button uk-button-primary uk-button-small\n                         uk-width-expand'),
-										$elm$html$Html$Events$onClick(
-										$author$project$Main$Preset($author$project$Main$cakeK))
-									]),
-								_List_fromArray(
-									[
-										$elm$html$Html$text('Minmal base')
-									]))
-							])),
+						$author$project$Main$presetButton,
+						'Conservative base',
+						$author$project$Main$Preset($author$project$Main$coupSap)),
 						A2(
-						$elm$html$Html$div,
-						_List_Nil,
-						_List_fromArray(
-							[
-								A2(
-								$elm$html$Html$button,
-								_List_fromArray(
-									[
-										$elm$html$Html$Attributes$class('uk-button uk-button-primary uk-button-small\n                         uk-width-expand'),
-										$elm$html$Html$Events$onClick(
-										$author$project$Main$Preset($author$project$Main$coupSap))
-									]),
-								_List_fromArray(
-									[
-										$elm$html$Html$text('Conservative base')
-									]))
-							])),
+						$author$project$Main$presetButton,
+						'Linear base',
+						$author$project$Main$Preset($author$project$Main$consSap)),
 						A2(
-						$elm$html$Html$div,
-						_List_Nil,
-						_List_fromArray(
-							[
-								A2(
-								$elm$html$Html$button,
-								_List_fromArray(
-									[
-										$elm$html$Html$Attributes$class('uk-button uk-button-primary uk-button-small\n                         uk-width-expand'),
-										$elm$html$Html$Events$onClick(
-										$author$project$Main$Preset($author$project$Main$consSap))
-									]),
-								_List_fromArray(
-									[
-										$elm$html$Html$text('Linear base')
-									]))
-							])),
+						$author$project$Main$presetButton,
+						'Brainfuck Encoded',
+						$author$project$Main$Preset($author$project$Main$becc)),
 						A2(
 						$elm$html$Html$div,
 						_List_Nil,
@@ -7190,7 +7593,9 @@ var $author$project$Main$view = function (model) {
 								$elm$html$Html$a,
 								_List_fromArray(
 									[
-										$elm$html$Html$Attributes$href('https://github.com/olus2000/concat-evaluator/blob/main/README.rst')
+										$elm$html$Html$Attributes$href('https://github.com/olus2000/concat-evaluator/blob/main/README.rst'),
+										$elm$html$Html$Attributes$target('_blank'),
+										$elm$html$Html$Attributes$rel('noreferrer noopener')
 									]),
 								_List_fromArray(
 									[
@@ -7279,7 +7684,117 @@ var $author$project$Main$view = function (model) {
 										A2(
 										$elm$html$Html$tbody,
 										_List_Nil,
-										A2($elm$core$List$concatMap, $author$project$Main$operatorRow, model.operators))
+										A2(
+											$elm$core$List$cons,
+											A2(
+												$elm$html$Html$tr,
+												_List_fromArray(
+													[
+														$elm$html$Html$Events$onClick(
+														$author$project$Main$Timed($author$project$Main$NewOp))
+													]),
+												_List_fromArray(
+													[
+														A2(
+														$elm$html$Html$td,
+														_List_fromArray(
+															[
+																$elm$html$Html$Attributes$colspan(7)
+															]),
+														_List_fromArray(
+															[
+																$elm$html$Html$text('Add operator')
+															]))
+													])),
+											A2($elm$core$List$concatMap, $author$project$Main$operatorRow, model.operators)))
+									]))
+							]))
+					])),
+				A2(
+				$elm$html$Html$div,
+				_List_fromArray(
+					[
+						$elm$html$Html$Attributes$class($author$project$Main$ukCard)
+					]),
+				_List_fromArray(
+					[
+						A2(
+						$elm$html$Html$div,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$class('uk-overflow-auto')
+							]),
+						_List_fromArray(
+							[
+								A2(
+								$elm$html$Html$table,
+								_List_fromArray(
+									[
+										$elm$html$Html$Attributes$class('uk-table uk-table-justify uk-table-small ' + 'uk-table-divider')
+									]),
+								_List_fromArray(
+									[
+										A2(
+										$elm$html$Html$caption,
+										_List_Nil,
+										_List_fromArray(
+											[
+												$elm$html$Html$text('Word definitions')
+											])),
+										A2(
+										$elm$html$Html$thead,
+										_List_Nil,
+										_List_fromArray(
+											[
+												A2(
+												$elm$html$Html$tr,
+												_List_Nil,
+												_List_fromArray(
+													[
+														A2(
+														$elm$html$Html$th,
+														_List_Nil,
+														_List_fromArray(
+															[
+																$elm$html$Html$text('Name')
+															])),
+														A2($elm$html$Html$th, _List_Nil, _List_Nil),
+														A2(
+														$elm$html$Html$th,
+														_List_Nil,
+														_List_fromArray(
+															[
+																$elm$html$Html$text('Substitution')
+															])),
+														A2($elm$html$Html$th, _List_Nil, _List_Nil)
+													]))
+											])),
+										A2(
+										$elm$html$Html$tbody,
+										_List_Nil,
+										A2(
+											$elm$core$List$cons,
+											A2(
+												$elm$html$Html$tr,
+												_List_fromArray(
+													[
+														$elm$html$Html$Events$onClick(
+														$author$project$Main$Timed($author$project$Main$NewWord))
+													]),
+												_List_fromArray(
+													[
+														A2(
+														$elm$html$Html$td,
+														_List_fromArray(
+															[
+																$elm$html$Html$Attributes$colspan(4)
+															]),
+														_List_fromArray(
+															[
+																$elm$html$Html$text('Add word')
+															]))
+													])),
+											A2($elm$core$List$concatMap, $author$project$Main$wordRow, model.words)))
 									]))
 							]))
 					])),
