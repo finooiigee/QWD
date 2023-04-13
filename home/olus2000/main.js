@@ -5388,7 +5388,7 @@ var $author$project$Main$initWords = _List_fromArray(
 	},
 		{
 		body: '( a b -- a b a ) [ dup ] dip swap',
-		id: 6,
+		id: 3,
 		name: 'over',
 		result: $elm$core$Result$Ok(
 			_List_fromArray(
@@ -5404,7 +5404,7 @@ var $author$project$Main$initWords = _List_fromArray(
 	},
 		{
 		body: '( a b c -- b c a ) [ swap ] dip swap',
-		id: 3,
+		id: 4,
 		name: 'rot',
 		result: $elm$core$Result$Ok(
 			_List_fromArray(
@@ -5420,7 +5420,7 @@ var $author$project$Main$initWords = _List_fromArray(
 	},
 		{
 		body: '( a b c -- c a b ) swap [ swap ] dip',
-		id: 4,
+		id: 5,
 		name: '-rot',
 		result: $elm$core$Result$Ok(
 			_List_fromArray(
@@ -5436,7 +5436,7 @@ var $author$project$Main$initWords = _List_fromArray(
 	},
 		{
 		body: '( ( A ( A -- B ) -- B ) -- ( A -- B ) ) ' + '[ dup cons ] swap cat dup cons',
-		id: 5,
+		id: 6,
 		name: 'fix',
 		result: $elm$core$Result$Ok(
 			_List_fromArray(
@@ -6971,7 +6971,6 @@ var $author$project$Main$UpdateSuccessor = function (a) {
 var $author$project$Main$UpdateZero = function (a) {
 	return {$: 'UpdateZero', a: a};
 };
-var $elm$html$Html$a = _VirtualDom_node('a');
 var $elm$virtual_dom$VirtualDom$attribute = F2(
 	function (key, value) {
 		return A2(
@@ -7054,7 +7053,6 @@ var $author$project$Main$becc = _List_fromArray(
 				]))
 	}
 	]);
-var $elm$html$Html$button = _VirtualDom_node('button');
 var $author$project$Main$cakeK = _List_fromArray(
 	[
 		{
@@ -7272,12 +7270,103 @@ var $author$project$Main$treeToString = F2(
 					tree)));
 	});
 var $author$project$Main$expressionToString = $author$project$Main$treeToString($elm$core$Basics$identity);
-var $elm$html$Html$Attributes$href = function (url) {
-	return A2(
-		$elm$html$Html$Attributes$stringProperty,
-		'href',
-		_VirtualDom_noJavaScriptUri(url));
-};
+var $author$project$Main$favourite = _List_fromArray(
+	[
+		{
+		arity: 1,
+		body: '[ 1 ] [ 1 ]',
+		id: 0,
+		name: 'dup',
+		result: $elm$core$Result$Ok(
+			_List_fromArray(
+				[
+					$author$project$Main$Tree(
+					_List_fromArray(
+						[
+							$author$project$Main$Node(1)
+						])),
+					$author$project$Main$Tree(
+					_List_fromArray(
+						[
+							$author$project$Main$Node(1)
+						]))
+				]))
+	},
+		{
+		arity: 1,
+		body: '',
+		id: 1,
+		name: 'drop',
+		result: $elm$core$Result$Ok(_List_Nil)
+	},
+		{
+		arity: 2,
+		body: '[ 1 ] [ 2 ]',
+		id: 2,
+		name: 'swap',
+		result: $elm$core$Result$Ok(
+			_List_fromArray(
+				[
+					$author$project$Main$Tree(
+					_List_fromArray(
+						[
+							$author$project$Main$Node(1)
+						])),
+					$author$project$Main$Tree(
+					_List_fromArray(
+						[
+							$author$project$Main$Node(2)
+						]))
+				]))
+	},
+		{
+		arity: 2,
+		body: '[ [ 2 ] 1 ]',
+		id: 3,
+		name: 'cons',
+		result: $elm$core$Result$Ok(
+			_List_fromArray(
+				[
+					$author$project$Main$Tree(
+					_List_fromArray(
+						[
+							$author$project$Main$Tree(
+							_List_fromArray(
+								[
+									$author$project$Main$Node(2)
+								])),
+							$author$project$Main$Node(1)
+						]))
+				]))
+	},
+		{
+		arity: 2,
+		body: '1 [ 2 ]',
+		id: 4,
+		name: 'dip',
+		result: $elm$core$Result$Ok(
+			_List_fromArray(
+				[
+					$author$project$Main$Node(1),
+					$author$project$Main$Tree(
+					_List_fromArray(
+						[
+							$author$project$Main$Node(2)
+						]))
+				]))
+	},
+		{
+		arity: 1,
+		body: '1',
+		id: 5,
+		name: 'call',
+		result: $elm$core$Result$Ok(
+			_List_fromArray(
+				[
+					$author$project$Main$Node(1)
+				]))
+	}
+	]);
 var $elm$html$Html$input = _VirtualDom_node('input');
 var $elm$html$Html$label = _VirtualDom_node('label');
 var $elm$virtual_dom$VirtualDom$Normal = function (a) {
@@ -7358,6 +7447,7 @@ var $author$project$Main$arrow = A2(
 			$elm$html$Html$Attributes$class('uk-margin-auto-vertical uk-padding-remove' + 'uk-preserve-wodth')
 		]),
 	_List_Nil);
+var $elm$html$Html$button = _VirtualDom_node('button');
 var $elm$html$Html$code = _VirtualDom_node('code');
 var $elm$core$Basics$composeR = F3(
 	function (f, g, x) {
@@ -7628,7 +7718,6 @@ var $author$project$Main$presetButton = F2(
 						]))
 				]));
 	});
-var $elm$html$Html$Attributes$rel = _VirtualDom_attribute('rel');
 var $author$project$Main$Step = function (a) {
 	return {$: 'Step', a: a};
 };
@@ -7674,7 +7763,6 @@ var $author$project$Main$stepButtons = A2(
 			A2($author$project$Main$stepButton, 1000, '+1000')
 		]));
 var $elm$html$Html$table = _VirtualDom_node('table');
-var $elm$html$Html$Attributes$target = $elm$html$Html$Attributes$stringProperty('target');
 var $elm$html$Html$tbody = _VirtualDom_node('tbody');
 var $elm$html$Html$textarea = _VirtualDom_node('textarea');
 var $elm$html$Html$th = _VirtualDom_node('th');
@@ -7840,32 +7928,9 @@ var $author$project$Main$view = function (model) {
 						'Brainfuck Encoded',
 						$author$project$Main$Preset($author$project$Main$becc)),
 						A2(
-						$elm$html$Html$div,
-						_List_Nil,
-						_List_fromArray(
-							[
-								A2(
-								$elm$html$Html$a,
-								_List_fromArray(
-									[
-										$elm$html$Html$Attributes$href('https://github.com/olus2000/concat-evaluator/blob/main/README.rst'),
-										$elm$html$Html$Attributes$target('_blank'),
-										$elm$html$Html$Attributes$rel('noreferrer noopener')
-									]),
-								_List_fromArray(
-									[
-										A2(
-										$elm$html$Html$button,
-										_List_fromArray(
-											[
-												$elm$html$Html$Attributes$class('uk-button uk-button-primary uk-button-small\n                               uk-width-expand uk-height-1-1')
-											]),
-										_List_fromArray(
-											[
-												$elm$html$Html$text('README')
-											]))
-									]))
-							]))
+						$author$project$Main$presetButton,
+						'My favourite',
+						$author$project$Main$Preset($author$project$Main$favourite))
 					])),
 				A2(
 				$elm$html$Html$div,
