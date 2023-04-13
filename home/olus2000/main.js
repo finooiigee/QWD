@@ -5463,12 +5463,79 @@ var $author$project$Main$init = function (_v0) {
 			operators: $author$project$Main$defaultOperators,
 			result: $elm$core$Result$Ok(_List_Nil),
 			step: 0,
-			words: $author$project$Main$initWords
+			succ: {
+				body: '[ dup quote cat call ] swap cat',
+				enabled: true,
+				result: $elm$core$Result$Ok(
+					_List_fromArray(
+						[
+							$author$project$Main$Tree(
+							_List_fromArray(
+								[
+									$author$project$Main$Node('dup'),
+									$author$project$Main$Node('quote'),
+									$author$project$Main$Node('cat'),
+									$author$project$Main$Node('call')
+								])),
+							$author$project$Main$Node('swap'),
+							$author$project$Main$Node('cat')
+						]))
+			},
+			words: $author$project$Main$initWords,
+			zero: {
+				body: '[ drop ]',
+				enabled: true,
+				result: $elm$core$Result$Ok(
+					_List_fromArray(
+						[
+							$author$project$Main$Tree(
+							_List_fromArray(
+								[
+									$author$project$Main$Node('drop')
+								]))
+						]))
+			}
 		},
 		$elm$core$Platform$Cmd$none);
 };
 var $elm$core$Platform$Sub$batch = _Platform_batch;
 var $elm$core$Platform$Sub$none = $elm$core$Platform$Sub$batch(_List_Nil);
+var $author$project$Main$Both = F2(
+	function (a, b) {
+		return {$: 'Both', a: a, b: b};
+	});
+var $author$project$Main$JustZero = function (a) {
+	return {$: 'JustZero', a: a};
+};
+var $author$project$Main$NoNats = {$: 'NoNats'};
+var $elm$core$Result$toMaybe = function (result) {
+	if (result.$ === 'Ok') {
+		var v = result.a;
+		return $elm$core$Maybe$Just(v);
+	} else {
+		return $elm$core$Maybe$Nothing;
+	}
+};
+var $author$project$Main$buildNats = F2(
+	function (zero, succ) {
+		if (zero.enabled) {
+			var _v0 = zero.result;
+			if (_v0.$ === 'Err') {
+				return $author$project$Main$NoNats;
+			} else {
+				var zeroExpr = _v0.a;
+				var _v1 = succ.enabled ? $elm$core$Result$toMaybe(succ.result) : $elm$core$Maybe$Nothing;
+				if (_v1.$ === 'Just') {
+					var succExpr = _v1.a;
+					return A2($author$project$Main$Both, zeroExpr, succExpr);
+				} else {
+					return $author$project$Main$JustZero(zeroExpr);
+				}
+			}
+		} else {
+			return $author$project$Main$NoNats;
+		}
+	});
 var $elm$core$List$maybeCons = F3(
 	function (f, mx, xs) {
 		var _v0 = f(mx);
@@ -5646,10 +5713,9 @@ var $author$project$Main$buildWordDict = function (wordList) {
 };
 var $author$project$Main$buildDict = function (model) {
 	return {
+		nats: A2($author$project$Main$buildNats, model.zero, model.succ),
 		operators: $author$project$Main$buildOpDict(model.operators),
-		succ: $elm$core$Maybe$Nothing,
-		words: $author$project$Main$buildWordDict(model.words),
-		zero: $elm$core$Maybe$Nothing
+		words: $author$project$Main$buildWordDict(model.words)
 	};
 };
 var $elm$core$List$filter = F2(
@@ -6264,6 +6330,48 @@ var $author$project$Main$instantiateElement = F2(
 			}
 		}
 	});
+var $elm$core$List$append = F2(
+	function (xs, ys) {
+		if (!ys.b) {
+			return xs;
+		} else {
+			return A3($elm$core$List$foldr, $elm$core$List$cons, ys, xs);
+		}
+	});
+var $elm$core$List$concat = function (lists) {
+	return A3($elm$core$List$foldr, $elm$core$List$append, _List_Nil, lists);
+};
+var $elm$core$List$repeatHelp = F3(
+	function (result, n, value) {
+		repeatHelp:
+		while (true) {
+			if (n <= 0) {
+				return result;
+			} else {
+				var $temp$result = A2($elm$core$List$cons, value, result),
+					$temp$n = n - 1,
+					$temp$value = value;
+				result = $temp$result;
+				n = $temp$n;
+				value = $temp$value;
+				continue repeatHelp;
+			}
+		}
+	});
+var $elm$core$List$repeat = F2(
+	function (n, value) {
+		return A3($elm$core$List$repeatHelp, _List_Nil, n, value);
+	});
+var $author$project$Main$makeNat = F3(
+	function (zero, succ, n) {
+		return _Utils_ap(
+			zero,
+			$elm$core$List$concat(
+				A2($elm$core$List$repeat, n, succ)));
+	});
+var $elm$core$Basics$negate = function (n) {
+	return -n;
+};
 var $elm$core$Array$fromListHelp = F3(
 	function (list, nodeList, nodeListSize) {
 		fromListHelp:
@@ -6481,18 +6589,82 @@ var $author$project$Main$reduce = F4(
 						if (_v1.$ === 'Nothing') {
 							var _v2 = A2($elm$core$Dict$get, op, dictionary.words);
 							if (_v2.$ === 'Nothing') {
-								var $temp$dictionary = dictionary,
-									$temp$limit = limit,
-									$temp$expr = rest,
-									$temp$stack = A2(
-									$elm$core$List$cons,
-									$author$project$Main$Node(op),
-									stack);
-								dictionary = $temp$dictionary;
-								limit = $temp$limit;
-								expr = $temp$expr;
-								stack = $temp$stack;
-								continue reduce;
+								var _v3 = dictionary.nats;
+								switch (_v3.$) {
+									case 'NoNats':
+										var $temp$dictionary = dictionary,
+											$temp$limit = limit,
+											$temp$expr = rest,
+											$temp$stack = A2(
+											$elm$core$List$cons,
+											$author$project$Main$Node(op),
+											stack);
+										dictionary = $temp$dictionary;
+										limit = $temp$limit;
+										expr = $temp$expr;
+										stack = $temp$stack;
+										continue reduce;
+									case 'JustZero':
+										var zeroExpr = _v3.a;
+										var _v4 = $elm$core$String$toInt(op);
+										if ((_v4.$ === 'Just') && (!_v4.a)) {
+											var $temp$dictionary = dictionary,
+												$temp$limit = limit - 1,
+												$temp$expr = _Utils_ap(zeroExpr, rest),
+												$temp$stack = stack;
+											dictionary = $temp$dictionary;
+											limit = $temp$limit;
+											expr = $temp$expr;
+											stack = $temp$stack;
+											continue reduce;
+										} else {
+											var $temp$dictionary = dictionary,
+												$temp$limit = limit,
+												$temp$expr = rest,
+												$temp$stack = A2(
+												$elm$core$List$cons,
+												$author$project$Main$Node(op),
+												stack);
+											dictionary = $temp$dictionary;
+											limit = $temp$limit;
+											expr = $temp$expr;
+											stack = $temp$stack;
+											continue reduce;
+										}
+									default:
+										var zeroExpr = _v3.a;
+										var succExpr = _v3.b;
+										var n = A2(
+											$elm$core$Maybe$withDefault,
+											-1,
+											$elm$core$String$toInt(op));
+										if (n < 0) {
+											var $temp$dictionary = dictionary,
+												$temp$limit = limit,
+												$temp$expr = rest,
+												$temp$stack = A2(
+												$elm$core$List$cons,
+												$author$project$Main$Node(op),
+												stack);
+											dictionary = $temp$dictionary;
+											limit = $temp$limit;
+											expr = $temp$expr;
+											stack = $temp$stack;
+											continue reduce;
+										} else {
+											var $temp$dictionary = dictionary,
+												$temp$limit = limit - 1,
+												$temp$expr = _Utils_ap(
+												A3($author$project$Main$makeNat, zeroExpr, succExpr, n),
+												rest),
+												$temp$stack = stack;
+											dictionary = $temp$dictionary;
+											limit = $temp$limit;
+											expr = $temp$expr;
+											stack = $temp$stack;
+											continue reduce;
+										}
+								}
 							} else {
 								var word = _v2.a;
 								var $temp$dictionary = dictionary,
@@ -6507,8 +6679,8 @@ var $author$project$Main$reduce = F4(
 							}
 						} else {
 							var operator = _v1.a;
-							var _v3 = A2($author$project$Main$topQuotes, operator.arity, stack);
-							if (_v3.$ === 'Nothing') {
+							var _v5 = A2($author$project$Main$topQuotes, operator.arity, stack);
+							if (_v5.$ === 'Nothing') {
 								var $temp$dictionary = dictionary,
 									$temp$limit = limit,
 									$temp$expr = rest,
@@ -6522,7 +6694,7 @@ var $author$project$Main$reduce = F4(
 								stack = $temp$stack;
 								continue reduce;
 							} else {
-								var _arguments = _v3.a;
+								var _arguments = _v5.a;
 								var new_stack = A2($elm$core$List$drop, operator.arity, stack);
 								var new_expr = _Utils_ap(
 									A2($author$project$Main$instantiate, _arguments, operator.skeleton),
@@ -6663,6 +6835,68 @@ var $author$project$Main$update = F2(
 							step: 0
 						}),
 					$elm$core$Platform$Cmd$none);
+			case 'UpdateZero':
+				var s = msg.a;
+				var zero = model.zero;
+				return _Utils_Tuple2(
+					_Utils_update(
+						model,
+						{
+							zero: _Utils_update(
+								zero,
+								{
+									body: s,
+									result: $author$project$Main$parseExpression(s)
+								})
+						}),
+					$elm$core$Platform$Cmd$none);
+			case 'ToggleZero':
+				var b = msg.a;
+				var zero = model.zero;
+				var succ = model.succ;
+				return _Utils_Tuple2(
+					_Utils_update(
+						model,
+						{
+							succ: _Utils_update(
+								succ,
+								{enabled: succ.enabled && b}),
+							zero: _Utils_update(
+								zero,
+								{enabled: b})
+						}),
+					$elm$core$Platform$Cmd$none);
+			case 'UpdateSuccessor':
+				var s = msg.a;
+				var succ = model.succ;
+				return _Utils_Tuple2(
+					_Utils_update(
+						model,
+						{
+							succ: _Utils_update(
+								succ,
+								{
+									body: s,
+									result: $author$project$Main$parseExpression(s)
+								})
+						}),
+					$elm$core$Platform$Cmd$none);
+			case 'ToggleSuccessor':
+				var b = msg.a;
+				var zero = model.zero;
+				var succ = model.succ;
+				return _Utils_Tuple2(
+					_Utils_update(
+						model,
+						{
+							succ: _Utils_update(
+								succ,
+								{enabled: b}),
+							zero: _Utils_update(
+								zero,
+								{enabled: zero.enabled || b})
+						}),
+					$elm$core$Platform$Cmd$none);
 			case 'Step':
 				var n = msg.a;
 				var _v1 = model.result;
@@ -6722,8 +6956,20 @@ var $author$project$Main$Preset = function (a) {
 var $author$project$Main$Timed = function (a) {
 	return {$: 'Timed', a: a};
 };
+var $author$project$Main$ToggleSuccessor = function (a) {
+	return {$: 'ToggleSuccessor', a: a};
+};
+var $author$project$Main$ToggleZero = function (a) {
+	return {$: 'ToggleZero', a: a};
+};
 var $author$project$Main$UpdateExpr = function (a) {
 	return {$: 'UpdateExpr', a: a};
+};
+var $author$project$Main$UpdateSuccessor = function (a) {
+	return {$: 'UpdateSuccessor', a: a};
+};
+var $author$project$Main$UpdateZero = function (a) {
+	return {$: 'UpdateZero', a: a};
 };
 var $elm$html$Html$a = _VirtualDom_node('a');
 var $elm$virtual_dom$VirtualDom$attribute = F2(
@@ -6854,6 +7100,15 @@ var $author$project$Main$cakeK = _List_fromArray(
 	}
 	]);
 var $elm$html$Html$caption = _VirtualDom_node('caption');
+var $elm$json$Json$Encode$bool = _Json_wrap;
+var $elm$html$Html$Attributes$boolProperty = F2(
+	function (key, bool) {
+		return A2(
+			_VirtualDom_property,
+			key,
+			$elm$json$Json$Encode$bool(bool));
+	});
+var $elm$html$Html$Attributes$checked = $elm$html$Html$Attributes$boolProperty('checked');
 var $elm$json$Json$Encode$string = _Json_wrap;
 var $elm$html$Html$Attributes$stringProperty = F2(
 	function (key, string) {
@@ -6868,17 +7123,6 @@ var $elm$html$Html$Attributes$colspan = function (n) {
 		_VirtualDom_attribute,
 		'colspan',
 		$elm$core$String$fromInt(n));
-};
-var $elm$core$List$append = F2(
-	function (xs, ys) {
-		if (!ys.b) {
-			return xs;
-		} else {
-			return A3($elm$core$List$foldr, $elm$core$List$cons, ys, xs);
-		}
-	});
-var $elm$core$List$concat = function (lists) {
-	return A3($elm$core$List$foldr, $elm$core$List$append, _List_Nil, lists);
 };
 var $elm$core$List$concatMap = F2(
 	function (f, list) {
@@ -7034,6 +7278,8 @@ var $elm$html$Html$Attributes$href = function (url) {
 		'href',
 		_VirtualDom_noJavaScriptUri(url));
 };
+var $elm$html$Html$input = _VirtualDom_node('input');
+var $elm$html$Html$label = _VirtualDom_node('label');
 var $elm$virtual_dom$VirtualDom$Normal = function (a) {
 	return {$: 'Normal', a: a};
 };
@@ -7045,6 +7291,23 @@ var $elm$html$Html$Events$on = F2(
 			event,
 			$elm$virtual_dom$VirtualDom$Normal(decoder));
 	});
+var $elm$json$Json$Decode$field = _Json_decodeField;
+var $elm$json$Json$Decode$at = F2(
+	function (fields, decoder) {
+		return A3($elm$core$List$foldr, $elm$json$Json$Decode$field, decoder, fields);
+	});
+var $elm$json$Json$Decode$bool = _Json_decodeBool;
+var $elm$html$Html$Events$targetChecked = A2(
+	$elm$json$Json$Decode$at,
+	_List_fromArray(
+		['target', 'checked']),
+	$elm$json$Json$Decode$bool);
+var $elm$html$Html$Events$onCheck = function (tagger) {
+	return A2(
+		$elm$html$Html$Events$on,
+		'change',
+		A2($elm$json$Json$Decode$map, tagger, $elm$html$Html$Events$targetChecked));
+};
 var $elm$html$Html$Events$onClick = function (msg) {
 	return A2(
 		$elm$html$Html$Events$on,
@@ -7063,11 +7326,6 @@ var $elm$html$Html$Events$stopPropagationOn = F2(
 			$elm$virtual_dom$VirtualDom$on,
 			event,
 			$elm$virtual_dom$VirtualDom$MayStopPropagation(decoder));
-	});
-var $elm$json$Json$Decode$field = _Json_decodeField;
-var $elm$json$Json$Decode$at = F2(
-	function (fields, decoder) {
-		return A3($elm$core$List$foldr, $elm$json$Json$Decode$field, decoder, fields);
 	});
 var $elm$json$Json$Decode$string = _Json_decodeString;
 var $elm$html$Html$Events$targetValue = A2(
@@ -7106,7 +7364,6 @@ var $elm$core$Basics$composeR = F3(
 		return g(
 			f(x));
 	});
-var $elm$html$Html$input = _VirtualDom_node('input');
 var $author$project$Main$operatorArguments = function (arity) {
 	return A2(
 		$elm$core$String$join,
@@ -7372,9 +7629,6 @@ var $author$project$Main$presetButton = F2(
 				]));
 	});
 var $elm$html$Html$Attributes$rel = _VirtualDom_attribute('rel');
-var $elm$core$Basics$negate = function (n) {
-	return -n;
-};
 var $author$project$Main$Step = function (a) {
 	return {$: 'Step', a: a};
 };
@@ -7425,6 +7679,7 @@ var $elm$html$Html$tbody = _VirtualDom_node('tbody');
 var $elm$html$Html$textarea = _VirtualDom_node('textarea');
 var $elm$html$Html$th = _VirtualDom_node('th');
 var $elm$html$Html$thead = _VirtualDom_node('thead');
+var $elm$html$Html$Attributes$type_ = $elm$html$Html$Attributes$stringProperty('type');
 var $author$project$Main$ukCard = 'uk-margin uk-card uk-card-body uk-card-default uk-width-1-1';
 var $author$project$Main$DelWord = function (a) {
 	return {$: 'DelWord', a: a};
@@ -7722,6 +7977,194 @@ var $author$project$Main$view = function (model) {
 						$elm$html$Html$div,
 						_List_fromArray(
 							[
+								$elm$html$Html$Attributes$class('uk-grid uk-grid-small')
+							]),
+						_List_fromArray(
+							[
+								A2(
+								$elm$html$Html$div,
+								_List_fromArray(
+									[
+										$elm$html$Html$Attributes$class('uk-column uk-width-1-3@m')
+									]),
+								_Utils_ap(
+									_List_fromArray(
+										[
+											A2(
+											$elm$html$Html$div,
+											_List_fromArray(
+												[
+													$elm$html$Html$Attributes$class('uk-grid uk-grid-small'),
+													A2($elm$html$Html$Attributes$attribute, 'uk-height-match', 'target: > div > *')
+												]),
+											_List_fromArray(
+												[
+													A2(
+													$elm$html$Html$div,
+													_List_fromArray(
+														[
+															$elm$html$Html$Attributes$class('uk-column uk-margin-auto-vertical')
+														]),
+													_List_fromArray(
+														[
+															A2(
+															$elm$html$Html$label,
+															_List_Nil,
+															_List_fromArray(
+																[
+																	A2(
+																	$elm$html$Html$input,
+																	_List_fromArray(
+																		[
+																			$elm$html$Html$Attributes$class('uk-checkbox'),
+																			$elm$html$Html$Attributes$type_('checkbox'),
+																			$elm$html$Html$Attributes$checked(model.zero.enabled),
+																			$elm$html$Html$Events$onCheck($author$project$Main$ToggleZero)
+																		]),
+																	_List_Nil),
+																	$elm$html$Html$text(' Zero')
+																]))
+														])),
+													A2(
+													$elm$html$Html$div,
+													_List_fromArray(
+														[
+															$elm$html$Html$Attributes$class('uk-column uk-width-expand')
+														]),
+													_List_fromArray(
+														[
+															A2(
+															$elm$html$Html$input,
+															_List_fromArray(
+																[
+																	$elm$html$Html$Attributes$class('uk-input uk-width-expand'),
+																	$elm$html$Html$Attributes$placeholder('Zero expression'),
+																	$elm$html$Html$Attributes$value(model.zero.body),
+																	$elm$html$Html$Events$onInput($author$project$Main$UpdateZero),
+																	A2($elm$html$Html$Attributes$style, 'font-family', 'monospace')
+																]),
+															_List_Nil)
+														]))
+												]))
+										]),
+									function () {
+										var _v0 = model.zero.result;
+										if (_v0.$ === 'Err') {
+											var message = _v0.a;
+											return _List_fromArray(
+												[
+													A2(
+													$elm$html$Html$div,
+													_List_fromArray(
+														[
+															$elm$html$Html$Attributes$class('uk-text-danger')
+														]),
+													$author$project$Main$errorHtml(message))
+												]);
+										} else {
+											var skeleton = _v0.a;
+											return _List_Nil;
+										}
+									}())),
+								A2(
+								$elm$html$Html$div,
+								_List_fromArray(
+									[
+										$elm$html$Html$Attributes$class('uk-column uk-width-expand')
+									]),
+								_Utils_ap(
+									_List_fromArray(
+										[
+											A2(
+											$elm$html$Html$div,
+											_List_fromArray(
+												[
+													$elm$html$Html$Attributes$class('uk-grid uk-grid-small'),
+													A2($elm$html$Html$Attributes$attribute, 'uk-height-match', 'target: > div > *')
+												]),
+											_List_fromArray(
+												[
+													A2(
+													$elm$html$Html$div,
+													_List_fromArray(
+														[
+															$elm$html$Html$Attributes$class('uk-column uk-margin-auto-vertical')
+														]),
+													_List_fromArray(
+														[
+															A2(
+															$elm$html$Html$label,
+															_List_Nil,
+															_List_fromArray(
+																[
+																	A2(
+																	$elm$html$Html$input,
+																	_List_fromArray(
+																		[
+																			$elm$html$Html$Attributes$class('uk-checkbox'),
+																			$elm$html$Html$Attributes$type_('checkbox'),
+																			$elm$html$Html$Attributes$checked(model.succ.enabled),
+																			$elm$html$Html$Events$onCheck($author$project$Main$ToggleSuccessor)
+																		]),
+																	_List_Nil),
+																	$elm$html$Html$text(' Successor')
+																]))
+														])),
+													A2(
+													$elm$html$Html$div,
+													_List_fromArray(
+														[
+															$elm$html$Html$Attributes$class('uk-column uk-width-expand')
+														]),
+													_List_fromArray(
+														[
+															A2(
+															$elm$html$Html$input,
+															_List_fromArray(
+																[
+																	$elm$html$Html$Attributes$class('uk-input uk-width-expand'),
+																	$elm$html$Html$Attributes$placeholder('Zero expression'),
+																	$elm$html$Html$Attributes$value(model.succ.body),
+																	$elm$html$Html$Events$onInput($author$project$Main$UpdateSuccessor),
+																	A2($elm$html$Html$Attributes$style, 'font-family', 'monospace')
+																]),
+															_List_Nil)
+														]))
+												]))
+										]),
+									function () {
+										var _v1 = model.succ.result;
+										if (_v1.$ === 'Err') {
+											var message = _v1.a;
+											return _List_fromArray(
+												[
+													A2(
+													$elm$html$Html$div,
+													_List_fromArray(
+														[
+															$elm$html$Html$Attributes$class('uk-text-danger')
+														]),
+													$author$project$Main$errorHtml(message))
+												]);
+										} else {
+											var skeleton = _v1.a;
+											return _List_Nil;
+										}
+									}()))
+							]))
+					])),
+				A2(
+				$elm$html$Html$div,
+				_List_fromArray(
+					[
+						$elm$html$Html$Attributes$class($author$project$Main$ukCard)
+					]),
+				_List_fromArray(
+					[
+						A2(
+						$elm$html$Html$div,
+						_List_fromArray(
+							[
 								$elm$html$Html$Attributes$class('uk-overflow-auto')
 							]),
 						_List_fromArray(
@@ -7820,9 +8263,9 @@ var $author$project$Main$view = function (model) {
 						$elm$core$List$cons,
 						$author$project$Main$stepButtons,
 						function () {
-							var _v0 = model.result;
-							if (_v0.$ === 'Err') {
-								var message = _v0.a;
+							var _v2 = model.result;
+							if (_v2.$ === 'Err') {
+								var message = _v2.a;
 								return _List_fromArray(
 									[
 										A2(
@@ -7834,7 +8277,7 @@ var $author$project$Main$view = function (model) {
 										$author$project$Main$errorHtml(message))
 									]);
 							} else {
-								var expr = _v0.a;
+								var expr = _v2.a;
 								return _List_fromArray(
 									[
 										A2(
