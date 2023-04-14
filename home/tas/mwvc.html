@@ -261,7 +261,7 @@ document.getElementById("checkout").appendChild(element)
 function checkout() {
     if (staged.length !== 0) {
         let pr = prompt("this will overwrite your staged changes. are you sure? (y/n)");
-        if (!pr || pr.toLowerCase().trim() === "y") {
+        if (!pr || pr.toLowerCase().trim() === "n") {
             document.getElementById("checkout").value = active_branch;
             return;
         }
