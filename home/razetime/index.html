@@ -1,0 +1,118 @@
+<head>
+  <style>
+    .eye {
+      transform: rotate(-40deg);
+      position: absolute;
+      opacity: 10%
+    }
+    body {
+      font-family: DejaVu Sans, sans-serif;
+      padding: 50px;
+      transform: rotate(2deg);
+      background: #00cccc33;
+      cursor: url(cursor.png), auto;
+    }
+    a {
+      cursor: url(pointer.png), pointer;
+    }
+    .m {
+      animation-duration: 1s;
+      animation-name: ooeeeoo;
+      animation-iteration-count: infinite;
+      animation-direction: alternate;
+    }
+    .ci {
+      top: 0;
+      width: 500px;
+      height: 500px;
+      border-radius: 100%;
+      background: #cc0000bb;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .triangle {
+      transform: rotate(60deg);
+      width: 0;
+      height: 0;
+      border-left: 300px solid transparent;
+      border-right: 300px solid transparent;
+      border-bottom: 500px solid #0000bbbb;
+    }
+
+    .abt {
+      position: absolute;
+      top: 200px;
+      right: 200px;
+    }
+    .ab { position: absolute; }
+    .rt { right: 10; }
+    .tp { top: 20; }
+
+    .big1 {
+      font-size: 30px;
+      text-align: center;
+      color: orange;
+    }
+    
+    .big2 {
+      font-size: 30px;
+      position: absolute;
+      padding-top: 250px;
+      left: -70px;
+      text-align: center; 
+      color: #00cc00;
+    }
+
+    .tiny {
+      font-size: 8px;
+      transition: font-size 0.3s, color 0.5s;
+      
+    }
+
+    .tiny:hover {
+      font-size: 60px;
+      color: red;
+      text-shadow: 0 1px 0 orange, 0 2px 0 orange,
+                   0 3px 0 orange, 0 4px 0 orange,
+                   0 5px 0 orange, 0 6px 0 orange,
+                   0 7px 0 orange, 0 8px 0 orange,
+                   0 9px 0 orange, 0 10px 0 orange,
+                   0 11px 0 orange, 0 12px 0 orange,
+                   0 20px 30px rgba(0, 0, 0, 0.5);
+    }
+    
+    @keyframes ooeeeoo {
+      from {
+        width: 100%;
+      }
+      to {
+        width: 50%;
+      }
+    }
+    
+  </style>
+</head>
+<nojs>
+  <div class="ab tp rt">
+    <div class="ci">
+      <p class="big1"><span style="font-family: serif; font-size: 120%; transform: skew(-20deg,-3deg); display: inline-block;">Like Obscure things?</span><br /> me too!</p>
+    </div>
+  </div>
+  <div class="abt">
+  <div class="triangle">
+    <p class="big2">find me on: <a href="https://a.gh0.pw">apio</a>, <a href="https://euphoria.io/">youphoria</a></p>
+  </div>
+  </div>
+  <h1><ruby>
+    ரகு<rp>(</rp><rt>Raghu</rt><rp>)</rp>
+  </ruby>
+  </h1>
+  <marquee scrollamount="2" scrolldelay="1" truespeed>ornage juice level:
+  <meter class="m" min="0" max="100" low="59" high="90" optimum="90" value="50">ornage juice level</meter></marquee>
+  <br>
+  <a class="tiny" href="https://razetime.github.io">official site</a>
+  <a href="https://en.wikipedia.org/wiki/Cue_sports"> <img class="eye" src="eye.svg"></img></a>
+
+</nojs>
