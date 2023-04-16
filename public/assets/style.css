@@ -1,0 +1,26 @@
+h1,h2,h3,h4,h5,h6 {
+    margin: 0;
+}
+
+p {
+    margin: 0 0 1em;
+}
+
+p:last-child {
+    margin: 0;
+}
+
+body {
+    max-width: 55em; 
+    margin: 1em auto;
+}
+
+.pad {
+    margin: 1em; 
+    padding: 1em;
+}
+
+.block {
+    border: 2px solid black;
+    box-shadow: 2px 2px black;
+}
