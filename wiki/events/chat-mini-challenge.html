@@ -1,72 +1,82 @@
 <html>
-    <style>
-        @font-face {
-            font-family: "FairfaxHD";
-            src: url("/public/assets/fonts/FairfaxHD.ttf");
-        }
+  <style>
+    @font-face {
+      font-family: "FairfaxHD";
+      src: url("/public/assets/fonts/FairfaxHD.ttf");
+    }
 
-        * {
-            font-family: "FairfaxHD";
-        }
+    * {
+      font-family: "FairfaxHD";
+    }
 
-        body {
-            max-width: 50em; margin: 1em auto;
-        }
-        
+    body {
+      max-width: 50em;
+      margin: 1em auto;
+    }
 
-        p {
-            white-space: pre-line;
-        }
-        code {
-            white-space: pre;
-        }
-        input[type="checkbox"]:checked ~ #solutions {
-            display: none;
-        }
-    </style>
-    <body>
-        <h1>05/04/23</h1>
-        <h2>Collect parent/children pairs</h2>
-<p>
-Given an array of integers which corresponds to the depth of a traversal path return an array of parent and children pairs. 
-
-A node in the return format should be represented by an index into the nodes sorted by order of authority*
-
-E.g in the hierarchy:
-<pre>
+    p {
+      white-space: pre-line;
+    }
+    code {
+      white-space: pre;
+    }
+    input[type="checkbox"]:checked ~ #solutions {
+      display: none;
+    }
+  </style>
+  <body>
+    <h1>05/04/23</h1>
+    <h2>Collect parent/children pairs</h2>
+    <p>
+      Given an array of integers which corresponds to the depth of a traversal
+      path return an array of parent and children pairs. A node in the return
+      format should be represented by an index into the nodes sorted by order of
+      authority* E.g in the hierarchy:
+    </p>
+    <pre>
      a
    / | \
   b  c  d
  / 
 e
-</pre>
+</pre
+    >
 
-The order of authority* is <code>a > b > c > d > e</code>, and so the format of the nodes [a,b,e,c,d] is [1,2,5,3,4]
-</p> 
+    <p>
+      The order of authority* is <code>a > b > c > d > e</code>, and so the
+      format of the nodes [a,b,e,c,d] is [1,2,5,3,4]
+    </p>
 
-<h2>Examples</h2>
-The hierarchy below has a depth array of: [1,2,3,2,2] by traversing the path: <code>(a) (a -> b) (a -> b -> e) (a -> c) (a -> d)</code>
-<pre>
+    <h2>Examples</h2>
+    The hierarchy below has a depth array of: [1,2,3,2,2] by traversing the
+    path: <code>(a) (a -> b) (a -> b -> e) (a -> c) (a -> d)</code>
+    <pre>
      a
    / | \
   b  c  d
  / 
 e
-</pre>
-<p>
-The correct result given the argument [1,2,3,2,2] would be: [1,[2,3,4]],[2,[5]]
-</p>
+</pre
+    >
+    <p>
+      The correct result given the argument [1,2,3,2,2] would be:
+      [1,[2,3,4]],[2,[5]]
+    </p>
 
-<h2>Test-cases</h2>
-<p>
-<code>[1,2,3,3,3,3,3,2,3,4,4,4,3,3,3,4,4,3,4,4]</code> -> <code>[[1,[2,3]],[2,[4,5,6,7,8]],[3,[9,10,11,12,13]],[9,[14,15,16]],[12,[17,18]],[13,[19,20]]]</code>
-</p>
+    <h2>Test-cases</h2>
+    <p>
+      <code>[1,2,3,3,3,3,3,2,3,4,4,4,3,3,3,4,4,3,4,4]</code> ->
+      <code
+        >[[1,[2,3]],[2,[4,5,6,7,8]],[3,[9,10,11,12,13]],[9,[14,15,16]],[12,[17,18]],[13,[19,20]]]</code
+      >
+    </p>
 
-<input type="checkbox" checked=""> <label for="solutions">hide solutions</label>
-<div id="solutions">
-<h2>Solutions</h2>
-<a href="/home/e/">Essie</a> <sub>[essie@lovett.gay]</sub>
-<pre>{⊃,/(1∘↓(({⊂⍺ ⍵}⌸/∘↓∘⍉1↓{(⌊/⍵),⍺}⌸)⍤1)¯1∘↓)⌈\(⍋⍋⍵)@⊢(∪⍵)∘.=⍵}</pre>
-</div>
-    </body>
+    <input type="checkbox" checked="" />
+    <label for="solutions">hide solutions</label>
+    <div id="solutions">
+      <h2>Solutions</h2>
+      <a href="/home/e/">Essie</a> <sub>[essie@lovett.gay]</sub>
+      <pre>{⊃,/(1∘↓(({⊂⍺ ⍵}⌸/∘↓∘⍉1↓{(⌊/⍵),⍺}⌸)⍤1)¯1∘↓)⌈\(⍋⍋⍵)@⊢(∪⍵)∘.=⍵}</pre>
+    </div>
+  </body>
 </html>
