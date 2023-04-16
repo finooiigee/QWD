@@ -1,0 +1,12 @@
+@font-face {
+    font-family: "SAX2";
+    src: url("/public/assets/fonts/SAX2.ttf");
+}
+
+* {
+    font-family: "SAX2";
+}
+
+img {
+    width: 21em;
+}
