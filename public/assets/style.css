@@ -19,18 +19,14 @@ body {
     margin: 1em auto;
 }
 
-.pad {
+section,.pad {
     margin: 1em; 
     padding: 1em;
 }
 
-.block {
+section,.block {
     border: 2px solid black;
     box-shadow: 2px 2px black;
-}
-
-.h-full {
-    height:100%;
 }
 
 html,body {
