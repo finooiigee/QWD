@@ -8,11 +8,17 @@
 <section>
 
 # Projects
-|                                                                name | description                                     |
-|--------------------------------------------------------------------:|-------------------------------------------------|
-|                              [tacit.help](projects/tacit.help.html) | Expands point-free APL expressions              |
-|                                        [apl.news](https://apl.news) | An aggregator for APL news                      |
-|                            [emssu23](/wiki/projects/emmasynth.html) | A JavaScript synthesizer with 8 voice polyphony |
-| [Concatenative Calculus Evaluator](/home/olus2000/concat-eval.html) |                                                 |
+
+<div id="e" hidden></div>
+
+<a id="e" href="projects/tacit.help.html">tacit.help</a> | Expands point-free APL expressions
+
+<a id="e" href="https://apl.news">The Jot Dot Times</a> | A news aggregator for articles APL-related
+
+<div id="ε" hidden></div>
+
+<a id="ε" href="projects/emmasynth.html">emssu23</a>
+
+[Concatenative Calculus Evaluator](/home/olus2000/concat-eval.html)
 
 </section>
