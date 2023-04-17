@@ -7,6 +7,7 @@ Want to join the Discord? Send a request to essie@lovett.gay with a reason along
 Otherwise, you can still contribute by submitting a pull request or by emailing a diff.
 
 ---
+
 Index:[Home](/home)|[Wiki](/wiki)
 
 ## Quotes
