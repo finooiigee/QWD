@@ -1,7 +1,7 @@
 <section>
 
-# Events
-[CMC - chat mini challenge](events/chat-mini-challenge.html)
+# Challenges
+[Collect all \[parent, \[child\]\] pairs in a hierarchy](challenges/hierarchy.html)
 
 </section>
 
