@@ -1,0 +1,7 @@
+code {
+    white-space: pre;
+  }
+
+input[type="checkbox"]:checked ~ #solutions {
+    display: none;
+}
