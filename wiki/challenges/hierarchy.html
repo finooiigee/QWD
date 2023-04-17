@@ -1,42 +1,57 @@
-
 <html>
-<head>
-<link rel="stylesheet" href=               "style.css" type="text/css">
-<link rel="stylesheet" href="/public/assets/style.css" type="text/css">
-</head>
-<body><h1>Collect all [parent, [child]] pairs in a hierarchy</h1>
-<p>Given an array of integers which corresponds to the depth of a traversal
-path return an array of parent and children pairs. A node in the return
-format should be represented by an index into the nodes sorted by order of
-authority* E.g in the hierarchy:</p>
-<pre><code>     a
+  <head>
+    <link rel="stylesheet" href="style.css" type="text/css" />
+    <link rel="stylesheet" href="/public/assets/style.css" type="text/css" />
+  </head>
+  <body>
+    <h1>Collect all [parent, [child]] pairs in a hierarchy</h1>
+    <p>
+      Given an array of integers which corresponds to the depth of a traversal
+      path return an array of parent and children pairs. A node in the return
+      format should be represented by an index into the nodes sorted by order of
+      authority* E.g in the hierarchy:
+    </p>
+    <pre><code>     a
    / | \
   b  c  d
  / 
 e
 </code></pre>
-<p>The order of authority* is <code>a &gt; b &gt; c &gt; d &gt; e</code>, and so the
-format of the nodes <code>[a,b,e,c,d]</code> is <code>[1,2,5,3,4]</code></p>
-<h2>Examples</h2>
-<p>The hierarchy below has a depth array of: <code>[1,2,3,2,2]</code> by traversing the
-path: <code>(a) (a -&gt; b) (a -&gt; b -&gt; e) (a -&gt; c) (a -&gt; d)</code></p>
-<pre><code>     a
+    <p>
+      The order of authority* is <code>a &gt; b &gt; c &gt; d &gt; e</code>, and
+      so the format of the nodes <code>[a,b,e,c,d]</code> is
+      <code>[1,2,5,3,4]</code>
+    </p>
+    <h2>Examples</h2>
+    <p>
+      The hierarchy below has a depth array of: <code>[1,2,3,2,2]</code> by
+      traversing the path:
+      <code>(a) (a -&gt; b) (a -&gt; b -&gt; e) (a -&gt; c) (a -&gt; d)</code>
+    </p>
+    <pre><code>     a
    / | \
   b  c  d
  / 
 e
 </code></pre>
-<p>The correct result given the argument <code>[1,2,3,2,2]</code> would be:
-<code>[[1,[2,3,4]],[2,[5]]</code></p>
-<h2>Test-cases</h2>
-<p><code>[1,2,3,3,3,3,3,2,3,4,4,4,3,3,3,4,4,3,4,4]</code> -&gt; <code>[[1,[2,3]],[2,[4,5,6,7,8]],[3,[9,10,11,12,13]],[9,[14,15,16]],[12,[17,18]],[13,[19,20]]]</code></p>
-<input type="checkbox" checked="" />
-<label for="solutions">hide solutions</label>
-<div id="solutions">
-<h2>Solutions</h2>
-<p><a href="/home/e">Essie</a> <sub>[essie@lovett.gay]</sub></p>
-<pre><code>{⊃,/(1∘↓(({⊂⍺ ⍵}⌸/∘↓∘⍉1↓{(⌊/⍵),⍺}⌸)⍤1)¯1∘↓)⌈\(⍋⍋⍵)@⊢(∪⍵)∘.=⍵}
+    <p>
+      The correct result given the argument <code>[1,2,3,2,2]</code> would be:
+      <code>[[1,[2,3,4]],[2,[5]]</code>
+    </p>
+    <h2>Test-cases</h2>
+    <p>
+      <code>[1,2,3,3,3,3,3,2,3,4,4,4,3,3,3,4,4,3,4,4]</code> -&gt;
+      <code
+        >[[1,[2,3]],[2,[4,5,6,7,8]],[3,[9,10,11,12,13]],[9,[14,15,16]],[12,[17,18]],[13,[19,20]]]</code
+      >
+    </p>
+    <input type="checkbox" checked="" />
+    <label for="solutions">hide solutions</label>
+    <div id="solutions">
+      <h2>Solutions</h2>
+      <p><a href="/home/e">Essie</a> <sub>[essie@lovett.gay]</sub></p>
+      <pre><code>{⊃,/(1∘↓(({⊂⍺ ⍵}⌸/∘↓∘⍉1↓{(⌊/⍵),⍺}⌸)⍤1)¯1∘↓)⌈\(⍋⍋⍵)@⊢(∪⍵)∘.=⍵}
 </code></pre>
-</div></body>
+    </div>
+  </body>
 </html>
-

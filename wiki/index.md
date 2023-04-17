@@ -1,6 +1,7 @@
 <section>
 
 # Challenges
+
 [Collect all \[parent, \[child\]\] pairs in a hierarchy](challenges/hierarchy.html)
 
 </section>

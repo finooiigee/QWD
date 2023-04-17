@@ -1,2 +1,8 @@
-#e:target ~ p a#e { background-color: yellow; outline: none; }
-#ε:target ~ p a#ε { background-color: #cd96cd; outline: none; }
+#e:target ~ p a#e {
+  background-color: yellow;
+  outline: none;
+}
+#ε:target ~ p a#ε {
+  background-color: #cd96cd;
+  outline: none;
+}

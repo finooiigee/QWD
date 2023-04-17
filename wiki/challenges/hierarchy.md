@@ -1,23 +1,23 @@
-
 # Collect all \[parent, \[child\]\] pairs in a hierarchy
 
 Given an array of integers which corresponds to the depth of a traversal
 path return an array of parent and children pairs. A node in the return
 format should be represented by an index into the nodes sorted by order of
-authority* E.g in the hierarchy:
+authority\* E.g in the hierarchy:
 
 ```
      a
    / | \
   b  c  d
- / 
+ /
 e
 ```
 
-The order of authority* is `a > b > c > d > e`, and so the
+The order of authority\* is `a > b > c > d > e`, and so the
 format of the nodes `[a,b,e,c,d]` is `[1,2,5,3,4]`
 
 ## Examples
+
 The hierarchy below has a depth array of: `[1,2,3,2,2]` by traversing the
 path: `(a) (a -> b) (a -> b -> e) (a -> c) (a -> d)`
 
@@ -25,13 +25,12 @@ path: `(a) (a -> b) (a -> b -> e) (a -> c) (a -> d)`
      a
    / | \
   b  c  d
- / 
+ /
 e
 ```
 
 The correct result given the argument `[1,2,3,2,2]` would be:
 `[[1,[2,3,4]],[2,[5]]`
-
 
 ## Test-cases
 
@@ -42,6 +41,7 @@ The correct result given the argument `[1,2,3,2,2]` would be:
 <div id="solutions">
 
 ## Solutions
+
 [Essie](/home/e) <sub>[essie@lovett.gay]</sub>
 
 ```
