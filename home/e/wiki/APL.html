@@ -9,6 +9,15 @@
 <pre><code>Ⓧ ← {{⊂⍺↓⍵}⌺⍺⊢⍵}            ⍝ Compositional stencil
 ⍙ ← {⍺←⊢ ⋄ ⍺(⍵⍵⍣¯1 ⍺⍺⍥⍵⍵)⍵} ⍝ Under: apply pre-processing with ⍵⍵ before main function ⍺⍺, then reverse pre-processing
 </code></pre>
+<h1>Debugging</h1>
+<pre><code>∇ r←name (operand inspect) arguments
+    ⎕SHADOW name
+    ⍎name,'←⎕NULL'
+    ⎕FX(name,'←')⎕R(name,'∘←')¨⎕NR'operand'
+    {}operand arguments
+    r←⍎name
+∇
+</code></pre>
 <h1>Transformations</h1>
 <pre><code>⍝ Idioms and transformations on hierarchies
 </code></pre>
@@ -32,7 +41,7 @@ G  H I J
    (' '≠⊃¨pairs)/pairs
 }
 </code></pre>
-<p><code class="prompt">siblings</code></p>
+<p><code class="prompt">'siblings' pairs inspect tree</code></p>
 <pre><code>     A     
 AAAAAAAAAAA
 B C  D  E F

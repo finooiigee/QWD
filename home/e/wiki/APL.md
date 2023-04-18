@@ -7,6 +7,18 @@
 ⍙ ← {⍺←⊢ ⋄ ⍺(⍵⍵⍣¯1 ⍺⍺⍥⍵⍵)⍵} ⍝ Under: apply pre-processing with ⍵⍵ before main function ⍺⍺, then reverse pre-processing
 ```
 
+# Debugging
+
+```
+∇ r←name (operand inspect) arguments
+    ⎕SHADOW name
+    ⍎name,'←⎕NULL'
+    ⎕FX(name,'←')⎕R(name,'∘←')¨⎕NR'operand'
+    {}operand arguments
+    r←⍎name
+∇
+```
+
 # Transformations
 
 ```
@@ -34,7 +46,7 @@ pairs ← {
    (' '≠⊃¨pairs)/pairs
 }
 ```
-<code class="prompt">siblings</code>
+<code class="prompt">'siblings' pairs inspect tree</code>
 ```
      A     
 AAAAAAAAAAA
