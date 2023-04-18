@@ -10,13 +10,13 @@
 # Debugging
 
 ```
-∇ r←name (operand inspect) arguments
-    ⎕SHADOW name
-    ⍎name,'←⎕NULL'
-    ⎕FX(name,'←')⎕R(name,'∘←')¨⎕NR'operand'
-    {}operand arguments
-    r←⍎name
-∇
+inspect ← {
+    ⍺←⊢ ⋄ operand←⍺⍺ ⋄ name←⍵⍵
+    _← ⍎name,'←⎕NULL'
+    _← ⎕FX(name,'←')⎕R(name,'∘←')¨⎕NR'operand'
+    _← ⍺ operand ⍵
+    ⍎name
+}
 ```
 
 # Transformations
@@ -46,7 +46,7 @@ pairs ← {
    (' '≠⊃¨pairs)/pairs
 }
 ```
-<code class="prompt">'siblings' pairs inspect tree</code>
+<code class="prompt">(pairs inspect 'siblings') tree</code>
 ```
      A     
 AAAAAAAAAAA
