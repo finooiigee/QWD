@@ -10,3 +10,14 @@
 img {
   width: 21em;
 }
+
+pre {
+  white-space: pre-wrap;
+}
+
+code.prompt {
+  display: block;
+  color: rgb(85, 0, 0);
+  background-color: #f3f3f3;
+  text-indent:32px;
+}
