@@ -17,4 +17,6 @@
 * APL
     * [Debugging](wiki/APL/debugging.html)
         * [inspect](wiki/APL/debugging/inspect.html)
+    * [Analysis](wiki/APL/analysis.html)
+        * [names](wiki/APL/analysis/names.html)
 </section>

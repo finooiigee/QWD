@@ -31,8 +31,7 @@ primes ← {
 This is not intended to be a helpful tool, instead it attempts to be useful in presentations - as a means to visualize an idea in focus. Additionally, it can be applied to view an operation in full:
 
 ```
-    names ← {(0≠∊⍴¨⍵)/⍵}{¯1↓((' '≠⍵)∧⌽∨\⌽'←'=⍵)/⍵}¨1↓⎕NR 'primes'
-    names (↑,⍥⊂¨) (primes inspect names) 5
+    (##.analysis.names 'primes') {⍺(↑,⍥⊂¨)(primes inspect ⍺)⍵} 5
 ┌────────┬───────────────────┐
 │range   │2 3 4 5            │
 ├────────┼───────────────────┤
@@ -60,3 +59,15 @@ inspect←{
 }
 ```
 </section>
+
+<script>
+
+document.documentElement.innerHTML
+.match(/##\.\w*\.\w*/i)
+.map(name=>document.documentElement.innerHTML = 
+  document.documentElement.innerHTML
+  .replace(/##\.\w*\.\w*/i,
+    `<a href="/home/e/wiki/APL/${name.split('.').slice(1).join('/')}.html">${name}</a>`)
+)
+
+</script>

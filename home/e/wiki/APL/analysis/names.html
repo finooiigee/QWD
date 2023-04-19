@@ -1,0 +1,37 @@
+
+<html>
+<head>
+<link rel="stylesheet" href="/public/assets/style.css" type="text/css">
+<link rel="stylesheet" href=               "style.css" type="text/css">
+</head>
+<body><section>
+<h1>names</h1>
+<hr>
+<p><code>Index:<a href="../analysis.html">Analysis</a>|<a href="../debugging.html">Debugging</a></code></p>
+</section>
+<section class="function">
+<p>Returns assigned variables in a dfn.</p>
+<pre><code>      primes
+primes ← {
+    range    ← 1↓⍳⍵
+    divisors ← (∪⊢∨⍳)¨range
+    mask     ← 2=≢¨divisors
+    mask/range
+}
+
+      names 'primes'
+┌─────┬────────┬────┐
+│range│divisors│mask│
+└─────┴────────┴────┘
+</code></pre>
+</section>
+<section class="function">
+<pre><code>names ← {
+    t v d i ← ↓⍉201⌶⍬ ⍝ type value description index
+    k ← d⍳⊂'SCOL_DFN_NAME'
+    (∪∊⊆⍨v[k]⍷∘∊200⌶)⎕NR ⍵
+}
+</code></pre>
+</section></body>
+</html>
+
