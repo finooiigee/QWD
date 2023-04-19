@@ -22,7 +22,7 @@ Index;ChainBaker
 
 ```
 
-Pages are composed of sections that are shown visually in outlined blocks. At the beginning of each section is a title labelling its scope. Sections can contain subsections that are noted by a new title displayed with a smaller font size.
+Pages are composed of `<section>`s that are shown visually in outlined blocks. At the beginning of each section is a title labelling its scope. Sections can contain subsections that are noted by a new title displayed with a smaller font size.
 
 Abstractly, the wiki's organization structure aims to be tree-like.
 </section>

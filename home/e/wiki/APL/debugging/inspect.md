@@ -1,3 +1,10 @@
+<section>
+
+# inspect
+---
+<code>Index:[Debugging](../debugging.html)|Presentation</code>
+</section>
+
 <section class="function">
 
 Returns the value of a variable that was used amidst a function's evaluation.
