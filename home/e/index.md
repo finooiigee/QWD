@@ -1,11 +1,20 @@
 <section>
 
 # Essie Lovett
-
 ---
 
-## wiki
+[Projects on QWD.software](/wiki/#e)
+</section>
 
-Index:[Photography](wiki/photography.html)|[Software](/wiki/#e)|[Transcribes](wiki/transcribes.html)|[APL](wiki/APL.html)
+<section>
 
+# Wiki
+---
+
+* [Meta](wiki/meta.html)
+* [Photography](wiki/photography.html)
+* [Transcriptions](wiki/transcriptions.html)
+* APL
+    * [Debugging](wiki/APL/debugging.html)
+        * [inspect](wiki/APL/debugging/inspect.html)
 </section>

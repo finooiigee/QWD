@@ -8,7 +8,7 @@ Otherwise, you can still contribute by submitting a pull request or by emailing 
 
 ---
 
-Index:[Home](/home)|[Wiki](/wiki)
+* <code>[Home](/home)|[Wiki](/wiki)</code>
 
 ## Quotes
 

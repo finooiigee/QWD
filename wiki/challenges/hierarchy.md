@@ -1,9 +1,8 @@
 # Collect all \[parent, \[child\]\] pairs in a hierarchy
 
-Given an array of integers which corresponds to the depth of a traversal
-path return an array of parent and children pairs. A node in the return
-format should be represented by an index into the nodes sorted by order of
-authority\* E.g in the hierarchy:
+Given an array of integers which corresponds to the depth of a traversal path return an array of parent and children pairs. A node in the return format should be represented by an index into the nodes sorted by order of authority\*
+
+E.g in the hierarchy:
 
 ```
      a
@@ -11,15 +10,14 @@ authority\* E.g in the hierarchy:
   b  c  d
  /
 e
+
 ```
 
-The order of authority\* is `a > b > c > d > e`, and so the
-format of the nodes `[a,b,e,c,d]` is `[1,2,5,3,4]`
+The order of authority\* is `a > b > c > d > e`, and so the format of the nodes `[a,b,e,c,d]` is `[1,2,5,3,4]`
 
 ## Examples
 
-The hierarchy below has a depth array of: `[1,2,3,2,2]` by traversing the
-path: `(a) (a -> b) (a -> b -> e) (a -> c) (a -> d)`
+The hierarchy below has a depth array of: `[1,2,3,2,2]` by traversing the path: `(a) (a -> b) (a -> b -> e) (a -> c) (a -> d)`
 
 ```
      a
@@ -27,10 +25,10 @@ path: `(a) (a -> b) (a -> b -> e) (a -> c) (a -> d)`
   b  c  d
  /
 e
+
 ```
 
-The correct result given the argument `[1,2,3,2,2]` would be:
-`[[1,[2,3,4]],[2,[5]]`
+The correct result given the argument `[1,2,3,2,2]` would be: `[[1,[2,3,4]],[2,[5]]`
 
 ## Test-cases
 

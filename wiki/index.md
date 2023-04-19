@@ -3,7 +3,6 @@
 # Challenges
 
 [Collect all \[parent, \[child\]\] pairs in a hierarchy](challenges/hierarchy.html)
-
 </section>
 
 <section>
@@ -21,5 +20,4 @@
 <a id="ε" href="projects/emmasynth.html">emssu23</a>
 
 [Concatenative Calculus Evaluator](/home/olus2000/concat-eval.html)
-
 </section>
