@@ -22,38 +22,37 @@
       
 </code></pre>
 <pre><code>      ⎕JSON (Xmln html).html.body
-[
-  {
-    &quot;span&quot;: [
+{
+  &quot;html&quot;: {
+    &quot;body&quot;: [
       {
-        &quot;&quot;: &quot;Hello, World!&quot;
+        &quot;span&quot;: [
+          &quot;Hello, World!&quot;,
+          {
+            &quot;style&quot;: &quot;font-weight:bold;&quot;
+          }
+        ]
       },
       {
-        &quot;style&quot;: &quot;font-weight:bold;&quot;
+        &quot;h1&quot;: {
+          &quot;br&quot;: {},
+          &quot;&quot;: &quot;Lorem,&quot;
+        }
+      },
+      {
+        &quot;h1&quot;: &quot;Ipsum!&quot;
       }
     ]
-  },
-  {
-    &quot;h1&quot;: {
-      &quot;br&quot;: {},
-      &quot;&quot;: &quot;Lorem,&quot;
-    }
-  },
-  {
-    &quot;h1&quot;: &quot;Ipsum!&quot;
   }
-]
+}
 </code></pre>
 </section>
 <section class="function">
 <pre><code>xmln←{ ⍝ XML -&gt; JSON object
     obj arr char←1 2 4 ⍝ JSON types
     (d k v a t)←↓⍉¯1 ''⍬(0⍴'' '')1⍪⎕XML ⍵
-
-    ⍝ pre-processing ; see: ]help ⎕XML ⎕JSON
-    d+←1 ⋄ ((t∊1 3 7)/t)←obj ⋄ ((t∊5)/t)←char ⋄ (((⊂'')⍷v)/v)←⊂⍬
+    d+←1 ⋄ ((t∊1 3 7)/t)←obj ⋄ ((t∊5)/t)←char ⋄ (((⊂'')⍷v)/v)←⊂⍬ ⍝ pre-processing ; see: ]help ⎕XML ⎕JSON
     I←{(⍺,⍵)[⍺⍺]}
-
     ⍝ Insert attributes as children
     idx←≢¨a
     i←⍋(⍳≢k),⍸idx
@@ -61,8 +60,7 @@
     d←d(i I)d[⍸idx]+1
     t←obj char[1+0≠∊⍴¨v]
 
-    ⍝ node pairs from depth vector
-    N←{⊃,/2{↑{⊂⍺ ⍵}⌸⍨/↓⍉1↓⍵,∘(⌊/)⌸⍺}/↓⌈\(⍋⍵)@⊢(∪⍵)∘.=⍵}
+    N←{⊃,/2{↑{⊂⍺ ⍵}⌸⍨/↓⍉1↓⍵,∘(⌊/)⌸⍺}/↓⌈\(⍋⍵)@⊢(∪⍵)∘.=⍵} ⍝ node pairs from depth vector
     (p c)←↓⍉↑N d ⍝ parents | children
 
     ⍝ Insert object's character data as child
@@ -75,11 +73,10 @@
     t←t(i I)(≢i)⍴⊂char
 
     (p c)←↓⍉↑N d
-
     ⍝ de-duplicate tree by changing parent type to arr
-    msk←(t[p]=arr)∨{0∊≠k[⍵]}¨c
+    msk←{0∊≠k[⍵]}¨c
     (t[msk/p])←arr
-    idx←∊msk/c ⍝ non-unique children
+    idx←((∊(t[p]=arr)/c)∩⍸0≠∊⍴¨k)∪∊msk/c ⍝ non-unique children
     d[idx]+←1
     d[∊(p∊idx)/c]+←1
     i←⍋(⍳≢k),idx-1
