@@ -30,7 +30,7 @@ primes ← {
 </code></pre>
 <p>This is not intended to be a helpful tool, instead it attempts to be useful in presentations - as a means to visualize an idea in focus. Additionally, it can be applied to view an operation in full:</p>
 <pre><code>    names ← {(0≠∊⍴¨⍵)/⍵}{¯1↓((' '≠⍵)∧⌽∨\⌽'←'=⍵)/⍵}¨1↓⎕NR 'primes'
-    ↑{⍵,⍥⊂(primes inspect ⍵) 5}¨names
+    names (↑,⍥⊂¨) (primes inspect names) 5
 ┌────────┬───────────────────┐
 │range   │2 3 4 5            │
 ├────────┼───────────────────┤
@@ -45,12 +45,12 @@ primes ← {
 <p>As it stands<sub>[19/04/2023]</sub> this function is limited in its simplicity, but I may improve upon it.</p>
 </section>
 <section class="function">
-<pre><code>inspect ← {
-    ⍺←⊢ ⋄ operand←⍺⍺ ⋄ var←⍵⍵
-    _← ⍎var,'←⎕NULL'
-    _← ⎕FX (var,'←')⎕R('⎕THIS.',var,'←')¨⎕NR 'operand'
-    _← ⍺ operand ⍵
-    ⍎var
+<pre><code>inspect←{
+    ⍺←⊢ ⋄ operand←⍺⍺ ⋄ names←⊆⍵⍵
+    _←names(⍎,)¨⊂'←⎕NULL'
+    _←⎕FX (,names,¨'←')⎕R(,names,¨⊂'∘←')¨⎕NR'operand'
+    _←⍺ operand ⍵
+    ⍎∊names,¨' '
 }
 </code></pre>
 </section></body>

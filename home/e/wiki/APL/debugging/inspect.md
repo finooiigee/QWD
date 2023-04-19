@@ -32,7 +32,7 @@ This is not intended to be a helpful tool, instead it attempts to be useful in p
 
 ```
     names ← {(0≠∊⍴¨⍵)/⍵}{¯1↓((' '≠⍵)∧⌽∨\⌽'←'=⍵)/⍵}¨1↓⎕NR 'primes'
-    ↑{⍵,⍥⊂(primes inspect ⍵) 5}¨names
+    names (↑,⍥⊂¨) (primes inspect names) 5
 ┌────────┬───────────────────┐
 │range   │2 3 4 5            │
 ├────────┼───────────────────┤
@@ -51,12 +51,12 @@ As it stands<sub>[19/04/2023]</sub> this function is limited in its simplicity, 
 <section class="function">
 
 ```
-inspect ← {
-    ⍺←⊢ ⋄ operand←⍺⍺ ⋄ var←⍵⍵
-    _← ⍎var,'←⎕NULL'
-    _← ⎕FX (var,'←')⎕R('⎕THIS.',var,'←')¨⎕NR 'operand'
-    _← ⍺ operand ⍵
-    ⍎var
+inspect←{
+    ⍺←⊢ ⋄ operand←⍺⍺ ⋄ names←⊆⍵⍵
+    _←names(⍎,)¨⊂'←⎕NULL'
+    _←⎕FX (,names,¨'←')⎕R(,names,¨⊂'∘←')¨⎕NR'operand'
+    _←⍺ operand ⍵
+    ⍎∊names,¨' '
 }
 ```
 </section>
