@@ -22,7 +22,7 @@ Returns a JSON object from XML.
 ```
 
 ```
-      ⎕JSON Xmln html
+      ⎕JSON xmln html
 {
   "html": {
     "body": [
