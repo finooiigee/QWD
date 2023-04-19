@@ -50,11 +50,11 @@ As it stands<sub>[19/04/2023]</sub> this function is limited in its simplicity, 
 <section class="function">
 
 ```
-inspect←{
+inspect ← {
     ⍺←⊢ ⋄ operand←⍺⍺ ⋄ names←⊆⍵⍵
-    _←names(⍎,)¨⊂'←⎕NULL'
-    _←⎕FX (,names,¨'←')⎕R(,names,¨⊂'∘←')¨⎕NR'operand'
-    _←⍺ operand ⍵
+    _← names(⍎,)¨⊂'←⎕NULL'
+    _← ⎕FX(,names,¨'←')⎕R(,names,¨⊂'∘←')¨⎕NR 'operand'
+    _← ⍺ operand ⍵
     ⍎∊names,¨' '
 }
 ```

@@ -1,6 +1,6 @@
 <section>
 
-# Debugging
+# XML
 ---
 <code>Index:APL</code>
 </section>
@@ -9,5 +9,5 @@
 
 # Functions
 ---
-[inspect](debugging/inspect.html)
+[xmln](XML/xmln.html)
 </section>

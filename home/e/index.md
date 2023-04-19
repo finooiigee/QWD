@@ -19,4 +19,6 @@
         * [inspect](wiki/APL/debugging/inspect.html)
     * [Analysis](wiki/APL/analysis.html)
         * [names](wiki/APL/analysis/names.html)
+    * [XML](wiki/APL/XML.html)
+        * [xmln](wiki/APL/XML/xmln.html)
 </section>
