@@ -114,12 +114,6 @@ section,
   box-shadow: 2px 2px black;
 }
 
-html,
-body {
-  height: 100%;
-  width: 100%;
-}
-
 table {
   border-collapse: collapse;
 }
