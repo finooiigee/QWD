@@ -7,13 +7,13 @@
 
 # Design
 
-L is a functional notation, featuring partial application, first-class functions, closures, lexical scope, anonymous functions, etc.
+L is a functional notation, featuring partial application, first-class functions, lexical scope, etc.
 
 Some other features include:
 
 * Automatic mapping over n-dimensional floating arrays, dictionaries, functions, and namespaces.
 
-*  A straight-forward grammar - detailing anonymous functions (`{(x u y)v}`), whitespace and parenthesis as a denotation of precedence, and infix/postfix application evaluated in a strictly Left-to-Right manner.
+*  A straight-forward grammar - detailing lambdas/closures `{(x u y)v}`, whitespace and parenthesis as a denotation of precedence, and infix/postfix application evaluated in a strictly Left-to-Right manner.
 
 * Immutable variables which cannot be shadowed or removed once assigned.
 
