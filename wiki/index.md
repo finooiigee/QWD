@@ -19,5 +19,7 @@
 
 <a id="ε" href="projects/emmasynth.html">emssu23</a>
 
-[Concatenative Calculus Evaluator](/home/olus2000/concat-eval.html)
+<div id="olus2000" hidden></div>
+
+<a id="olus2000" href="/home/olus2000/concat-eval.html">Concatenative Calculus Evaluator</a> | Play with concatenative expressions live!
 </section>
