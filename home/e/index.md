@@ -14,11 +14,13 @@
 * [Meta](wiki/meta.html)
 * [Photography](wiki/photography.html)
 * [Transcriptions](wiki/transcriptions.html)
-* APL
-    * [Debugging](wiki/APL/debugging.html)
-        * [inspect](wiki/APL/debugging/inspect.html)
-    * [Analysis](wiki/APL/analysis.html)
-        * [names](wiki/APL/analysis/names.html)
-    * [XML](wiki/APL/XML.html)
-        * [xmln](wiki/APL/XML/xmln.html)
+* Programming Languages
+    * APL
+        * [Debugging](wiki/APL/debugging.html)
+            * [inspect](wiki/APL/debugging/inspect.html)
+        * [Analysis](wiki/APL/analysis.html)
+            * [names](wiki/APL/analysis/names.html)
+        * [XML](wiki/APL/xml.html)
+            * [xmln](wiki/APL/XML/xmln.html)
+    * [L](wiki/l.html)
 </section>
