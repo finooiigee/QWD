@@ -100,6 +100,11 @@ p:last-child {
 body {
   max-width: 55em;
   margin: 1em auto;
+  background-image: url("/public/assets/gifs/stars.gif");
+}
+
+section { 
+  background: #fcfcfc;
 }
 
 section,
