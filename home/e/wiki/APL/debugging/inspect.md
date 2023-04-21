@@ -1,7 +1,7 @@
 <section>
 
 # inspect
----
+
 <code>Index:[Debugging](../debugging.html)|Presentation</code>
 </section>
 

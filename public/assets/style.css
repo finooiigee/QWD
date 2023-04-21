@@ -93,10 +93,6 @@ p {
   margin: 0 0 1em;
 }
 
-p:last-child {
-  margin: 0;
-}
-
 body {
   max-width: 55em;
   margin: 1em auto;
@@ -107,10 +103,15 @@ section {
   background: #fcfcfc;
 }
 
+section h1 {
+  padding: .5em;
+  border: solid 2px black;
+  margin-bottom: .5em;
+}
+
 section,
-.pad {
+.margin {
   margin: 1em;
-  padding: 1em;
 }
 
 section,
@@ -130,6 +131,16 @@ th {
 
 p {
   white-space: pre-line;
+}
+
+
+section > :not(h1) {
+  padding-left : 1em;
+  padding-right: 1em;
+}
+
+section ul {
+  padding-left: 2em;
 }
 
 pre,code {
@@ -160,6 +171,7 @@ pre {
 }
 
 section.function {
+  padding: 1em;
   background: #f3f3f3;
   font-weight: bold;
 }

@@ -1,7 +1,7 @@
 <section>
 
 # Essie Lovett
----
+
 
 [Projects on QWD.software](/wiki/#e)
 </section>
@@ -9,7 +9,7 @@
 <section>
 
 # Wiki
----
+
 
 * [Meta](wiki/meta.html)
 * [Photography](wiki/photography.html)

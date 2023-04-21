@@ -1,7 +1,7 @@
 <section>
 
 # xmln
----
+
 <code>Index:[XML](../xml.html)</code>
 </section>
 
