@@ -1,4 +1,4 @@
-# Hack the planet. Dethrone God. Establish Communism.
+# Hack the planet.
 
 QWD.software is a group of modular sites which centers the projects, and thoughts of the QWD Discord server. It is intended to be a kind of [Hackerspace](https://en.wikipedia.org/wiki/Hackerspace).
 
