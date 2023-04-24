@@ -23,6 +23,6 @@
             * markdown
                 * [mdh](wiki/APL/markup/markdown/mdh.html)
             * [XML](wiki/APL/markup/xml.html)
-                * [xmln](wiki/APL/markup/XML/xmln.html)
+                * [xmln](wiki/APL/markup/xml/xmln.html)
     * [L](wiki/l.html)
 </section>
