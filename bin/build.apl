@@ -7,4 +7,7 @@ files ← (⊃0⎕NINFO⍠1⍠'Recurse' 1,∘'/*.md')'.'
 header ← '<link rel="stylesheet" href="/public/assets/style.css" type="text/css">'
 header,← '<link rel="stylesheet" href=               "style.css" type="text/css">'
 
-{('.html',⍨⍵/⍨0=∨\'.md'⍷⍵) 1 ⎕NPUT⍨ 'html' Tag ('head' Tag header),'body' Tag mdh⊃⎕NGET ⍵}¨files
+{('.html',⍨⍵/⍨0=∨\'.md'⍷⍵) 1 ⎕NPUT⍨ 'html' Tag ('head' Tag header),'body' Tag mdh '^#include(.*)' ⎕R {
+    ⊃⎕NGET ¯1↓∊1↓'('(≠⊆⊢)⍵.Match 
+  }⊃⎕NGET ⍵
+}¨files
