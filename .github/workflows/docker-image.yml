@@ -20,9 +20,8 @@ jobs:
             submodules: recursive
          - run: export SESSION_FILE=/opt/mdyalog/18.2/64/unicode/default.dse
          - run: ./bin/build.apl
-         - uses: actions/upload-artifact@v3
+         - uses: actions/upload-pages-artifact@v1
            with:
-              name: github-pages
               path: ./**/*.html
   deploy:
     needs: build
