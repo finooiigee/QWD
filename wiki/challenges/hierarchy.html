@@ -1,85 +1,62 @@
-<html>
-  <head>
-    <link rel="stylesheet" href="/public/assets/style.css" type="text/css" />
-    <link rel="stylesheet" href="style.css" type="text/css" />
-  </head>
-  <body>
-    <section>
-      <h1>Collect all [parent, [child]] pairs in a hierarchy</h1>
+<html><head><link rel="stylesheet" href="/public/assets/style.css" type="text/css"><link rel="stylesheet" href=               "style.css" type="text/css"></head><body><section>
 
-      <p>
-        Given an array of integers which corresponds to the depth of a traversal
-        path return an array of parent and children pairs. A node in the return
-        format should be represented by an index into the nodes sorted by order
-        of authority\*
-      </p>
+<h1>Collect all [parent, [child]] pairs in a hierarchy</h1>
 
-      <p>E.g in the hierarchy:</p>
+<p>Given an array of integers which corresponds to the depth of a traversal path return an array of parent and children pairs. A node in the return format should be represented by an index into the nodes sorted by order of authority\*</p>
 
-      <pre>
+<p>E.g in the hierarchy:</p>
+
+<pre>
      a
    / | \
   b  c  d
  /
 e
-</pre
-      >
+</pre>
 
-      <p>
-        The order of authority\* is <code>a &gt; b &gt; c &gt; d &gt; e</code>,
-        and so the format of the nodes <code>[a,b,e,c,d]</code> is
-        <code>[1,2,5,3,4]</code>
-      </p>
-    </section>
+<p>The order of authority\* is <code>a &gt; b &gt; c &gt; d &gt; e</code>, and so the format of the nodes <code>[a,b,e,c,d]</code> is <code>[1,2,5,3,4]</code></p>
 
-    <section>
-      <h1>Examples</h1>
+</section>
 
-      <p>
-        The hierarchy below has a depth array of: <code>[1,2,3,2,2]</code> by
-        traversing the path:
-        <code>(a) (a -&gt; b) (a -&gt; b -&gt; e) (a -&gt; c) (a -&gt; d)</code>
-      </p>
+<section>
 
-      <pre>
+<h1>Examples</h1>
+
+<p>The hierarchy below has a depth array of: <code>[1,2,3,2,2]</code> by traversing the path: <code>(a) (a -&gt; b) (a -&gt; b -&gt; e) (a -&gt; c) (a -&gt; d)</code></p>
+
+<pre>
      a
    / | \
   b  c  d
  /
 e
-</pre
-      >
+</pre>
 
-      <p>
-        The correct result given the argument <code>[1,2,3,2,2]</code> would be:
-        <code>[[1,[2,3,4]],[2,[5]]</code>
-      </p>
-    </section>
+<p>The correct result given the argument <code>[1,2,3,2,2]</code> would be: <code>[[1,[2,3,4]],[2,[5]]</code></p>
 
-    <section>
-      <h1>Test-cases</h1>
+</section>
 
-      <p>
-        <code>[1,2,3,3,3,3,3,2,3,4,4,4,3,3,3,4,4,3,4,4]</code> ->
-        <code
-          >[[1,[2,3]],[2,[4,5,6,7,8]],[3,[9,10,11,12,13]],[9,[14,15,16]],[12,[17,18]],[13,[19,20]]]</code
-        >
-      </p>
-    </section>
+<section>
 
-    <input type="checkbox" checked="" />
-    <label for="solutions">hide solutions</label>
+<h1>Test-cases</h1>
 
-    <section id="solutions">
-      <h1>Solutions</h1>
+<p><code>[1,2,3,3,3,3,3,2,3,4,4,4,3,3,3,4,4,3,4,4]</code> -> <code>[[1,[2,3]],[2,[4,5,6,7,8]],[3,[9,10,11,12,13]],[9,[14,15,16]],[12,[17,18]],[13,[19,20]]]</code></p>
 
-      <p><a href="/home/e">Essie</a> <sub>[essie@lovett.gay]</sub></p>
+</section>
 
-      <pre>
+<input type="checkbox" checked="" />
+<label for="solutions">hide solutions</label>
+
+<section id="solutions">
+
+<h1>Solutions</h1>
+
+<p><a href="/home/e">Essie</a> <sub>[essie@lovett.gay]</sub></p>
+
+<pre>
 {⊃,/(1∘↓(({⊂⍺ ⍵}⌸/∘↓∘⍉1↓{(⌊/⍵),⍺}⌸)⍤1)¯1∘↓)⌈\(⍋⍋⍵)@⊢(∪⍵)∘.=⍵}
 
-</pre
-      >
-    </section>
-  </body>
-</html>
+</pre>
+
+</section>
+</body></html>

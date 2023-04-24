@@ -1,26 +1,16 @@
-<html>
-  <head>
-    <link rel="stylesheet" href="/public/assets/style.css" type="text/css" />
-    <link rel="stylesheet" href="style.css" type="text/css" />
-  </head>
-  <body>
-    <section>
-      <h1>inspect</h1>
+<html><head><link rel="stylesheet" href="/public/assets/style.css" type="text/css"><link rel="stylesheet" href=               "style.css" type="text/css"></head><body><section>
 
-      <p>
-        <code
-          >Index:<a href="../debugging.html">Debugging</a>|Presentation</code
-        >
-      </p>
-    </section>
+<h1>inspect</h1>
 
-    <section class="function">
-      <p>
-        Returns the value of a variable that was used amidst a function's
-        evaluation.
-      </p>
+<p><code>Index:<a href="../debugging.html">Debugging</a>|Presentation</code></p>
 
-      <pre>
+</section>
+
+<section class="function">
+
+<p>Returns the value of a variable that was used amidst a function's evaluation.</p>
+
+<pre>
       primes
 primes ← {
     range    ← 1↓⍳⍵
@@ -36,16 +26,11 @@ primes ← {
 ┌───┬───┬─────┬───┐
 │1 2│1 3│1 2 4│1 5│
 └───┴───┴─────┴───┘
-</pre
-      >
+</pre>
 
-      <p>
-        This is not intended to be a helpful tool, instead it attempts to be
-        useful in presentations - as a means to visualize an idea in focus.
-        Additionally, it can be applied to view an operation in full:
-      </p>
+<p>This is not intended to be a helpful tool, instead it attempts to be useful in presentations - as a means to visualize an idea in focus. Additionally, it can be applied to view an operation in full:</p>
 
-      <pre>
+<pre>
     (##.analysis.names 'primes') {⍺(↑,⍥⊂¨)(primes inspect ⍺)⍵} 5
 ┌────────┬───────────────────┐
 │range   │2 3 4 5            │
@@ -56,17 +41,15 @@ primes ← {
 ├────────┼───────────────────┤
 │mask    │1 1 0 1            │
 └────────┴───────────────────┘
-</pre
-      >
+</pre>
 
-      <p>
-        As it stands<sub>[19/04/2023]</sub> this function is limited in its
-        simplicity, but I may improve upon it.
-      </p>
-    </section>
+<p>As it stands<sub>[19/04/2023]</sub> this function is limited in its simplicity, but I may improve upon it.</p>
 
-    <section class="function">
-      <pre>
+</section>
+
+<section class="function">
+
+<pre>
 inspect ← {
     ⍺←⊢ ⋄ operand←⍺⍺ ⋄ names←⊆⍵⍵
     _← names(⍎,)¨⊂'←⎕NULL'
@@ -74,8 +57,7 @@ inspect ← {
     _← ⍺ operand ⍵
     ⍎∊names,¨' '
 }
-</pre
-      >
-    </section>
-  </body>
-</html>
+</pre>
+
+</section>
+</body></html>

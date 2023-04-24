@@ -1,26 +1,16 @@
-<html>
-  <head>
-    <link rel="stylesheet" href="/public/assets/style.css" type="text/css" />
-    <link rel="stylesheet" href="style.css" type="text/css" />
-  </head>
-  <body>
-    <section>
-      <h1>names</h1>
+<html><head><link rel="stylesheet" href="/public/assets/style.css" type="text/css"><link rel="stylesheet" href=               "style.css" type="text/css"></head><body><section>
 
-      <p>
-        <code
-          >Index:<a href="../analysis.html">Analysis</a>|<a
-            href="../debugging.html"
-            >Debugging</a
-          ></code
-        >
-      </p>
-    </section>
+<h1>names</h1>
 
-    <section class="function">
-      <p>Returns assigned variables in a dfn.</p>
+<p><code>Index:<a href="../analysis.html">Analysis</a>|<a href="../debugging.html">Debugging</a></code></p>
 
-      <pre>
+</section>
+
+<section class="function">
+
+<p>Returns assigned variables in a dfn.</p>
+
+<pre>
       primes
 primes ← {
     range    ← 1↓⍳⍵
@@ -33,19 +23,19 @@ primes ← {
 ┌─────┬────────┬────┐
 │range│divisors│mask│
 └─────┴────────┴────┘
-</pre
-      >
-    </section>
+</pre>
 
-    <section class="function">
-      <pre>
+</section>
+
+<section class="function">
+
+<pre>
 names ← {
     t v d i ← ↓⍉201⌶⍬ ⍝ type value description index
     k ← d⍳⊂'SCOL_DFN_NAME'
     (∪∊⊆⍨v[k]⍷∘∊200⌶)⎕NR ⍵
 }
-</pre
-      >
-    </section>
-  </body>
-</html>
+</pre>
+
+</section>
+</body></html>
