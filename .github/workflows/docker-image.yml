@@ -22,7 +22,7 @@ jobs:
          - run: ./bin/build.apl
          - uses: actions/upload-pages-artifact@v1
            with:
-              path: ./**/*.html
+              path: .
   deploy:
     needs: build
 
