@@ -10,7 +10,7 @@
 
 Returns assigned variables in a dfn.
 
-```
+```apl
       primes
 primes ← {
     range    ← 1↓⍳⍵
@@ -29,7 +29,7 @@ primes ← {
 
 <section class="function">
 
-```
+```apl
 names ← {
     t v d i ← ↓⍉201⌶⍬ ⍝ type value description index
     k ← d⍳⊂'SCOL_DFN_NAME'

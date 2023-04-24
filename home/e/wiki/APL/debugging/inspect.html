@@ -12,34 +12,34 @@
 
 <pre>
       primes
-primes ← {
-    range    ← 1↓⍳⍵
-    divisors ← (∪⊢∨⍳)¨range
-    mask     ← 2=≢¨divisors
-    mask/range
+primes <span style="color:rgb(220,110,70)">←</span> {
+    <span style="color:rgb(130,165,150)">range</span>    <span style="color:rgb(220,110,70)">←</span> <span style="color:rgb(210,135,155)">1</span><span style="color:rgb(220,110,70)">↓⍳</span>⍵
+    <span style="color:rgb(130,165,150)">divisors</span> <span style="color:rgb(220,110,70)">←</span> <span style="color:rgb(220,110,70)">(∪⊢∨⍳)¨</span><span style="color:rgb(130,165,150)">range</span>
+    <span style="color:rgb(130,165,150)">mask</span>     <span style="color:rgb(220,110,70)">←</span> <span style="color:rgb(210,135,155)">2</span><span style="color:rgb(220,110,70)">=≢¨</span><span style="color:rgb(130,165,150)">divisors</span>
+    <span style="color:rgb(130,165,150)">mask</span><span style="color:rgb(220,110,70)">/</span><span style="color:rgb(130,165,150)">range</span>
 }
 
-      primes 5
-2 3 5
+      primes <span style="color:rgb(210,135,155)">5</span>
+<span style="color:rgb(210,135,155)">2 3 5</span>
 
-      (primes inspect 'divisors') 5
+      <span style="color:rgb(220,110,70)">(</span>primes inspect <span style="color:rgb(80,140,140)">'divisors'</span><span style="color:rgb(220,110,70)">)</span> <span style="color:rgb(210,135,155)">5</span>
 ┌───┬───┬─────┬───┐
-│1 2│1 3│1 2 4│1 5│
+│<span style="color:rgb(210,135,155)">1 2</span>│<span style="color:rgb(210,135,155)">1 3</span>│<span style="color:rgb(210,135,155)">1 2 4</span>│<span style="color:rgb(210,135,155)">1 5</span>│
 └───┴───┴─────┴───┘
 </pre>
 
 <p>This is not intended to be a helpful tool, instead it attempts to be useful in presentations - as a means to visualize an idea in focus. Additionally, it can be applied to view an operation in full:</p>
 
 <pre>
-    (##.analysis.names 'primes') {⍺(↑,⍥⊂¨)(primes inspect ⍺)⍵} 5
+    <span style="color:rgb(220,110,70)">(</span>##<span style="color:rgb(220,110,70)">.</span>analysis.names <span style="color:rgb(80,140,140)">'primes'</span><span style="color:rgb(220,110,70)">)</span> {⍺<span style="color:rgb(220,110,70)">(↑,⍥⊂¨)(</span><span style="color:rgb(130,165,150)">primes</span> <span style="color:rgb(130,165,150)">inspect</span> ⍺<span style="color:rgb(220,110,70)">)</span>⍵} <span style="color:rgb(210,135,155)">5</span>
 ┌────────┬───────────────────┐
-│range   │2 3 4 5            │
+│range   │<span style="color:rgb(210,135,155)">2 3 4 5</span>            │
 ├────────┼───────────────────┤
 │divisors│┌───┬───┬─────┬───┐│
-│        ││1 2│1 3│1 2 4│1 5││
+│        ││<span style="color:rgb(210,135,155)">1 2</span>│<span style="color:rgb(210,135,155)">1 3</span>│<span style="color:rgb(210,135,155)">1 2 4</span>│<span style="color:rgb(210,135,155)">1 5</span>││
 │        │└───┴───┴─────┴───┘│
 ├────────┼───────────────────┤
-│mask    │1 1 0 1            │
+│mask    │<span style="color:rgb(210,135,155)">1 1 0 1</span>            │
 └────────┴───────────────────┘
 </pre>
 
@@ -50,12 +50,12 @@ primes ← {
 <section class="function">
 
 <pre>
-inspect ← {
-    ⍺←⊢ ⋄ operand←⍺⍺ ⋄ names←⊆⍵⍵
-    _← names(⍎,)¨⊂'←⎕NULL'
-    _← ⎕FX(,names,¨'←')⎕R(,names,¨⊂'∘←')¨⎕NR 'operand'
-    _← ⍺ operand ⍵
-    ⍎∊names,¨' '
+inspect <span style="color:rgb(220,110,70)">←</span> {
+    ⍺<span style="color:rgb(220,110,70)">←⊢</span> ⋄ <span style="color:rgb(130,165,150)">operand</span><span style="color:rgb(220,110,70)">←</span>⍺⍺ ⋄ <span style="color:rgb(130,165,150)">names</span><span style="color:rgb(220,110,70)">←⊆</span>⍵⍵
+    <span style="color:rgb(130,165,150)">_</span><span style="color:rgb(220,110,70)">←</span> <span style="color:rgb(130,165,150)">names</span><span style="color:rgb(220,110,70)">(⍎,)¨⊂</span><span style="color:rgb(80,140,140)">'←⎕NULL'</span>
+    <span style="color:rgb(130,165,150)">_</span><span style="color:rgb(220,110,70)">←</span> ⎕FX<span style="color:rgb(220,110,70)">(,</span><span style="color:rgb(130,165,150)">names</span><span style="color:rgb(220,110,70)">,¨</span><span style="color:rgb(80,140,140)">'←'</span><span style="color:rgb(220,110,70)">)</span>⎕R<span style="color:rgb(220,110,70)">(,</span><span style="color:rgb(130,165,150)">names</span><span style="color:rgb(220,110,70)">,¨⊂</span><span style="color:rgb(80,140,140)">'∘←'</span><span style="color:rgb(220,110,70)">)¨</span>⎕NR <span style="color:rgb(80,140,140)">'operand'</span>
+    <span style="color:rgb(130,165,150)">_</span><span style="color:rgb(220,110,70)">←</span> ⍺ <span style="color:rgb(130,165,150)">operand</span> ⍵
+    <span style="color:rgb(220,110,70)">⍎∊</span><span style="color:rgb(130,165,150)">names</span><span style="color:rgb(220,110,70)">,¨</span><span style="color:rgb(80,140,140)">' '</span>
 }
 </pre>
 

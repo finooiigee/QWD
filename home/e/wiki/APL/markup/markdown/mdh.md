@@ -52,7 +52,7 @@ Hello,
 
 <section class="function">
 
-```
+```apl
 mdh ← {
   nl       ← ⎕JSON '"\n"'
   Tag      ← {'<',⍺,'>',⍵,'</',⍺,'>'}

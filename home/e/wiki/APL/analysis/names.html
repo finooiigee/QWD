@@ -12,14 +12,14 @@
 
 <pre>
       primes
-primes ← {
-    range    ← 1↓⍳⍵
-    divisors ← (∪⊢∨⍳)¨range
-    mask     ← 2=≢¨divisors
-    mask/range
+primes <span style="color:rgb(220,110,70)">←</span> {
+    <span style="color:rgb(130,165,150)">range</span>    <span style="color:rgb(220,110,70)">←</span> <span style="color:rgb(210,135,155)">1</span><span style="color:rgb(220,110,70)">↓⍳</span>⍵
+    <span style="color:rgb(130,165,150)">divisors</span> <span style="color:rgb(220,110,70)">←</span> <span style="color:rgb(220,110,70)">(∪⊢∨⍳)¨</span><span style="color:rgb(130,165,150)">range</span>
+    <span style="color:rgb(130,165,150)">mask</span>     <span style="color:rgb(220,110,70)">←</span> <span style="color:rgb(210,135,155)">2</span><span style="color:rgb(220,110,70)">=≢¨</span><span style="color:rgb(130,165,150)">divisors</span>
+    <span style="color:rgb(130,165,150)">mask</span><span style="color:rgb(220,110,70)">/</span><span style="color:rgb(130,165,150)">range</span>
 }
 
-      names 'primes'
+      names <span style="color:rgb(80,140,140)">'primes'</span>
 ┌─────┬────────┬────┐
 │range│divisors│mask│
 └─────┴────────┴────┘
@@ -30,10 +30,10 @@ primes ← {
 <section class="function">
 
 <pre>
-names ← {
-    t v d i ← ↓⍉201⌶⍬ ⍝ type value description index
-    k ← d⍳⊂'SCOL_DFN_NAME'
-    (∪∊⊆⍨v[k]⍷∘∊200⌶)⎕NR ⍵
+names <span style="color:rgb(220,110,70)">←</span> {
+    <span style="color:rgb(130,165,150)">t</span> <span style="color:rgb(130,165,150)">v</span> <span style="color:rgb(130,165,150)">d</span> <span style="color:rgb(130,165,150)">i</span> <span style="color:rgb(220,110,70)">←</span> <span style="color:rgb(220,110,70)">↓⍉</span><span style="color:rgb(210,135,155)">201</span><span style="color:rgb(220,110,70)">⌶⍬</span> ⍝ type value description index
+    <span style="color:rgb(130,165,150)">k</span> <span style="color:rgb(220,110,70)">←</span> <span style="color:rgb(130,165,150)">d</span><span style="color:rgb(220,110,70)">⍳⊂</span><span style="color:rgb(80,140,140)">'SCOL_DFN_NAME'</span>
+    <span style="color:rgb(220,110,70)">(∪∊⊆⍨</span><span style="color:rgb(130,165,150)">v</span><span style="color:rgb(220,110,70)">[</span><span style="color:rgb(130,165,150)">k</span><span style="color:rgb(220,110,70)">]⍷∘∊</span><span style="color:rgb(210,135,155)">200</span><span style="color:rgb(220,110,70)">⌶)</span>⎕NR ⍵
 }
 </pre>
 

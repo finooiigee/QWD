@@ -185,8 +185,9 @@ pre {
 }
 
 section.function {
+  color: rgb(190, 170, 150);
   padding: 1em;
-  background: #f3f3f3;
+  background: rgb(40,40,40);
   font-weight: bold;
 }
 

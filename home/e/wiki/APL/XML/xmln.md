@@ -52,7 +52,7 @@ Returns a JSON object from XML.
 
 <section class="function">
 
-```
+```apl
 xmln←{ ⍝ XML -> JSON object
     obj arr char←1 2 4 ⍝ JSON types
     (d k v a t)←↓⍉¯1 ''⍬(0⍴'' '')1⍪⎕XML ⍵

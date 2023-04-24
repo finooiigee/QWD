@@ -10,7 +10,7 @@
 
 Returns the value of a variable that was used amidst a function's evaluation.
 
-```
+```apl
       primes
 primes ← {
     range    ← 1↓⍳⍵
@@ -30,7 +30,7 @@ primes ← {
 
 This is not intended to be a helpful tool, instead it attempts to be useful in presentations - as a means to visualize an idea in focus. Additionally, it can be applied to view an operation in full:
 
-```
+```apl
     (##.analysis.names 'primes') {⍺(↑,⍥⊂¨)(primes inspect ⍺)⍵} 5
 ┌────────┬───────────────────┐
 │range   │2 3 4 5            │
@@ -49,7 +49,7 @@ As it stands<sub>[19/04/2023]</sub> this function is limited in its simplicity, 
 
 <section class="function">
 
-```
+```apl
 inspect ← {
     ⍺←⊢ ⋄ operand←⍺⍺ ⋄ names←⊆⍵⍵
     _← names(⍎,)¨⊂'←⎕NULL'

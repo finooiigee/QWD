@@ -53,43 +53,43 @@ Hello,
 <section class="function">
 
 <pre>
-mdh ← {
-  nl       ← ⎕JSON '"\n"'
-  Tag      ← {'&lt;',⍺,'&gt;',⍵,'&lt;/',⍺,'&gt;'}
-  Trim     ← {(∨\' '≠⍵)/⍵}
-  _R_      ← {⍺⍺⎕R(⍵⍵{⍵.Match})⍠'Mode' 'M'⊢⍵}
-  _Ignore  ← {
-    ∊(⍺⍺{⍺⍺¨@(⍸∧/¨⍺)⊢⍵})/mask ⍵⊂⍨¨⊂1,2≠/mask←(≠\⍱0 ¯1 ¯2(⊃∨.⌽)⊂)¯1⌽(nl,'```')⍷⍵
+mdh <span style="color:rgb(220,110,70)">←</span> {
+  <span style="color:rgb(130,165,150)">nl</span>       <span style="color:rgb(220,110,70)">←</span> ⎕JSON <span style="color:rgb(80,140,140)">'"\n"'</span>
+  <span style="color:rgb(130,165,150)">Tag</span>      <span style="color:rgb(220,110,70)">←</span> {<span style="color:rgb(80,140,140)">'&lt;'</span><span style="color:rgb(220,110,70)">,</span>⍺<span style="color:rgb(220,110,70)">,</span><span style="color:rgb(80,140,140)">'&gt;'</span><span style="color:rgb(220,110,70)">,</span>⍵<span style="color:rgb(220,110,70)">,</span><span style="color:rgb(80,140,140)">'&lt;/'</span><span style="color:rgb(220,110,70)">,</span>⍺<span style="color:rgb(220,110,70)">,</span><span style="color:rgb(80,140,140)">'&gt;'</span>}
+  <span style="color:rgb(130,165,150)">Trim</span>     <span style="color:rgb(220,110,70)">←</span> {(∨\' '≠⍵)/⍵}
+  <span style="color:rgb(130,165,150)">_R_</span>      <span style="color:rgb(220,110,70)">←</span> {⍺⍺⎕R<span style="color:rgb(220,110,70)">(</span>⍵⍵{⍵<span style="color:rgb(220,110,70)">.</span><span style="color:rgb(130,165,150)">Match</span>}<span style="color:rgb(220,110,70)">)⍠</span><span style="color:rgb(80,140,140)">'Mode'</span> <span style="color:rgb(80,140,140)">'M'</span><span style="color:rgb(220,110,70)">⊢</span>⍵}
+  <span style="color:rgb(130,165,150)">_Ignore</span>  <span style="color:rgb(220,110,70)">←</span> {
+    <span style="color:rgb(220,110,70)">∊(</span>⍺⍺{⍺⍺<span style="color:rgb(220,110,70)">¨@(⍸∧/¨</span>⍺<span style="color:rgb(220,110,70)">)⊢</span>⍵}<span style="color:rgb(220,110,70)">)/</span><span style="color:rgb(130,165,150)">mask</span> ⍵<span style="color:rgb(220,110,70)">⊂⍨¨⊂</span><span style="color:rgb(210,135,155)">1</span><span style="color:rgb(220,110,70)">,</span><span style="color:rgb(210,135,155)">2</span><span style="color:rgb(220,110,70)">≠/</span><span style="color:rgb(130,165,150)">mask</span><span style="color:rgb(220,110,70)">←(≠\⍱</span><span style="color:rgb(210,135,155)">0 ¯1 ¯2</span><span style="color:rgb(220,110,70)">(⊃∨.⌽)⊂)</span><span style="color:rgb(210,135,155)">¯1</span><span style="color:rgb(220,110,70)">⌽(</span><span style="color:rgb(130,165,150)">nl</span><span style="color:rgb(220,110,70)">,</span><span style="color:rgb(80,140,140)">'```'</span><span style="color:rgb(220,110,70)">)⍷</span>⍵
   }
-  _Literal ←  (,¨'&lt;' '&gt;')⎕R'&lt;' '&gt;'⍠('Regex' 0)
+  <span style="color:rgb(130,165,150)">_Literal</span> <span style="color:rgb(220,110,70)">←</span>  <span style="color:rgb(220,110,70)">(,¨</span><span style="color:rgb(80,140,140)">'&lt;'</span> <span style="color:rgb(80,140,140)">'&gt;'</span><span style="color:rgb(220,110,70)">)</span>⎕R<span style="color:rgb(80,140,140)">'&lt;'</span> <span style="color:rgb(80,140,140)">'&gt;'</span><span style="color:rgb(220,110,70)">⍠(</span><span style="color:rgb(80,140,140)">'Regex'</span> <span style="color:rgb(210,135,155)">0</span><span style="color:rgb(220,110,70)">)</span>
 
-  html ← '^(#{1,6}\s*).*' _R_ {
-    (prfx title)←⍵⊂⍨≠∧\'#'=⍵
-    ('h',⍕≢prfx) Tag Trim title
-  } _Ignore ⍵
+  <span style="color:rgb(130,165,150)">html</span> <span style="color:rgb(220,110,70)">←</span> <span style="color:rgb(80,140,140)">'^(#{1,6}\s*).*'</span> <span style="color:rgb(130,165,150)">_R_</span> {
+    <span style="color:rgb(220,110,70)">(</span><span style="color:rgb(130,165,150)">prfx</span> <span style="color:rgb(130,165,150)">title</span><span style="color:rgb(220,110,70)">)←</span>⍵<span style="color:rgb(220,110,70)">⊂⍨≠∧\</span><span style="color:rgb(80,140,140)">'#'</span><span style="color:rgb(220,110,70)">=</span>⍵
+    <span style="color:rgb(220,110,70)">(</span><span style="color:rgb(80,140,140)">'h'</span><span style="color:rgb(220,110,70)">,⍕≢</span><span style="color:rgb(130,165,150)">prfx</span><span style="color:rgb(220,110,70)">)</span> <span style="color:rgb(130,165,150)">Tag</span> <span style="color:rgb(130,165,150)">Trim</span> <span style="color:rgb(130,165,150)">title</span>
+  } <span style="color:rgb(130,165,150)">_Ignore</span> ⍵
 
-  html ← '\[(.*?)\]\(.*?\)' _R_ {
-    (alias href)←']('(((0=⊢∨¯1⌽⊢)⍷)⊆⊢)¯1↓1↓⍵
-    '&lt;a href="',href,'"&gt;',alias,'&lt;/a&gt;'
-  } _Ignore html
+  <span style="color:rgb(130,165,150)">html</span> <span style="color:rgb(220,110,70)">←</span> <span style="color:rgb(80,140,140)">'\[(.*?)\]\(.*?\)'</span> <span style="color:rgb(130,165,150)">_R_</span> {
+    <span style="color:rgb(220,110,70)">(</span><span style="color:rgb(130,165,150)">alias</span> <span style="color:rgb(130,165,150)">href</span><span style="color:rgb(220,110,70)">)←</span><span style="color:rgb(80,140,140)">']('</span><span style="color:rgb(220,110,70)">(((</span><span style="color:rgb(210,135,155)">0</span><span style="color:rgb(220,110,70)">=⊢∨</span><span style="color:rgb(210,135,155)">¯1</span><span style="color:rgb(220,110,70)">⌽⊢)⍷)⊆⊢)</span><span style="color:rgb(210,135,155)">¯1</span><span style="color:rgb(220,110,70)">↓</span><span style="color:rgb(210,135,155)">1</span><span style="color:rgb(220,110,70)">↓</span>⍵
+    <span style="color:rgb(80,140,140)">'&lt;a href="'</span><span style="color:rgb(220,110,70)">,</span><span style="color:rgb(130,165,150)">href</span><span style="color:rgb(220,110,70)">,</span><span style="color:rgb(80,140,140)">'"&gt;'</span><span style="color:rgb(220,110,70)">,</span><span style="color:rgb(130,165,150)">alias</span><span style="color:rgb(220,110,70)">,</span><span style="color:rgb(80,140,140)">'&lt;/a&gt;'</span>
+  } <span style="color:rgb(130,165,150)">_Ignore</span> <span style="color:rgb(130,165,150)">html</span>
 
-  html ← '^\*.*(\n[ ]*?\*.*)*' _R_ {
-    k ←   '\*.*'⎕S{Trim 1↓⍵.Match} ⍵
-    d ← +/∧\'*'≠↑nl(≠⊆⊢)⍵
-    (p c) ← ↓⍉↑⊃,/2{↑{⊂⍺ ⍵}⌸⍨/↓⍉1↓⍵,∘(⌊/)⌸⍺}/↓⌈\(⍋d)@⊢(∪d)∘.=d
-    'ul' Tag∊ {
-        ⍵∊p: 'li' Tag (k[⍵],'ul' Tag∊ ∇¨(p⍳⍵)⊃c)
-             'li' Tag (k[⍵])
-    }¨(⍸⌊/=⊢)d
-  } _Ignore html
+  <span style="color:rgb(130,165,150)">html</span> <span style="color:rgb(220,110,70)">←</span> <span style="color:rgb(80,140,140)">'^\*.*(\n[ ]*?\*.*)*'</span> <span style="color:rgb(130,165,150)">_R_</span> {
+    <span style="color:rgb(130,165,150)">k</span> <span style="color:rgb(220,110,70)">←</span>   <span style="color:rgb(80,140,140)">'\*.*'</span>⎕S{<span style="color:rgb(130,165,150)">Trim</span> <span style="color:rgb(210,135,155)">1</span><span style="color:rgb(220,110,70)">↓</span>⍵<span style="color:rgb(220,110,70)">.</span><span style="color:rgb(130,165,150)">Match</span>} ⍵
+    <span style="color:rgb(130,165,150)">d</span> <span style="color:rgb(220,110,70)">←</span> +/∧\<span style="color:rgb(80,140,140)">'*'</span><span style="color:rgb(220,110,70)">≠↑</span><span style="color:rgb(130,165,150)">nl</span><span style="color:rgb(220,110,70)">(≠⊆⊢)</span>⍵
+    <span style="color:rgb(220,110,70)">(</span><span style="color:rgb(130,165,150)">p</span> <span style="color:rgb(130,165,150)">c</span><span style="color:rgb(220,110,70)">)</span> <span style="color:rgb(220,110,70)">←</span> ↓⍉↑<span style="color:rgb(220,110,70)">⊃</span>,/<span style="color:rgb(210,135,155)">2</span>{<span style="color:rgb(220,110,70)">↑</span>{<span style="color:rgb(220,110,70)">⊂</span>⍺ ⍵}<span style="color:rgb(220,110,70)">⌸⍨/↓⍉</span><span style="color:rgb(210,135,155)">1</span><span style="color:rgb(220,110,70)">↓</span>⍵<span style="color:rgb(220,110,70)">,∘(⌊/)⌸</span>⍺}<span style="color:rgb(220,110,70)">/↓⌈\(⍋</span><span style="color:rgb(130,165,150)">d</span><span style="color:rgb(220,110,70)">)@⊢(∪</span><span style="color:rgb(130,165,150)">d</span><span style="color:rgb(220,110,70)">)∘.=</span><span style="color:rgb(130,165,150)">d</span>
+    <span style="color:rgb(80,140,140)">'ul'</span> <span style="color:rgb(130,165,150)">Tag</span><span style="color:rgb(220,110,70)">∊</span> {
+        ⍵<span style="color:rgb(220,110,70)">∊</span><span style="color:rgb(130,165,150)">p</span>: <span style="color:rgb(80,140,140)">'li'</span> <span style="color:rgb(130,165,150)">Tag</span> <span style="color:rgb(220,110,70)">(</span><span style="color:rgb(130,165,150)">k</span><span style="color:rgb(220,110,70)">[</span>⍵<span style="color:rgb(220,110,70)">],</span><span style="color:rgb(80,140,140)">'ul'</span> <span style="color:rgb(130,165,150)">Tag</span><span style="color:rgb(220,110,70)">∊</span> ∇<span style="color:rgb(220,110,70)">¨(</span><span style="color:rgb(130,165,150)">p</span><span style="color:rgb(220,110,70)">⍳</span>⍵<span style="color:rgb(220,110,70)">)⊃</span><span style="color:rgb(130,165,150)">c</span><span style="color:rgb(220,110,70)">)</span>
+             <span style="color:rgb(80,140,140)">'li'</span> <span style="color:rgb(130,165,150)">Tag</span> <span style="color:rgb(220,110,70)">(</span><span style="color:rgb(130,165,150)">k</span><span style="color:rgb(220,110,70)">[</span>⍵<span style="color:rgb(220,110,70)">])</span>
+    }<span style="color:rgb(220,110,70)">¨(⍸⌊/=⊢)</span><span style="color:rgb(130,165,150)">d</span>
+  } <span style="color:rgb(130,165,150)">_Ignore</span> <span style="color:rgb(130,165,150)">html</span>
 
-  html ← '^([^\&lt;\s]|&lt;code|&lt;a).*(\n([^\&lt;\s]|&lt;code|&lt;a).*)*' _R_ {
-    'p' Tag ⍵
-  } _Ignore html
-  html ← '`[\s\S]+?`' _R_ ({'code' Tag ¯1↓1↓⍵ } _Literal) _Ignore html
-  html ← '^```([\s\S]+?)^```' _R_ ({'pre' Tag∊ ¯1↓1↓⍵⊂⍨1,2≠/nl≠⍵} _Literal) html
+  <span style="color:rgb(130,165,150)">html</span> <span style="color:rgb(220,110,70)">←</span> <span style="color:rgb(80,140,140)">'^([^\&lt;\s]|&lt;code|&lt;a).*(\n([^\&lt;\s]|&lt;code|&lt;a).*)*'</span> <span style="color:rgb(130,165,150)">_R_</span> {
+    <span style="color:rgb(80,140,140)">'p'</span> <span style="color:rgb(130,165,150)">Tag</span> ⍵
+  } <span style="color:rgb(130,165,150)">_Ignore</span> <span style="color:rgb(130,165,150)">html</span>
+  <span style="color:rgb(130,165,150)">html</span> <span style="color:rgb(220,110,70)">←</span> <span style="color:rgb(80,140,140)">'`[\s\S]+?`'</span> <span style="color:rgb(130,165,150)">_R_</span> <span style="color:rgb(220,110,70)">(</span>{<span style="color:rgb(80,140,140)">'code'</span> <span style="color:rgb(130,165,150)">Tag</span> <span style="color:rgb(210,135,155)">¯1</span><span style="color:rgb(220,110,70)">↓</span><span style="color:rgb(210,135,155)">1</span><span style="color:rgb(220,110,70)">↓</span>⍵ } <span style="color:rgb(130,165,150)">_Literal</span><span style="color:rgb(220,110,70)">)</span> <span style="color:rgb(130,165,150)">_Ignore</span> <span style="color:rgb(130,165,150)">html</span>
+  <span style="color:rgb(130,165,150)">html</span> <span style="color:rgb(220,110,70)">←</span> <span style="color:rgb(80,140,140)">'^```([\s\S]+?)^```'</span> <span style="color:rgb(130,165,150)">_R_</span> <span style="color:rgb(220,110,70)">(</span>{<span style="color:rgb(80,140,140)">'pre'</span> <span style="color:rgb(130,165,150)">Tag</span><span style="color:rgb(220,110,70)">∊</span> <span style="color:rgb(210,135,155)">¯1</span><span style="color:rgb(220,110,70)">↓</span><span style="color:rgb(210,135,155)">1</span><span style="color:rgb(220,110,70)">↓</span>⍵<span style="color:rgb(220,110,70)">⊂⍨</span><span style="color:rgb(210,135,155)">1</span><span style="color:rgb(220,110,70)">,</span><span style="color:rgb(210,135,155)">2</span><span style="color:rgb(220,110,70)">≠/</span><span style="color:rgb(130,165,150)">nl</span><span style="color:rgb(220,110,70)">≠</span>⍵} <span style="color:rgb(130,165,150)">_Literal</span><span style="color:rgb(220,110,70)">)</span> <span style="color:rgb(130,165,150)">html</span>
 
-  html
+  <span style="color:rgb(130,165,150)">html</span>
 }
 </pre>
 

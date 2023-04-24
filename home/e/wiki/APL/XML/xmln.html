@@ -53,48 +53,48 @@
 <section class="function">
 
 <pre>
-xmln←{ ⍝ XML -&gt; JSON object
-    obj arr char←1 2 4 ⍝ JSON types
-    (d k v a t)←↓⍉¯1 ''⍬(0⍴'' '')1⍪⎕XML ⍵
+xmln<span style="color:rgb(220,110,70)">←</span>{ ⍝ XML -&gt; JSON object
+    <span style="color:rgb(130,165,150)">obj</span> <span style="color:rgb(130,165,150)">arr</span> <span style="color:rgb(130,165,150)">char</span><span style="color:rgb(220,110,70)">←</span><span style="color:rgb(210,135,155)">1 2 4</span> ⍝ JSON types
+    <span style="color:rgb(220,110,70)">(</span><span style="color:rgb(130,165,150)">d</span> <span style="color:rgb(130,165,150)">k</span> <span style="color:rgb(130,165,150)">v</span> <span style="color:rgb(130,165,150)">a</span> <span style="color:rgb(130,165,150)">t</span><span style="color:rgb(220,110,70)">)←↓⍉</span><span style="color:rgb(210,135,155)">¯1</span> <span style="color:rgb(80,140,140)">''</span><span style="color:rgb(220,110,70)">⍬(</span><span style="color:rgb(210,135,155)">0</span><span style="color:rgb(220,110,70)">⍴</span><span style="color:rgb(80,140,140)">''</span> <span style="color:rgb(80,140,140)">''</span><span style="color:rgb(220,110,70)">)</span><span style="color:rgb(210,135,155)">1</span><span style="color:rgb(220,110,70)">⍪</span>⎕XML ⍵
 
     ⍝ pre-processing ; see: ]help ⎕XML ⎕JSON
-    d+←1 ⋄ ((t∊1 3 7)/t)←obj ⋄ ((t∊5)/t)←char ⋄ (((⊂'')⍷v)/v)←⊂⍬
-    I←{(⍺,⍵)[⍺⍺]}
+    <span style="color:rgb(130,165,150)">d</span><span style="color:rgb(220,110,70)">+←</span><span style="color:rgb(210,135,155)">1</span> ⋄ <span style="color:rgb(220,110,70)">((</span><span style="color:rgb(130,165,150)">t</span><span style="color:rgb(220,110,70)">∊</span><span style="color:rgb(210,135,155)">1 3 7</span><span style="color:rgb(220,110,70)">)/</span><span style="color:rgb(130,165,150)">t</span><span style="color:rgb(220,110,70)">)←</span><span style="color:rgb(130,165,150)">obj</span> ⋄ <span style="color:rgb(220,110,70)">((</span><span style="color:rgb(130,165,150)">t</span><span style="color:rgb(220,110,70)">∊</span><span style="color:rgb(210,135,155)">5</span><span style="color:rgb(220,110,70)">)/</span><span style="color:rgb(130,165,150)">t</span><span style="color:rgb(220,110,70)">)←</span><span style="color:rgb(130,165,150)">char</span> ⋄ <span style="color:rgb(220,110,70)">(((⊂</span><span style="color:rgb(80,140,140)">''</span><span style="color:rgb(220,110,70)">)⍷</span><span style="color:rgb(130,165,150)">v</span><span style="color:rgb(220,110,70)">)/</span><span style="color:rgb(130,165,150)">v</span><span style="color:rgb(220,110,70)">)←⊂⍬</span>
+    <span style="color:rgb(130,165,150)">I</span><span style="color:rgb(220,110,70)">←</span>{<span style="color:rgb(220,110,70)">(</span>⍺<span style="color:rgb(220,110,70)">,</span>⍵<span style="color:rgb(220,110,70)">)[</span>⍺⍺<span style="color:rgb(220,110,70)">]</span>}
 
     ⍝ Insert attributes as children
-    idx←≢¨a
-    i←⍋(⍳≢k),⍸idx
-    (k v)←{⍵[i]}¨k v,¨↓⍉↑⊃,/↓¨(0&lt;idx)/a
-    d←d(i I)d[⍸idx]+1
-    t←obj char[1+0≠∊⍴¨v]
+    <span style="color:rgb(130,165,150)">idx</span><span style="color:rgb(220,110,70)">←≢¨</span><span style="color:rgb(130,165,150)">a</span>
+    <span style="color:rgb(130,165,150)">i</span><span style="color:rgb(220,110,70)">←⍋(⍳≢</span><span style="color:rgb(130,165,150)">k</span><span style="color:rgb(220,110,70)">),⍸</span><span style="color:rgb(130,165,150)">idx</span>
+    <span style="color:rgb(220,110,70)">(</span><span style="color:rgb(130,165,150)">k</span> <span style="color:rgb(130,165,150)">v</span><span style="color:rgb(220,110,70)">)←</span>{⍵<span style="color:rgb(220,110,70)">[</span><span style="color:rgb(130,165,150)">i</span><span style="color:rgb(220,110,70)">]</span>}<span style="color:rgb(220,110,70)">¨</span><span style="color:rgb(130,165,150)">k</span> <span style="color:rgb(130,165,150)">v</span><span style="color:rgb(220,110,70)">,¨</span>↓⍉↑<span style="color:rgb(220,110,70)">⊃</span>,/<span style="color:rgb(220,110,70)">↓¨(</span><span style="color:rgb(210,135,155)">0</span><span style="color:rgb(220,110,70)">&</span><span style="color:rgb(130,165,150)">lt</span><span style="color:rgb(220,110,70)">;</span><span style="color:rgb(130,165,150)">idx</span><span style="color:rgb(220,110,70)">)/</span><span style="color:rgb(130,165,150)">a</span>
+    <span style="color:rgb(130,165,150)">d</span><span style="color:rgb(220,110,70)">←</span><span style="color:rgb(130,165,150)">d</span><span style="color:rgb(220,110,70)">(</span><span style="color:rgb(130,165,150)">i</span> <span style="color:rgb(130,165,150)">I</span><span style="color:rgb(220,110,70)">)</span><span style="color:rgb(130,165,150)">d</span><span style="color:rgb(220,110,70)">[⍸</span><span style="color:rgb(130,165,150)">idx</span><span style="color:rgb(220,110,70)">]+</span><span style="color:rgb(210,135,155)">1</span>
+    <span style="color:rgb(130,165,150)">t</span><span style="color:rgb(220,110,70)">←</span><span style="color:rgb(130,165,150)">obj</span> <span style="color:rgb(130,165,150)">char</span><span style="color:rgb(220,110,70)">[</span><span style="color:rgb(210,135,155)">1</span><span style="color:rgb(220,110,70)">+</span><span style="color:rgb(210,135,155)">0</span><span style="color:rgb(220,110,70)">≠∊⍴¨</span><span style="color:rgb(130,165,150)">v</span><span style="color:rgb(220,110,70)">]</span>
 
     ⍝ node pairs from depth vector
-    N←{⊃,/2{↑{⊂⍺ ⍵}⌸⍨/↓⍉1↓⍵,∘(⌊/)⌸⍺}/↓⌈\(⍋⍵)@⊢(∪⍵)∘.=⍵}
-    (p c)←↓⍉↑N d ⍝ parents | children
+    <span style="color:rgb(130,165,150)">N</span><span style="color:rgb(220,110,70)">←</span>{<span style="color:rgb(220,110,70)">⊃</span>,/<span style="color:rgb(210,135,155)">2</span>{<span style="color:rgb(220,110,70)">↑</span>{<span style="color:rgb(220,110,70)">⊂</span>⍺ ⍵}<span style="color:rgb(220,110,70)">⌸⍨/↓⍉</span><span style="color:rgb(210,135,155)">1</span><span style="color:rgb(220,110,70)">↓</span>⍵<span style="color:rgb(220,110,70)">,∘(⌊/)⌸</span>⍺}<span style="color:rgb(220,110,70)">/↓⌈\(⍋</span>⍵<span style="color:rgb(220,110,70)">)@⊢(∪</span>⍵<span style="color:rgb(220,110,70)">)∘.=</span>⍵}
+    <span style="color:rgb(220,110,70)">(</span><span style="color:rgb(130,165,150)">p</span> <span style="color:rgb(130,165,150)">c</span><span style="color:rgb(220,110,70)">)←</span>↓⍉↑<span style="color:rgb(130,165,150)">N</span> <span style="color:rgb(130,165,150)">d</span> ⍝ parents | children
 
     ⍝ Insert object's character data as child
-    idx←p∩⍸t=char
-    i←⍋(⍳≢k),idx
-    v←(((⊂⍬)@idx)v)(i I)v[idx]
-    d←d(i I)d[idx+1]
-    k←k(i I)(≢i)⍴⊂''
-    t[idx]←arr ⍝ Objects with character data to type arr
-    t←t(i I)(≢i)⍴⊂char
+    <span style="color:rgb(130,165,150)">idx</span><span style="color:rgb(220,110,70)">←</span><span style="color:rgb(130,165,150)">p</span><span style="color:rgb(220,110,70)">∩⍸</span><span style="color:rgb(130,165,150)">t</span><span style="color:rgb(220,110,70)">=</span><span style="color:rgb(130,165,150)">char</span>
+    <span style="color:rgb(130,165,150)">i</span><span style="color:rgb(220,110,70)">←⍋(⍳≢</span><span style="color:rgb(130,165,150)">k</span><span style="color:rgb(220,110,70)">),</span><span style="color:rgb(130,165,150)">idx</span>
+    <span style="color:rgb(130,165,150)">v</span><span style="color:rgb(220,110,70)">←(((⊂⍬)@</span><span style="color:rgb(130,165,150)">idx</span><span style="color:rgb(220,110,70)">)</span><span style="color:rgb(130,165,150)">v</span><span style="color:rgb(220,110,70)">)(</span><span style="color:rgb(130,165,150)">i</span> <span style="color:rgb(130,165,150)">I</span><span style="color:rgb(220,110,70)">)</span><span style="color:rgb(130,165,150)">v</span><span style="color:rgb(220,110,70)">[</span><span style="color:rgb(130,165,150)">idx</span><span style="color:rgb(220,110,70)">]</span>
+    <span style="color:rgb(130,165,150)">d</span><span style="color:rgb(220,110,70)">←</span><span style="color:rgb(130,165,150)">d</span><span style="color:rgb(220,110,70)">(</span><span style="color:rgb(130,165,150)">i</span> <span style="color:rgb(130,165,150)">I</span><span style="color:rgb(220,110,70)">)</span><span style="color:rgb(130,165,150)">d</span><span style="color:rgb(220,110,70)">[</span><span style="color:rgb(130,165,150)">idx</span><span style="color:rgb(220,110,70)">+</span><span style="color:rgb(210,135,155)">1</span><span style="color:rgb(220,110,70)">]</span>
+    <span style="color:rgb(130,165,150)">k</span><span style="color:rgb(220,110,70)">←</span><span style="color:rgb(130,165,150)">k</span><span style="color:rgb(220,110,70)">(</span><span style="color:rgb(130,165,150)">i</span> <span style="color:rgb(130,165,150)">I</span><span style="color:rgb(220,110,70)">)(≢</span><span style="color:rgb(130,165,150)">i</span><span style="color:rgb(220,110,70)">)⍴⊂</span><span style="color:rgb(80,140,140)">''</span>
+    <span style="color:rgb(130,165,150)">t</span><span style="color:rgb(220,110,70)">[</span><span style="color:rgb(130,165,150)">idx</span><span style="color:rgb(220,110,70)">]←</span><span style="color:rgb(130,165,150)">arr</span> ⍝ Objects with character data to type arr
+    <span style="color:rgb(130,165,150)">t</span><span style="color:rgb(220,110,70)">←</span><span style="color:rgb(130,165,150)">t</span><span style="color:rgb(220,110,70)">(</span><span style="color:rgb(130,165,150)">i</span> <span style="color:rgb(130,165,150)">I</span><span style="color:rgb(220,110,70)">)(≢</span><span style="color:rgb(130,165,150)">i</span><span style="color:rgb(220,110,70)">)⍴⊂</span><span style="color:rgb(130,165,150)">char</span>
 
-    (p c)←↓⍉↑N d
+    <span style="color:rgb(220,110,70)">(</span><span style="color:rgb(130,165,150)">p</span> <span style="color:rgb(130,165,150)">c</span><span style="color:rgb(220,110,70)">)←</span>↓⍉↑<span style="color:rgb(130,165,150)">N</span> <span style="color:rgb(130,165,150)">d</span>
 
     ⍝ de-duplicate tree by changing parent type to arr
-    msk←{0∊≠k[⍵]}¨c
-    (t[msk/p])←arr
-    idx←((∊(t[p]=arr)/c)∩⍸0≠∊⍴¨k)∪∊msk/c
-    d[idx]+←1
-    d[∊(p∊idx)/c]+←1
-    i←⍋(⍳≢k),idx-1
-    v←v(i I)(≢i)⍴⊂⍬
-    d←d(i I)d[idx]-1
-    k←k(i I)(≢i)⍴⊂''
-    t←t(i I)(≢i)⍴1
-    ⎕JSON 1 ⎕JSON⍠'M'⍉↑d k v t
+    <span style="color:rgb(130,165,150)">msk</span><span style="color:rgb(220,110,70)">←</span>{<span style="color:rgb(210,135,155)">0</span><span style="color:rgb(220,110,70)">∊≠</span><span style="color:rgb(130,165,150)">k</span><span style="color:rgb(220,110,70)">[</span>⍵<span style="color:rgb(220,110,70)">]</span>}<span style="color:rgb(220,110,70)">¨</span><span style="color:rgb(130,165,150)">c</span>
+    <span style="color:rgb(220,110,70)">(</span><span style="color:rgb(130,165,150)">t</span><span style="color:rgb(220,110,70)">[</span><span style="color:rgb(130,165,150)">msk</span><span style="color:rgb(220,110,70)">/</span><span style="color:rgb(130,165,150)">p</span><span style="color:rgb(220,110,70)">])←</span><span style="color:rgb(130,165,150)">arr</span>
+    <span style="color:rgb(130,165,150)">idx</span><span style="color:rgb(220,110,70)">←((∊(</span><span style="color:rgb(130,165,150)">t</span><span style="color:rgb(220,110,70)">[</span><span style="color:rgb(130,165,150)">p</span><span style="color:rgb(220,110,70)">]=</span><span style="color:rgb(130,165,150)">arr</span><span style="color:rgb(220,110,70)">)/</span><span style="color:rgb(130,165,150)">c</span><span style="color:rgb(220,110,70)">)∩⍸</span><span style="color:rgb(210,135,155)">0</span><span style="color:rgb(220,110,70)">≠∊⍴¨</span><span style="color:rgb(130,165,150)">k</span><span style="color:rgb(220,110,70)">)∪∊</span><span style="color:rgb(130,165,150)">msk</span><span style="color:rgb(220,110,70)">/</span><span style="color:rgb(130,165,150)">c</span>
+    <span style="color:rgb(130,165,150)">d</span><span style="color:rgb(220,110,70)">[</span><span style="color:rgb(130,165,150)">idx</span><span style="color:rgb(220,110,70)">]+←</span><span style="color:rgb(210,135,155)">1</span>
+    <span style="color:rgb(130,165,150)">d</span><span style="color:rgb(220,110,70)">[∊(</span><span style="color:rgb(130,165,150)">p</span><span style="color:rgb(220,110,70)">∊</span><span style="color:rgb(130,165,150)">idx</span><span style="color:rgb(220,110,70)">)/</span><span style="color:rgb(130,165,150)">c</span><span style="color:rgb(220,110,70)">]+←</span><span style="color:rgb(210,135,155)">1</span>
+    <span style="color:rgb(130,165,150)">i</span><span style="color:rgb(220,110,70)">←⍋(⍳≢</span><span style="color:rgb(130,165,150)">k</span><span style="color:rgb(220,110,70)">),</span><span style="color:rgb(130,165,150)">idx</span><span style="color:rgb(220,110,70)">-</span><span style="color:rgb(210,135,155)">1</span>
+    <span style="color:rgb(130,165,150)">v</span><span style="color:rgb(220,110,70)">←</span><span style="color:rgb(130,165,150)">v</span><span style="color:rgb(220,110,70)">(</span><span style="color:rgb(130,165,150)">i</span> <span style="color:rgb(130,165,150)">I</span><span style="color:rgb(220,110,70)">)(≢</span><span style="color:rgb(130,165,150)">i</span><span style="color:rgb(220,110,70)">)⍴⊂⍬</span>
+    <span style="color:rgb(130,165,150)">d</span><span style="color:rgb(220,110,70)">←</span><span style="color:rgb(130,165,150)">d</span><span style="color:rgb(220,110,70)">(</span><span style="color:rgb(130,165,150)">i</span> <span style="color:rgb(130,165,150)">I</span><span style="color:rgb(220,110,70)">)</span><span style="color:rgb(130,165,150)">d</span><span style="color:rgb(220,110,70)">[</span><span style="color:rgb(130,165,150)">idx</span><span style="color:rgb(220,110,70)">]-</span><span style="color:rgb(210,135,155)">1</span>
+    <span style="color:rgb(130,165,150)">k</span><span style="color:rgb(220,110,70)">←</span><span style="color:rgb(130,165,150)">k</span><span style="color:rgb(220,110,70)">(</span><span style="color:rgb(130,165,150)">i</span> <span style="color:rgb(130,165,150)">I</span><span style="color:rgb(220,110,70)">)(≢</span><span style="color:rgb(130,165,150)">i</span><span style="color:rgb(220,110,70)">)⍴⊂</span><span style="color:rgb(80,140,140)">''</span>
+    <span style="color:rgb(130,165,150)">t</span><span style="color:rgb(220,110,70)">←</span><span style="color:rgb(130,165,150)">t</span><span style="color:rgb(220,110,70)">(</span><span style="color:rgb(130,165,150)">i</span> <span style="color:rgb(130,165,150)">I</span><span style="color:rgb(220,110,70)">)(≢</span><span style="color:rgb(130,165,150)">i</span><span style="color:rgb(220,110,70)">)⍴</span><span style="color:rgb(210,135,155)">1</span>
+    ⎕JSON <span style="color:rgb(210,135,155)">1</span> ⎕JSON<span style="color:rgb(220,110,70)">⍠</span><span style="color:rgb(80,140,140)">'M'</span><span style="color:rgb(220,110,70)">⍉↑</span><span style="color:rgb(130,165,150)">d</span> <span style="color:rgb(130,165,150)">k</span> <span style="color:rgb(130,165,150)">v</span> <span style="color:rgb(130,165,150)">t</span>
 }
 </pre>
 

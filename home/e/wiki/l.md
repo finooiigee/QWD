@@ -48,6 +48,7 @@ monad  ←→ X  f
 dyad   ←→ X  f  Y ←→   Y Xf
 triad  ←→ X Uf  Y ←→   Y UfX  ←→   Y(X Uf)
 tetrad ←→ X UfV Y ←→ Y(X UfV) ←→ Y(X(U Vf))
+
 ```
 
 ## Data Types

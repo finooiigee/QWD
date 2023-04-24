@@ -6,7 +6,7 @@ mdh ← {
   _Ignore  ← {
     ∊(⍺⍺{⍺⍺¨@(⍸∧/¨⍺)⊢⍵})/mask ⍵⊂⍨¨⊂1,2≠/mask←(≠\⍱0 ¯1 ¯2(⊃∨.⌽)⊂)¯1⌽(nl,'```')⍷⍵
   }
-  _Literal ←  (,¨'<' '>')⎕R'&lt;' '&gt;'⍠('Regex' 0)
+  Literal ←  (,¨'<' '>')⎕R'&lt;' '&gt;'⍠('Regex' 0)
 
   html ← '^(#{1,6}\s*).*' _R_ {
     (prfx title)←⍵⊂⍨≠∧\'#'=⍵
@@ -31,8 +31,8 @@ mdh ← {
   html ← '^([^\<\s]|<code|<a).*(\n([^\<\s]|<code|<a).*)*' _R_ {
     'p' Tag ⍵
   } _Ignore html
-  html ← '`[\s\S]+?`' _R_ ({'code' Tag ¯1↓1↓⍵ } _Literal) _Ignore html
-  html ← '^```([\s\S]+?)^```' _R_ ({'pre' Tag∊ ¯1↓1↓⍵⊂⍨1,2≠/nl≠⍵} _Literal) html
+  html ← '`[\s\S]+?`' _R_ ({'code' Tag ¯1↓1↓⍵ } Literal) _Ignore html
+  html ← '^```([\s\S]+?)^```' _R_ ({'pre' Tag∊ {∨/'apl'⍷∊1↑⍵: tokc 1↓⍵ ⋄ 1↓⍵}¯1↓⍵⊂⍨1,2≠/nl≠⍵} Literal) html
 
   html
 }
