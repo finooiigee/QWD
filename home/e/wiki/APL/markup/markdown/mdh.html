@@ -1,0 +1,97 @@
+<html><head><link rel="stylesheet" href="/public/assets/style.css" type="text/css"><link rel="stylesheet" href=               "style.css" type="text/css"></head><body><section>
+
+<h1>mdh</h1>
+
+</section>
+
+<section class="function">
+
+<p>Translates markdown into HTML</p>
+
+<pre>
+      markdown
+# Section
+## Subsection
+
+* a
+ * b
+  * c
+* d
+
+Hello,
+[https://en.wikipedia.org/wiki/World](World)
+
+</pre>
+
+<pre>
+      mdh markdown
+&lt;h1&gt;Section&lt;/h1&gt;
+&lt;h2&gt;Subsection&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    a
+    &lt;ul&gt;
+      &lt;li&gt;
+        b
+        &lt;ul&gt;
+          &lt;li&gt;c&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;d&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Hello,
+&lt;a href="World"&gt;https://en.wikipedia.org/wiki/World&lt;/a&gt;
+&lt;/p&gt;
+</pre>
+
+</section>
+
+<section class="function">
+
+<pre>
+mdh ← {
+  nl       ← ⎕JSON '"\n"'
+  Tag      ← {'&lt;',⍺,'&gt;',⍵,'&lt;/',⍺,'&gt;'}
+  Trim     ← {(∨\' '≠⍵)/⍵}
+  _R_      ← {⍺⍺⎕R(⍵⍵{⍵.Match})⍠'Mode' 'M'⊢⍵}
+  _Ignore  ← {
+    ∊(⍺⍺{⍺⍺¨@(⍸∧/¨⍺)⊢⍵})/mask ⍵⊂⍨¨⊂1,2≠/mask←(≠\⍱0 ¯1 ¯2(⊃∨.⌽)⊂)¯1⌽(nl,'```')⍷⍵
+  }
+  _Literal ←  (,¨'&lt;' '&gt;')⎕R'&lt;' '&gt;'⍠('Regex' 0)
+
+  html ← '^(#{1,6}\s*).*' _R_ {
+    (prfx title)←⍵⊂⍨≠∧\'#'=⍵
+    ('h',⍕≢prfx) Tag Trim title
+  } _Ignore ⍵
+
+  html ← '\[(.*?)\]\(.*?\)' _R_ {
+    (alias href)←']('(((0=⊢∨¯1⌽⊢)⍷)⊆⊢)¯1↓1↓⍵
+    '&lt;a href="',href,'"&gt;',alias,'&lt;/a&gt;'
+  } _Ignore html
+
+  html ← '^\*.*(\n[ ]*?\*.*)*' _R_ {
+    k ←   '\*.*'⎕S{Trim 1↓⍵.Match} ⍵
+    d ← +/∧\'*'≠↑nl(≠⊆⊢)⍵
+    (p c) ← ↓⍉↑⊃,/2{↑{⊂⍺ ⍵}⌸⍨/↓⍉1↓⍵,∘(⌊/)⌸⍺}/↓⌈\(⍋d)@⊢(∪d)∘.=d
+    'ul' Tag∊ {
+        ⍵∊p: 'li' Tag (k[⍵],'ul' Tag∊ ∇¨(p⍳⍵)⊃c)
+             'li' Tag (k[⍵])
+    }¨(⍸⌊/=⊢)d
+  } _Ignore html
+
+  html ← '^([^\&lt;\s]|&lt;code|&lt;a).*(\n([^\&lt;\s]|&lt;code|&lt;a).*)*' _R_ {
+    'p' Tag ⍵
+  } _Ignore html
+  html ← '`[\s\S]+?`' _R_ ({'code' Tag ¯1↓1↓⍵ } _Literal) _Ignore html
+  html ← '^```([\s\S]+?)^```' _R_ ({'pre' Tag∊ ¯1↓1↓⍵⊂⍨1,2≠/nl≠⍵} _Literal) html
+
+  html
+}
+</pre>
+
+</section>
+</body></html>
