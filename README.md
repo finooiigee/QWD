@@ -1,5 +1,7 @@
 # Building
 
+Install [Dyalog APL 18.2](https://www.dyalog.com/download-zone.htm)
+
 ```bash
-find . -type d -print | xargs -I {} bash -c "cd '{}' && ./markdown.sh"
+./build.apl
 ```

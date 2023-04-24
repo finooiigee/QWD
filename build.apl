@@ -1,4 +1,4 @@
-#!/usr/bin/dyalogscript SESSION_FILE=/opt/mdyalog/19.0/64/unicode/default.dse
+#!/usr/bin/dyalogscript SESSION_FILE=/opt/mdyalog/18.2/64/unicode/default.dse
 
 ⎕SE.Link.Create # '.'
 Tag  ← {'<',⍺,'>',⍵,'</',⍺,'>'}
