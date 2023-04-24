@@ -7,6 +7,8 @@ on:
     branches: [ "master" ]
 
 jobs:
+  build:
     runs-on: ubuntu-latest
     container: dyalog/dyalog
-    run: ls
+    steps:
+      run: ls
