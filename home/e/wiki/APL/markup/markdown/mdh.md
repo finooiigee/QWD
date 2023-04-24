@@ -19,7 +19,7 @@ Translates markdown into HTML
 * d
 
 Hello,
-[https://en.wikipedia.org/wiki/World](World)
+[World](https://en.wikipedia.org/wiki/World)
 
 ```
 
@@ -44,7 +44,7 @@ Hello,
 </ul>
 
 <p>Hello,
-<a href="World">https://en.wikipedia.org/wiki/World</a>
+<a href="https://en.wikipedia.org/wiki/World">World</a>
 </p>
 ```
 
