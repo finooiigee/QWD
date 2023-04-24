@@ -18,7 +18,8 @@ jobs:
          - uses: actions/checkout@v2
            with: 
             submodules: recursive
-         - run: (/opt/mdyalog/18.2/64/unicode/scriptbin/dyalogscript bin/build.apl)
+         - run: export SESSION_FILE=/opt/mdyalog/18.2/64/unicode/default.dse
+         - run: ./bin/build.apl
          - uses: actions/upload-artifact@v3
            with:
               name: artifacts
