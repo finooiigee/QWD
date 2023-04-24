@@ -14,9 +14,7 @@ jobs:
       options: --user root
     steps:
          - uses: actions/checkout@v2
-           with:
-            submodules: recursive
-         - run: (ls $GITHUB_WORKSPACE)
+         - run: git submodule update --init --recursive
          - run: (/opt/mdyalog/18.2/64/unicode/scriptbin/dyalogscript "bin/build.apl")
          - uses: actions/upload-artifact@v3
            with:
