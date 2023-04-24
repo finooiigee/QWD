@@ -12,6 +12,7 @@ jobs:
     container: 
       image: dyalog/dyalog
     steps:
+         - uses: actions/checkout@v2
          - run: (ls $GITHUB_WORKSPACE)
          - run: (pwd)
          - run: (/opt/mdyalog/18.2/64/unicode/scriptbin/dyalogscript "$GITHUB_WORKSPACE/build/build.apl")
