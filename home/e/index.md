@@ -18,7 +18,7 @@
         * [Debugging](wiki/APL/debugging.html)
             * [inspect](wiki/APL/debugging/inspect.html)
         * [Analysis](wiki/APL/analysis.html)
-            * [names](wiki/APL/analysis/names.html)
+            * [names](wiki/APL/analysis/names.html)|[wtokc](wiki/APL/analysis/wtokc.html)
         * markup
             * markdown
                 * [mdh](wiki/APL/markup/markdown/mdh.html)

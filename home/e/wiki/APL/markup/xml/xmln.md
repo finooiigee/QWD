@@ -2,8 +2,6 @@
 
 # xmln
 
-<code>Index:[XML](../xml.html)</code>
-
 </section>
 
 <section class="function">
@@ -19,9 +17,7 @@ Returns a JSON object from XML.
     <h1>Ipsum! </h1>
   </body>
 </html>
-```
 
-```
       ⎕JSON xmln html
 {
   "html": {

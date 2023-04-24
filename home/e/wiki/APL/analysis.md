@@ -2,14 +2,12 @@
 
 # Debugging
 
-<code>Index:APL</code>
-
 </section>
 
 <section>
 
 # Functions
 
-[names](analysis/names.html)
+[names](analysis/names.html)|[wtokc](analysis/wtokc.html)
 
 </section>

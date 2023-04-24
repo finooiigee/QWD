@@ -2,7 +2,7 @@
 
 # inspect
 
-<code>Index:[Debugging](../debugging.html)|Presentation</code>
+<code>Index:Presentations</code>
 
 </section>
 
@@ -11,7 +11,6 @@
 Returns the value of a variable that was used amidst a function's evaluation.
 
 ```apl
-      primes
 primes ← {
     range    ← 1↓⍳⍵
     divisors ← (∪⊢∨⍳)¨range
@@ -28,7 +27,7 @@ primes ← {
 └───┴───┴─────┴───┘
 ```
 
-This is not intended to be a helpful tool, instead it attempts to be useful in presentations - as a means to visualize an idea in focus. Additionally, it can be applied to view an operation in full:
+This is not intended to be a versatile tool called during execution, instead it aims to be useful in presentations - as a means to visualize an idea in focus. Additionally, it can be applied to view an operation's steps in their entirety:
 
 ```apl
     (##.analysis.names 'primes') {⍺(↑,⍥⊂¨)(primes inspect ⍺)⍵} 5
@@ -43,7 +42,7 @@ This is not intended to be a helpful tool, instead it attempts to be useful in p
 └────────┴───────────────────┘
 ```
 
-As it stands<sub>[19/04/2023]</sub> this function is limited in its simplicity, but I may improve upon it.
+As it stands<sub>[19/04/2023]</sub> this function is limited in its simplicity but I may improve upon it in time.
 
 </section>
 

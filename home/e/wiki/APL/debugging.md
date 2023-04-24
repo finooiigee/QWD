@@ -2,8 +2,6 @@
 
 # Debugging
 
-<code>Index:APL</code>
-
 </section>
 
 <section>

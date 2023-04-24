@@ -2,8 +2,6 @@
 
 # names
 
-<code>Index:[Analysis](../analysis.html)|[Debugging](../debugging.html)</code>
-
 </section>
 
 <section class="function">
@@ -11,7 +9,6 @@
 Returns assigned variables in a dfn.
 
 ```apl
-      primes
 primes ← {
     range    ← 1↓⍳⍵
     divisors ← (∪⊢∨⍳)¨range
