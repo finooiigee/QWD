@@ -2,7 +2,6 @@
 
 # Meta
 
-<code>Index:Bureaucracy</code>
 <code>Index;John Scholes</code>
 
 </section>

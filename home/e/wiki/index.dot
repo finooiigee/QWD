@@ -1,0 +1,14 @@
+digraph {
+    Programming_Languages [label="Programming Languages"];
+    Meta;
+    Transcriptions -> ragbag;
+    Photography -> Optics;
+    Programming_Languages -> APL, L;
+    APL -> Debugging, Analysis, XML;
+    Debugging -> inspect;
+    Analysis -> names;
+    XML -> xmln;
+    names -> Analysis, Debugging;
+    inspect -> Debugging, Presentation;
+    xmln -> XML;
+}
