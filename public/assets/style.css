@@ -143,10 +143,6 @@ th {
   padding: 0.5em;
 }
 
-p {
-  white-space: pre-line;
-}
-
 section > :not(h1) {
   padding-left: 1em;
   padding-right: 1em;
@@ -187,7 +183,7 @@ pre {
 section.function {
   color: rgb(255, 245, 195);
   padding: 1em;
-  background: rgb(40,40,40);
+  background: rgb(40, 40, 40);
   font-weight: bold;
 }
 

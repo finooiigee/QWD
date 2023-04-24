@@ -2,7 +2,7 @@
 
 # Collect all [parent, [child]] pairs in a hierarchy
 
-Given an array of integers which corresponds to the depth of a traversal path return an array of parent and children pairs. A node in the return format should be represented by an index into the nodes sorted by order of authority*
+Given an array of integers which corresponds to the depth of a traversal path return an array of parent and children pairs. A node in the return format should be represented by an index into the nodes sorted by order of authority\*
 
 E.g in the hierarchy:
 
@@ -14,7 +14,7 @@ E.g in the hierarchy:
 e
 ```
 
-The order of authority* is `a > b > c > d > e`, and so the format of the nodes `[a,b,e,c,d]` is `[1,2,5,3,4]`
+The order of authority\* is `a > b > c > d > e`, and so the format of the nodes `[a,b,e,c,d]` is `[1,2,5,3,4]`
 
 </section>
 
