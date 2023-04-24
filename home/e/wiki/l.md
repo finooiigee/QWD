@@ -50,8 +50,8 @@ triad  ←→ X Uf  Y ←→   Y UfX  ←→   Y(X Uf)
 tetrad ←→ X UfV Y ←→ Y(X UfV) ←→ Y(X(U Vf))
 ```
 
-# Data Types
+## Data Types
 
-As of `20/04/23`, this draft does not explore the L's data types. For now, the specific integer types are implementation defined.
+As of `20/04/23`, this draft does not explore L's data types. For now, the specific integer types are implementation defined.
 
 </section>
