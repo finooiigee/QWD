@@ -6,7 +6,7 @@
 
 <section class="function">
 
-Returns a series of HTML elements surrounding APL tokens for appropriate highlighting of functions within browsers.
+Returns a series of HTML elements surrounding APL tokens for highlighting functions within browsers.
 
 </section>
 

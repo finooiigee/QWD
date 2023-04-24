@@ -4,6 +4,8 @@
 
 
 [Projects on QWD.software](/wiki/#e)
+
+My notes on APL compromise a workspace, named `maple`. The objects are stored as files in a [repository](https://github.com/finooiigee/maple) via [LINK](https://github.com/Dyalog/link).
 </section>
 
 <section>
