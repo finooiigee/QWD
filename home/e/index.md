@@ -22,7 +22,7 @@
         * markup
             * markdown
                 * [mdh](wiki/APL/markup/markdown/mdh.html)
-            * [XML](wiki/APL/xml.html)
-                * [xmln](wiki/APL/XML/xmln.html)
+            * [XML](wiki/APL/markup/xml.html)
+                * [xmln](wiki/APL/markup/XML/xmln.html)
     * [L](wiki/l.html)
 </section>

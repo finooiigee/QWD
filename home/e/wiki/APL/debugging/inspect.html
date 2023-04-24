@@ -13,7 +13,7 @@
 <pre>
       primes
 primes <span style="color:rgb(220,110,70)">←</span> {
-    <span style="color:rgb(130,165,150)">range</span>    <span style="color:rgb(220,110,70)">←</span> <span style="color:rgb(210,135,155)">1</span><span style="color:rgb(220,110,70)">↓⍳</span>⍵
+    <span style="color:rgb(130,165,150)">range</span>    <span style="color:rgb(220,110,70)">←</span> <span style="color:rgb(210,135,155)">1</span><span style="color:rgb(220,110,70)">↓⍳</span><span style="color:rgb(190,170,150)">⍵</span>
     <span style="color:rgb(130,165,150)">divisors</span> <span style="color:rgb(220,110,70)">←</span> <span style="color:rgb(220,110,70)">(∪⊢∨⍳)¨</span><span style="color:rgb(130,165,150)">range</span>
     <span style="color:rgb(130,165,150)">mask</span>     <span style="color:rgb(220,110,70)">←</span> <span style="color:rgb(210,135,155)">2</span><span style="color:rgb(220,110,70)">=≢¨</span><span style="color:rgb(130,165,150)">divisors</span>
     <span style="color:rgb(130,165,150)">mask</span><span style="color:rgb(220,110,70)">/</span><span style="color:rgb(130,165,150)">range</span>
@@ -31,7 +31,7 @@ primes <span style="color:rgb(220,110,70)">←</span> {
 <p>This is not intended to be a helpful tool, instead it attempts to be useful in presentations - as a means to visualize an idea in focus. Additionally, it can be applied to view an operation in full:</p>
 
 <pre>
-    <span style="color:rgb(220,110,70)">(</span>##<span style="color:rgb(220,110,70)">.</span>analysis.names <span style="color:rgb(80,140,140)">'primes'</span><span style="color:rgb(220,110,70)">)</span> {⍺<span style="color:rgb(220,110,70)">(↑,⍥⊂¨)(</span><span style="color:rgb(130,165,150)">primes</span> <span style="color:rgb(130,165,150)">inspect</span> ⍺<span style="color:rgb(220,110,70)">)</span>⍵} <span style="color:rgb(210,135,155)">5</span>
+    <span style="color:rgb(220,110,70)">(</span>##<span style="color:rgb(220,110,70)">.</span>analysis.names <span style="color:rgb(80,140,140)">'primes'</span><span style="color:rgb(220,110,70)">)</span> {<span style="color:rgb(190,170,150)">⍺</span><span style="color:rgb(220,110,70)">(↑,⍥⊂¨)(</span><span style="color:rgb(130,165,150)">primes</span> <span style="color:rgb(130,165,150)">inspect</span> <span style="color:rgb(190,170,150)">⍺</span><span style="color:rgb(220,110,70)">)</span><span style="color:rgb(190,170,150)">⍵</span>} <span style="color:rgb(210,135,155)">5</span>
 ┌────────┬───────────────────┐
 │range   │<span style="color:rgb(210,135,155)">2 3 4 5</span>            │
 ├────────┼───────────────────┤
@@ -50,14 +50,9 @@ primes <span style="color:rgb(220,110,70)">←</span> {
 <section class="function">
 
 <pre>
-inspect <span style="color:rgb(220,110,70)">←</span> {
-    ⍺<span style="color:rgb(220,110,70)">←⊢</span> ⋄ <span style="color:rgb(130,165,150)">operand</span><span style="color:rgb(220,110,70)">←</span>⍺⍺ ⋄ <span style="color:rgb(130,165,150)">names</span><span style="color:rgb(220,110,70)">←⊆</span>⍵⍵
-    <span style="color:rgb(130,165,150)">_</span><span style="color:rgb(220,110,70)">←</span> <span style="color:rgb(130,165,150)">names</span><span style="color:rgb(220,110,70)">(⍎,)¨⊂</span><span style="color:rgb(80,140,140)">'←⎕NULL'</span>
-    <span style="color:rgb(130,165,150)">_</span><span style="color:rgb(220,110,70)">←</span> ⎕FX<span style="color:rgb(220,110,70)">(,</span><span style="color:rgb(130,165,150)">names</span><span style="color:rgb(220,110,70)">,¨</span><span style="color:rgb(80,140,140)">'←'</span><span style="color:rgb(220,110,70)">)</span>⎕R<span style="color:rgb(220,110,70)">(,</span><span style="color:rgb(130,165,150)">names</span><span style="color:rgb(220,110,70)">,¨⊂</span><span style="color:rgb(80,140,140)">'∘←'</span><span style="color:rgb(220,110,70)">)¨</span>⎕NR <span style="color:rgb(80,140,140)">'operand'</span>
-    <span style="color:rgb(130,165,150)">_</span><span style="color:rgb(220,110,70)">←</span> ⍺ <span style="color:rgb(130,165,150)">operand</span> ⍵
-    <span style="color:rgb(220,110,70)">⍎∊</span><span style="color:rgb(130,165,150)">names</span><span style="color:rgb(220,110,70)">,¨</span><span style="color:rgb(80,140,140)">' '</span>
-}
+#include<span style="color:rgb(220,110,70)">(/</span>home<span style="color:rgb(220,110,70)">/</span>e<span style="color:rgb(220,110,70)">/</span>maple<span style="color:rgb(220,110,70)">/</span>inspect.aplf<span style="color:rgb(220,110,70)">)</span>
 </pre>
+
 
 </section>
 </body></html>

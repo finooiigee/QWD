@@ -13,7 +13,7 @@
 <pre>
       primes
 primes <span style="color:rgb(220,110,70)">←</span> {
-    <span style="color:rgb(130,165,150)">range</span>    <span style="color:rgb(220,110,70)">←</span> <span style="color:rgb(210,135,155)">1</span><span style="color:rgb(220,110,70)">↓⍳</span>⍵
+    <span style="color:rgb(130,165,150)">range</span>    <span style="color:rgb(220,110,70)">←</span> <span style="color:rgb(210,135,155)">1</span><span style="color:rgb(220,110,70)">↓⍳</span><span style="color:rgb(190,170,150)">⍵</span>
     <span style="color:rgb(130,165,150)">divisors</span> <span style="color:rgb(220,110,70)">←</span> <span style="color:rgb(220,110,70)">(∪⊢∨⍳)¨</span><span style="color:rgb(130,165,150)">range</span>
     <span style="color:rgb(130,165,150)">mask</span>     <span style="color:rgb(220,110,70)">←</span> <span style="color:rgb(210,135,155)">2</span><span style="color:rgb(220,110,70)">=≢¨</span><span style="color:rgb(130,165,150)">divisors</span>
     <span style="color:rgb(130,165,150)">mask</span><span style="color:rgb(220,110,70)">/</span><span style="color:rgb(130,165,150)">range</span>
@@ -30,11 +30,7 @@ primes <span style="color:rgb(220,110,70)">←</span> {
 <section class="function">
 
 <pre>
-names <span style="color:rgb(220,110,70)">←</span> {
-    <span style="color:rgb(130,165,150)">t</span> <span style="color:rgb(130,165,150)">v</span> <span style="color:rgb(130,165,150)">d</span> <span style="color:rgb(130,165,150)">i</span> <span style="color:rgb(220,110,70)">←</span> <span style="color:rgb(220,110,70)">↓⍉</span><span style="color:rgb(210,135,155)">201</span><span style="color:rgb(220,110,70)">⌶⍬</span> ⍝ type value description index
-    <span style="color:rgb(130,165,150)">k</span> <span style="color:rgb(220,110,70)">←</span> <span style="color:rgb(130,165,150)">d</span><span style="color:rgb(220,110,70)">⍳⊂</span><span style="color:rgb(80,140,140)">'SCOL_DFN_NAME'</span>
-    <span style="color:rgb(220,110,70)">(∪∊⊆⍨</span><span style="color:rgb(130,165,150)">v</span><span style="color:rgb(220,110,70)">[</span><span style="color:rgb(130,165,150)">k</span><span style="color:rgb(220,110,70)">]⍷∘∊</span><span style="color:rgb(210,135,155)">200</span><span style="color:rgb(220,110,70)">⌶)</span>⎕NR ⍵
-}
+#include<span style="color:rgb(220,110,70)">(/</span>home<span style="color:rgb(220,110,70)">/</span>e<span style="color:rgb(220,110,70)">/</span>maple<span style="color:rgb(220,110,70)">/</span>names.aplf<span style="color:rgb(220,110,70)">)</span>
 </pre>
 
 </section>

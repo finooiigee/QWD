@@ -10,6 +10,6 @@
 
 # Functions
 
-[xmln](XML/xmln.html)
+[xmln](xml/xmln.html)
 
 </section>
