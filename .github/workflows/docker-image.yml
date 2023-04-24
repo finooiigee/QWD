@@ -12,4 +12,10 @@ jobs:
     container: 
       image: dyalog/dyalog
     steps:
-        - run: ls
+         - uses: actions/checkout@v3
+         - run: (pwd)
+         - run: (/opt/mdyalog/18.2/64/unicode/scriptbin/dyalogscript build/build.apl)
+         - uses: actions/upload-artifact@v3
+           with:
+              name: artifacts
+              path: ./**/*.html
