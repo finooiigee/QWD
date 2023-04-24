@@ -1,4 +1,4 @@
-name: Docker Image CI
+name: Build with maple
 
 on:
   push:
@@ -22,5 +22,21 @@ jobs:
          - run: ./bin/build.apl
          - uses: actions/upload-artifact@v3
            with:
-              name: artifacts
+              name: github-pages
               path: ./**/*.html
+  deploy:
+    needs: build
+
+    permissions:
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v2
