@@ -16,8 +16,9 @@ jobs:
          - run: apt update
          - run: apt-get install -y git
          - uses: actions/checkout@v2
-         - run: git submodule update --init --recursive
-         - run: (/opt/mdyalog/18.2/64/unicode/scriptbin/dyalogscript "bin/build.apl")
+           with: 
+            submodules: recursive
+         - run: (/opt/mdyalog/18.2/64/unicode/scriptbin/dyalogscript bin/build.apl)
          - uses: actions/upload-artifact@v3
            with:
               name: artifacts
