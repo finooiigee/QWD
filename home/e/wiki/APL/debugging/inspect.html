@@ -50,7 +50,14 @@ primes <span style="color:rgb(220,110,70)">←</span> {
 <section class="function">
 
 <pre>
-#include<span style="color:rgb(220,110,70)">(/</span>home<span style="color:rgb(220,110,70)">/</span>e<span style="color:rgb(220,110,70)">/</span>maple<span style="color:rgb(220,110,70)">/</span>inspect.aplf<span style="color:rgb(220,110,70)">)</span>
+inspect <span style="color:rgb(220,110,70)">←</span> {
+    <span style="color:rgb(190,170,150)">⍺</span><span style="color:rgb(220,110,70)">←⊢</span> ⋄ <span style="color:rgb(130,165,150)">operand</span><span style="color:rgb(220,110,70)">←</span><span style="color:rgb(190,170,150)">⍺⍺</span> ⋄ <span style="color:rgb(130,165,150)">names</span><span style="color:rgb(220,110,70)">←⊆</span><span style="color:rgb(190,170,150)">⍵⍵</span>
+    <span style="color:rgb(130,165,150)">_</span><span style="color:rgb(220,110,70)">←</span> <span style="color:rgb(130,165,150)">names</span><span style="color:rgb(220,110,70)">(⍎,)¨⊂</span><span style="color:rgb(80,140,140)">'←⎕NULL'</span>
+    <span style="color:rgb(130,165,150)">_</span><span style="color:rgb(220,110,70)">←</span> ⎕FX<span style="color:rgb(220,110,70)">(,</span><span style="color:rgb(130,165,150)">names</span><span style="color:rgb(220,110,70)">,¨</span><span style="color:rgb(80,140,140)">'←'</span><span style="color:rgb(220,110,70)">)</span>⎕R<span style="color:rgb(220,110,70)">(,</span><span style="color:rgb(130,165,150)">names</span><span style="color:rgb(220,110,70)">,¨⊂</span><span style="color:rgb(80,140,140)">'∘←'</span><span style="color:rgb(220,110,70)">)¨</span>⎕NR <span style="color:rgb(80,140,140)">'operand'</span>
+    <span style="color:rgb(130,165,150)">_</span><span style="color:rgb(220,110,70)">←</span> <span style="color:rgb(190,170,150)">⍺</span> <span style="color:rgb(130,165,150)">operand</span> <span style="color:rgb(190,170,150)">⍵</span>
+    <span style="color:rgb(220,110,70)">⍎∊</span><span style="color:rgb(130,165,150)">names</span><span style="color:rgb(220,110,70)">,¨</span><span style="color:rgb(80,140,140)">' '</span>
+}
+
 </pre>
 
 

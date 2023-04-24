@@ -53,7 +53,7 @@ Returns a JSON object from XML.
 <section class="function">
 
 ```apl
-#include(/home/e/maple/xmln.aplf)
+#include(home/e/maple/xmln.aplf)
 ```
 
 </section>

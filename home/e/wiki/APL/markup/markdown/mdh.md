@@ -53,7 +53,7 @@ Hello,
 <section class="function">
 
 ```apl
-#include(/home/e/maple/mdh.aplf)
+#include(home/e/maple/mdh.aplf)
 ```
 
 </section>

@@ -30,7 +30,7 @@ primes ← {
 <section class="function">
 
 ```apl
-#include(/home/e/maple/names.aplf)
+#include(home/e/maple/names.aplf)
 ```
 
 </section>
