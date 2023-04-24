@@ -3,6 +3,7 @@
 # xmln
 
 <code>Index:[XML](../xml.html)</code>
+
 </section>
 
 <section class="function">
@@ -18,7 +19,6 @@ Returns a JSON object from XML.
     <h1>Ipsum! </h1>
   </body>
 </html>
-      
 ```
 
 ```
@@ -58,7 +58,7 @@ xmln←{ ⍝ XML -> JSON object
     (d k v a t)←↓⍉¯1 ''⍬(0⍴'' '')1⍪⎕XML ⍵
 
     ⍝ pre-processing ; see: ]help ⎕XML ⎕JSON
-    d+←1 ⋄ ((t∊1 3 7)/t)←obj ⋄ ((t∊5)/t)←char ⋄ (((⊂'')⍷v)/v)←⊂⍬ 
+    d+←1 ⋄ ((t∊1 3 7)/t)←obj ⋄ ((t∊5)/t)←char ⋄ (((⊂'')⍷v)/v)←⊂⍬
     I←{(⍺,⍵)[⍺⍺]}
 
     ⍝ Insert attributes as children
@@ -97,4 +97,5 @@ xmln←{ ⍝ XML -> JSON object
     ⎕JSON 1 ⎕JSON⍠'M'⍉↑d k v t
 }
 ```
+
 </section>

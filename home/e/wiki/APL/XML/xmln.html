@@ -1,58 +1,69 @@
-
 <html>
-<head>
-<link rel="stylesheet" href="/public/assets/style.css" type="text/css">
-<link rel="stylesheet" href=               "style.css" type="text/css">
-</head>
-<body><section>
-<h1>xmln</h1>
-<p><code>Index:<a href="../xml.html">XML</a></code></p>
-</section>
-<section class="function">
-<p>Returns a JSON object from XML.</p>
-<pre><code>      html ⍝ XHTML-compatible HTML
+  <head>
+    <link rel="stylesheet" href="/public/assets/style.css" type="text/css" />
+    <link rel="stylesheet" href="style.css" type="text/css" />
+  </head>
+  <body>
+    <section>
+      <h1>xmln</h1>
+
+      <p>
+        <code>Index:<a href="../xml.html">XML</a></code>
+      </p>
+    </section>
+
+    <section class="function">
+      <p>Returns a JSON object from XML.</p>
+
+      <pre>
+      html ⍝ XHTML-compatible HTML
 &lt;html&gt;
   &lt;body&gt;
-    &lt;span style=&quot;font-weight:bold;&quot;&gt;Hello, World!&lt;/span&gt;
+    &lt;span style="font-weight:bold;"&gt;Hello, World!&lt;/span&gt;
     &lt;h1&gt;Lorem,&lt;br /&gt;&lt;/h1&gt;
     &lt;h1&gt;Ipsum! &lt;/h1&gt;
   &lt;/body&gt;
 &lt;/html&gt;
-      
-</code></pre>
-<pre><code>      ⎕JSON xmln html
+</pre
+      >
+
+      <pre>
+      ⎕JSON xmln html
 {
-  &quot;html&quot;: {
-    &quot;body&quot;: [
+  "html": {
+    "body": [
       {
-        &quot;span&quot;: [
-          &quot;Hello, World!&quot;,
+        "span": [
+          "Hello, World!",
           {
-            &quot;style&quot;: &quot;font-weight:bold;&quot;
+            "style": "font-weight:bold;"
           }
         ]
       },
       {
-        &quot;h1&quot;: {
-          &quot;br&quot;: {},
-          &quot;&quot;: &quot;Lorem,&quot;
+        "h1": {
+          "br": {},
+          "": "Lorem,"
         }
       },
       {
-        &quot;h1&quot;: &quot;Ipsum!&quot;
+        "h1": "Ipsum!"
       }
     ]
   }
 }
-</code></pre>
-</section>
-<section class="function">
-<pre><code>xmln←{ ⍝ XML -&gt; JSON object
+</pre
+      >
+    </section>
+
+    <section class="function">
+      <pre>
+xmln←{ ⍝ XML -&gt; JSON object
     obj arr char←1 2 4 ⍝ JSON types
     (d k v a t)←↓⍉¯1 ''⍬(0⍴'' '')1⍪⎕XML ⍵
 
     ⍝ pre-processing ; see: ]help ⎕XML ⎕JSON
-    d+←1 ⋄ ((t∊1 3 7)/t)←obj ⋄ ((t∊5)/t)←char ⋄ (((⊂'')⍷v)/v)←⊂⍬ 
+    d+←1 ⋄ ((t∊1 3 7)/t)←obj ⋄ ((t∊5)/t)←char ⋄ (((⊂'')⍷v)/v)←⊂⍬
     I←{(⍺,⍵)[⍺⍺]}
 
     ⍝ Insert attributes as children
@@ -90,7 +101,8 @@
     t←t(i I)(≢i)⍴1
     ⎕JSON 1 ⎕JSON⍠'M'⍉↑d k v t
 }
-</code></pre>
-</section></body>
+</pre
+      >
+    </section>
+  </body>
 </html>
-

@@ -3,6 +3,7 @@
 # inspect
 
 <code>Index:[Debugging](../debugging.html)|Presentation</code>
+
 </section>
 
 <section class="function">
@@ -25,7 +26,6 @@ primes ← {
 ┌───┬───┬─────┬───┐
 │1 2│1 3│1 2 4│1 5│
 └───┴───┴─────┴───┘
-
 ```
 
 This is not intended to be a helpful tool, instead it attempts to be useful in presentations - as a means to visualize an idea in focus. Additionally, it can be applied to view an operation in full:
@@ -41,10 +41,10 @@ This is not intended to be a helpful tool, instead it attempts to be useful in p
 ├────────┼───────────────────┤
 │mask    │1 1 0 1            │
 └────────┴───────────────────┘
-
 ```
 
 As it stands<sub>[19/04/2023]</sub> this function is limited in its simplicity, but I may improve upon it.
+
 </section>
 
 <section class="function">
@@ -58,16 +58,5 @@ inspect ← {
     ⍎∊names,¨' '
 }
 ```
+
 </section>
-
-<script>
-
-document.documentElement.innerHTML
-.match(/##\.\w*\.\w*/i)
-.map(name=>document.documentElement.innerHTML = 
-  document.documentElement.innerHTML
-  .replace(/##\.\w*\.\w*/i,
-    `<a href="/home/e/wiki/APL/${name.split('.').slice(1).join('/')}.html">${name}</a>`)
-)
-
-</script>

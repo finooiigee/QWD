@@ -3,6 +3,7 @@
 # names
 
 <code>Index:[Analysis](../analysis.html)|[Debugging](../debugging.html)</code>
+
 </section>
 
 <section class="function">
@@ -23,6 +24,7 @@ primes ← {
 │range│divisors│mask│
 └─────┴────────┴────┘
 ```
+
 </section>
 
 <section class="function">
@@ -34,4 +36,5 @@ names ← {
     (∪∊⊆⍨v[k]⍷∘∊200⌶)⎕NR ⍵
 }
 ```
+
 </section>

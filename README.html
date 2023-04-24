@@ -1,11 +1,6 @@
+<html><head><link rel="stylesheet" href="/public/assets/style.css" type="text/css"><link rel="stylesheet" href=               "style.css" type="text/css"></head><body><h1>Building</h1>
 
-<html>
-<head>
-<link rel="stylesheet" href="/public/assets/style.css" type="text/css">
-<link rel="stylesheet" href=               "style.css" type="text/css">
-</head>
-<body><h1>Building</h1>
-<pre><code class="language-bash">find . -type d -print | xargs -I {} bash -c &quot;cd '{}' &amp;&amp; ./markdown.sh&quot;
-</code></pre></body>
-</html>
-
+<pre>
+find . -type d -print | xargs -I {} bash -c "cd '{}' && ./markdown.sh"
+</pre>
+</body></html>

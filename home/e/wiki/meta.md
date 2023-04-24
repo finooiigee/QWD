@@ -4,6 +4,7 @@
 
 <code>Index:Bureaucracy</code>
 <code>Index;John Scholes</code>
+
 </section>
 
 <section>
@@ -19,10 +20,10 @@ At the beginning of each page is a section enumerating associated or relevant in
 
 Index:Bread|Formula
 Index;ChainBaker
-
 ```
 
 Pages are composed of `<section>`s that are shown visually in outlined blocks. At the beginning of each section is a title labelling its scope. Sections can contain subsections that are noted by a new title displayed with a smaller font size.
 
 Abstractly, the wiki's organization structure aims to be tree-like.
+
 </section>

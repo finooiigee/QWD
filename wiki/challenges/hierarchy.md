@@ -1,6 +1,6 @@
 <section>
 
-# Collect all \[parent, \[child\]\] pairs in a hierarchy
+# Collect all [parent, [child]] pairs in a hierarchy
 
 Given an array of integers which corresponds to the depth of a traversal path return an array of parent and children pairs. A node in the return format should be represented by an index into the nodes sorted by order of authority\*
 
@@ -12,7 +12,6 @@ E.g in the hierarchy:
   b  c  d
  /
 e
-
 ```
 
 The order of authority\* is `a > b > c > d > e`, and so the format of the nodes `[a,b,e,c,d]` is `[1,2,5,3,4]`
@@ -31,7 +30,6 @@ The hierarchy below has a depth array of: `[1,2,3,2,2]` by traversing the path: 
   b  c  d
  /
 e
-
 ```
 
 The correct result given the argument `[1,2,3,2,2]` would be: `[[1,[2,3,4]],[2,[5]]`
@@ -46,11 +44,10 @@ The correct result given the argument `[1,2,3,2,2]` would be: `[[1,[2,3,4]],[2,[
 
 </section>
 
-<section>
-
 <input type="checkbox" checked="" />
 <label for="solutions">hide solutions</label>
-<div id="solutions">
+
+<section id="solutions">
 
 # Solutions
 
@@ -58,8 +55,7 @@ The correct result given the argument `[1,2,3,2,2]` would be: `[[1,[2,3,4]],[2,[
 
 ```
 {⊃,/(1∘↓(({⊂⍺ ⍵}⌸/∘↓∘⍉1↓{(⌊/⍵),⍺}⌸)⍤1)¯1∘↓)⌈\(⍋⍋⍵)@⊢(∪⍵)∘.=⍵}
-```
 
-</div>
+```
 
 </section>

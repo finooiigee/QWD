@@ -2,7 +2,8 @@
 
 # Challenges
 
-[Collect all \[parent, \[child\]\] pairs in a hierarchy](challenges/hierarchy.html)
+[Collect all [parent, [child]] pairs in a hierarchy](challenges/hierarchy.html)
+
 </section>
 
 <section>
@@ -22,4 +23,5 @@
 <div id="olus2000" hidden></div>
 
 <a id="olus2000" href="/home/olus2000/concat-eval.html">Concatenative Calculus Evaluator</a> | Play with concatenative expressions live!
+
 </section>

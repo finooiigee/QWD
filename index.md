@@ -10,9 +10,8 @@ Alternatively, you may create a space for QWD on a non-proprietary platform.
 
 Otherwise, you can still contribute by submitting a pull request or by emailing a diff.
 
-
-
 <code>[Home](/home)|[Wiki](/wiki)</code>
+
 </section>
 
 <section>
@@ -20,4 +19,5 @@ Otherwise, you can still contribute by submitting a pull request or by emailing 
 # Quotes
 
 "just do it and have fun while doing it" - HelloBoi <sub>[29/01/2023]</sub>
+
 </section>
