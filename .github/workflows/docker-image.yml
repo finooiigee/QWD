@@ -9,6 +9,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container: dyalog/dyalog
+    container: 
+      image: dyalog/dyalog
     steps:
-      run: ls
+        - run: ls
