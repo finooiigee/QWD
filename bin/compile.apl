@@ -1,6 +1,6 @@
 #!/usr/bin/dyalogscript SESSION_FILE=/opt/mdyalog/18.2/64/unicode/default.dse
-
 ⎕SE.Link.Create # 'home/e/maple'
+
 Tag  ← {'<',⍺,'>',⍵,'</',⍺,'>'}
 files ← (⊃0⎕NINFO⍠1⍠'Recurse' 1,∘'/*.md')'.'
 
@@ -10,13 +10,13 @@ header,← '<link rel="stylesheet" href=               "style.css" type="text/cs
 {
   content ← ⊃⎕NGET ⍵
   incl ← '^#include(.*)' ⎕R { ⊃⎕NGET ¯1↓∊1↓'('(≠⊆⊢)⍵.Match } content ⍝ including external files
-  html ← '((<span.*>)?)##((<\/span>)?)((<span.*>)?)\.((<\/span>)?)[a-zA-Z]*(\.[a-zA-z]*)*' ⎕R {
+  html ← '((<span.*>)?)#((<\/span>)?)((<span.*>)?)\.((<\/span>)?)[a-zA-Z]*' ⎕R {
     ⍝ match APL namespace hierarchies allowing optional wtokc elements
     {
       v ← ⍵/⍨(≠\⍱⊢)⍵∊'<>' ⍝ without HTML tags
       names ← ∊1↓,'/',⍪1↓'.'(≠⊆⊢)v
-      '<a style="color:rgb(190,225,240)" href="/home/e/wiki/APL/',names,'.html">',v,'</a>'
+      '<a style="color:rgb(190,225,240)" href="/home/e/maple/',names,'.html">',v,'</a>'
     }⍵.Match
-  } mdh incl ⍝ markdown as HTML
+  } mdx incl ⍝ markdown as HTML
   ('.html',⍨⍵/⍨0=∨\'.md'⍷⍵) 1 ⎕NPUT⍨ 'html' Tag ('head' Tag header),'body' Tag html
 }¨files

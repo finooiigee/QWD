@@ -1,4 +1,4 @@
-name: Build with maple
+name: Deploy
 
 on:
   push:
@@ -18,8 +18,7 @@ jobs:
          - uses: actions/checkout@v2
            with: 
             submodules: recursive
-         - run: export SESSION_FILE=/opt/mdyalog/18.2/64/unicode/default.dse
-         - run: ./bin/build.apl
+         - run: ./bin/compile.apl
          - uses: actions/upload-pages-artifact@v1
            with:
               path: .

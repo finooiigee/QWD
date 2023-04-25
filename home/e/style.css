@@ -1,0 +1,25 @@
+html,body {
+    margin: .5em;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+}
+
+section {
+    margin: 0.5em
+}
+
+pre * {
+    font-family: inherit;
+}
+
+pre {
+    margin: 1em;
+}
+
+img {
+    width: 21em;
+}

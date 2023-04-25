@@ -1,1 +1,0 @@
-digraph {l,apl;apl->markup,debugging,analysis;markup->xml,markdown;xml->xmln;markdown->mdh;analysis->names,wtokc;debugging->inspect;}
