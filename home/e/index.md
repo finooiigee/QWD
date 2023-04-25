@@ -17,14 +17,14 @@ My notes on APL compromise a workspace, named `maple`. The objects are stored as
 * [Transcriptions](wiki/transcriptions.html)
 * Programming Languages
     * APL
-        * [Debugging](wiki/apl/debugging.html)
-            * [inspect](wiki/apl/debugging/inspect.html)
-        * [Analysis](wiki/apl/analysis.html)
-            * [names](wiki/apl/analysis/names.html)|[wtokc](wiki/apl/analysis/wtokc.html)
+        * [Debugging](wiki/programming_languages/apl/debugging.html)
+            * [inspect](wiki/programming_languages/apl/debugging/inspect.html)
+        * [Analysis](wiki/programming_languages/apl/analysis.html)
+            * [names](wiki/programming_languages/apl/analysis/names.html)|[wtokc](wiki/apl/analysis/wtokc.html)
         * markup
             * markdown
-                * [mdh](wiki/apl/markup/markdown/mdh.html)
-            * [XML](wiki/apl/markup/xml.html)
-                * [xmln](wiki/apl/markup/xml/xmln.html)
-    * [L](wiki/l.html)
+                * [mdh](wiki/programming_languages/apl/markup/markdown/mdh.html)
+            * [XML](wiki/programming_languages/apl/markup/xml.html)
+                * [xmln](wiki/programming_languages/apl/markup/xml/xmln.html)
+    * [L](wiki/programming_languages/l.html)
 </section>
