@@ -21,6 +21,11 @@
       animation-iteration-count: infinite;
       animation-direction: alternate;
     }
+
+		.eye {
+		  left: 100px;
+		}
+    
     .ci {
       top: 0;
       width: 500px;
@@ -91,7 +96,59 @@
         width: 50%;
       }
     }
+
+    .bee {
+      position: absolute;
+      animation-duration: 0.2s, 1s, 5s;
+      animation-name: bee, mup, mdo;
+      animation-timing-function: linear, ease-in-out, linear;
+      animation-direction: normal, alternate, normal;
+      animation-iteration-count: infinite;
+      width: 50px;
+      height: 50px;
+      background-repeat: no-repeat;
+      transform: scaleX(-1);
+    }
+
+    @keyframes bee {
+      from {
+        background-image: url("./mcbee1.png");
+      }
+      to {
+        background-image: url("./mcbee2.png");
+      }
+    }
+
+    @keyframes mup {
+      from {
+        top: 100%;
+      }
+      to {
+        top: 50%;
+      }
+    }
     
+    @keyframes mdo {
+      from {
+        left: 0%;
+      }
+      to {
+        left: 100%;
+      }
+    }
+
+    .pad {
+       margin-top: 25%;
+    }
+    .beedr {
+      width: 418px;
+      height: 250px;
+    }
+    .art {
+    margin-left: 50px;
+      transform: scale(0.5,0.5);
+    transform: rotate(-10deg);
+    }
   </style>
 </head>
 <nojs>
@@ -114,5 +171,9 @@
   <br>
   <a class="tiny" href="https://razetime.github.io">official site</a>
   <a href="https://en.wikipedia.org/wiki/Cue_sports"> <img class="eye" src="eye.svg"></img></a>
-
+  <div class="bee"></div>
+  <div class="art">  
+    <h3 class="pad">Some mild artistry</h3>
+    <img class="beedr" src="./bee.png" alt="a bee drawn in paint">
+  </div>
 </nojs>
