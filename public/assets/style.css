@@ -114,7 +114,7 @@ body {
 }
 
 section {
-  background: #fcfcfc;
+  background: rgb(250, 250, 250);
 }
 
 section h1 {
@@ -181,12 +181,19 @@ pre {
 }
 
 section.function {
-  color: rgb(255, 245, 195);
+  color: rgb(35, 95, 145);
   padding: 1em;
-  background: rgb(40, 40, 40);
+  background: rgb(250, 250, 250);
   font-weight: bold;
 }
 
 section.function * {
   font-family: "SAX2";
 }
+
+.symbol     { color: rgb(30 , 125, 155) }
+.identifier { color: rgb(35 , 95 , 145) }
+.comment    { color: rgb(50 , 155, 175) }
+.array      { color: rgb(55 , 120, 160) }
+.character  { color: rgb(70 , 140, 170) }
+.primitive  { color: rgb(110, 170, 190) }
