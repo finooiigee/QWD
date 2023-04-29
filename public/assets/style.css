@@ -181,7 +181,7 @@ pre {
 }
 
 section.function {
-  color: rgb(35, 95, 145);
+  color: rgb(12, 90, 131);
   padding: 1em;
   background: rgb(250, 250, 250);
   font-weight: bold;
@@ -191,9 +191,12 @@ section.function * {
   font-family: "SAX2";
 }
 
-.symbol     { color: rgb(30 , 125, 155) }
-.identifier { color: rgb(35 , 95 , 145) }
-.comment    { color: rgb(50 , 155, 175) }
-.array      { color: rgb(55 , 120, 160) }
-.character  { color: rgb(70 , 140, 170) }
-.primitive  { color: rgb(110, 170, 190) }
+:root {
+ --MINI_META      : rgb(5, 65, 110);
+ --SCOL_DFN_NAME  : rgb(10, 90, 130);
+ --MINI_COMMENT   : rgb(105, 180, 185);
+ --SCOL_LAMP      : rgb(105, 180, 185);
+ --MINI_NC        : rgb(60, 155, 180);
+ --MINI_CC        : rgb(60, 155, 180);
+ --MINI_PRIMITIVE : rgb(25, 110, 145);
+}

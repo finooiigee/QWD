@@ -1,5 +1,5 @@
 #!/usr/bin/dyalogscript SESSION_FILE=/opt/mdyalog/18.2/64/unicode/default.dse
-⎕SE.Link.Create # 'home/e/maple'
+⎕SE.Link.Import # 'home/e/maple'
 
 Tag  ← {'<',⍺,'>',⍵,'</',⍺,'>'}
 files ← (⊃0⎕NINFO⍠1⍠'Recurse' 1,∘'/*.md')'.'
