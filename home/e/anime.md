@@ -4,7 +4,7 @@
 This is a page of soundbite opinions regarding the anime I've seen since June 19th 2023,
 they are not intended to be thorough reviews and do not fully represent my feelings.<br>
 At the moment the scores are completely arbitrary - it'd be most useful to think of these
-scores as an average of how much  I enjoyed  each show, a  multi-axis judgement  of its
+scores as an  average  of how much  I enjoyed  each show, a  multi-axis judgement  of its
 technical components, and the likelihood of me  recommending  it to a friend.
 </pre>
 
@@ -35,7 +35,7 @@ characters. As such, it isn't anything greater than the sum of its parts.
 ### [One Piece](https://myanimelist.net/anime/21/One_Piece)
 <div class="tag">Not Recommended</div>
 </td>
-<td>5</td>
+<td></td>
 <td>
 <pre>
 Horrible pacing - read the manga instead.
