@@ -172,10 +172,6 @@ blockquote {
 }
 
 pre {
-  white-space: pre-wrap;
-}
-
-pre {
   margin: 0;
   padding: 0;
 }

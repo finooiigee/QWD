@@ -24,6 +24,10 @@ img {
     width: 21em;
 }
 
+td {
+    white-space: nowrap;
+}
+
 .tag {
     color:rgb(35,65,140);background-color:#f0f0f0;display:inline;font-weight:bold;
     border:2px solid #f0f0f0;padding: 1px 4px;
