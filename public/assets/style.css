@@ -144,8 +144,8 @@ th {
 }
 
 section > :not(h1) {
-  padding-left: 1em;
-  padding-right: 1em;
+  margin-left: 1em;
+  margin-right: 1em;
 }
 
 section ul {
