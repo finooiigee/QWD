@@ -7,17 +7,17 @@ At the moment<sub>19/06/23</sub> the scores are completely arbitrary. It'd be mo
 <table>
 <tr>
 <td style="white-space: nowrap;">
-### From the New World
+### [From the New World](https://myanimelist.net/anime/13125/Shinsekai_yori)
 <div class="tag">Mixed Feelings</div></td>
 <td style="padding-left:8em;">5</td>
 <td>
-In spite of the compelling storytelling and universe it fails to deliver on its potentially brilliiant themes and reasonant ideas due to an amiss in focus and insubstantial characters. As such, it isn't anything greater than the sum of its parts.
+In spite of the compelling storytelling and universe it fails to deliver on its potentially brilliant themes and resonant ideas due to an amiss in focus and insubstantial characters. As such, it isn't anything greater than the sum of its parts.
 </td>
 </tr>
 
 <tr>
 <td style="white-space: nowrap;">
-### Hell's Paradise
+### [Hell's Paradise](https://myanimelist.net/anime/46569/Jigokuraku)
 <div class="tag">Recommended (still airing)</div>
 </td>
 <td style="padding-left:8em;">5</td>
