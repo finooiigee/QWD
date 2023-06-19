@@ -18,7 +18,8 @@ technical components, and the likelihood of me  recommending  it to a friend.
 <pre>
 In spite of the compelling storytelling and universe it fails to deliver on the potential
 of its brilliant themes and resonant ideas due to an  amiss in focus  and   insubstantial
-characters. As such, it isn't anything greater than the sum of its parts.
+characters. It isn't anything greater than the sum of its parts.<br>
+Watching 'From the New World' is like listening to a friend clumsily recall a great show.
 </pre>
 </td>
 </tr>
