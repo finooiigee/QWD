@@ -28,7 +28,11 @@ td {
     white-space: nowrap;
 }
 
+.recommended { color:rgb(35,65,140); }
+.avoid { color:rgb(160,45,50); }
+.mixed { color:rgb(120, 120, 120); }
+
 .tag {
-    color:rgb(35,65,140);background-color:#f0f0f0;display:inline;font-weight:bold;
-    border:2px solid #f0f0f0;padding: 1px 4px;
+    background-color:#f0f0f0;display:inline-block;font-weight:bold;
+    border:2px solid #f0f0f0;padding:1px 4px;margin:1px;
 }

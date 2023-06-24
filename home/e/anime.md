@@ -9,17 +9,16 @@ technical components, and the likelihood of me  recommending  it to a friend.
 </pre>
 
 <table>
+
 <tr>
 <td>
-### [From the New World](https://myanimelist.net/anime/13125/Shinsekai_yori)
-<div class="tag">Mixed Feelings</div></td>
-<td>5</td>
+### [Puella Magi Madoka Magica](https://myanimelist.net/anime/41457/86)
+<div class="tag recommended">Recommended</div>
+</td>
+<td>9</td>
 <td>
 <pre>
-In spite of the compelling storytelling and universe it fails to deliver on the potential
-of its brilliant themes and resonant ideas due to an  amiss in focus  and   insubstantial
-characters. It isn't anything greater than the sum of its parts.<br>
-Watching 'From the New World' is like listening to a friend clumsily recall a great show.
+
 </pre>
 </td>
 </tr>
@@ -27,16 +26,35 @@ Watching 'From the New World' is like listening to a friend clumsily recall a gr
 <tr>
 <td>
 ### [Hell's Paradise](https://myanimelist.net/anime/46569/Jigokuraku)
-<div class="tag">Recommended</div>
+<div class="tag recommended">Recommended</div>
 </td>
 <td>5</td>
+</tr>
+
+<tr>
+<td>
+### [From the New World](https://myanimelist.net/anime/13125/Shinsekai_yori)
+<div class="tag mixed">Mixed Feelings</div></td>
+<td>4</td>
+<td>
+<pre>
+In  spite of  the  compelling storytelling  and universe it
+fails to deliver on the potential of its   brilliant themes
+and   resonant ideas   due to   an amiss in focus   and its
+insubstantial characters - it isn't  anything greater  than
+the sum of its parts.<br>
+Watching 'From the New World' is like listening to a friend
+clumsily recall a great show.
+</pre>
+</td>
+</tr>
 
 <tr>
 <td>
 ### [One Piece](https://myanimelist.net/anime/21/One_Piece)
-<div class="tag">Not Recommended</div>
+<div class="tag avoid">Not Recommended</div>
 </td>
-<td></td>
+<td>-</td>
 <td>
 <pre>
 Horrible pacing - read the manga instead.
